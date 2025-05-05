@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Crimsyte | Creative Agency</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --crimsyte-black: #0e0e10;
+        --crimsyte-red: #ff003c;
+        --crimsyte-blue: #00e0ff;
+        --crimsyte-purple: #a259ff;
+        --crimsyte-green: #caff00;
+      }
+
+      body {
+        font-family: "Inter", sans-serif;
+        background-color: var(--crimsyte-black);
+        color: white;
+        overflow-x: hidden;
+      }
+
+      .bg-crimsyte-black {
+        background-color: var(--crimsyte-black);
+      }
+      .bg-crimsyte-red {
+        background-color: var(--crimsyte-red);
+      }
+      .text-crimsyte-red {
+        color: var(--crimsyte-red);
+      }
+      .border-crimsyte-red {
+        border-color: var(--crimsyte-red);
+      }
+      .bg-crimsyte-blue {
+        background-color: var(--crimsyte-blue);
+      }
+      .text-crimsyte-blue {
+        color: var(--crimsyte-blue);
+      }
+      .border-crimsyte-blue {
+        border-color: var(--crimsyte-blue);
+      }
+      .bg-crimsyte-purple {
+        background-color: var(--crimsyte-purple);
+      }
+      .text-crimsyte-purple {
+        color: var(--crimsyte-purple);
+      }
+
+      .neon-glow-red {
+        box-shadow: 0 0 15px rgba(255, 0, 60, 0.5);
+      }
+
+      .neon-glow-blue {
+        box-shadow: 0 0 15px rgba(0, 224, 255, 0.5);
+      }
+
+      .neon-glow-purple {
+        box-shadow: 0 0 15px rgba(162, 89, 255, 0.5);
+      }
+
+      .neon-text-red {
+        text-shadow: 0 0 10px rgba(255, 0, 60, 0.7);
+      }
+
+      .neon-text-blue {
+        text-shadow: 0 0 10px rgba(0, 224, 255, 0.7);
+      }
+
+      .glass {
+        background: rgba(14, 14, 16, 0.7);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+      }
+
+      .gradient-bg {
+        background: linear-gradient(
+          135deg,
+          rgba(14, 14, 16, 0.9) 0%,
+          rgba(255, 0, 60, 0.1) 100%
+        );
+      }
+
+      .gradient-card-red:hover {
+        background: linear-gradient(
+          135deg,
+          rgba(14, 14, 16, 0.8) 0%,
+          rgba(255, 0, 60, 0.2) 100%
+        );
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px -5px rgba(255, 0, 60, 0.3);
+      }
+
+      .gradient-card-blue:hover {
+        background: linear-gradient(
+          135deg,
+          rgba(14, 14, 16, 0.8) 0%,
+          rgba(0, 224, 255, 0.2) 100%
+        );
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px -5px rgba(0, 224, 255, 0.3);
+      }
+
+      .gradient-card-purple:hover {
+        background: linear-gradient(
+          135deg,
+          rgba(14, 14, 16, 0.8) 0%,
+          rgba(162, 89, 255, 0.2) 100%
+        );
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px -5px rgba(162, 89, 255, 0.3);
+      }
+
+      .gradient-card-green:hover {
+        background: linear-gradient(
+          135deg,
+          rgba(14, 14, 16, 0.8) 0%,
+          rgba(202, 255, 0, 0.2) 100%
+        );
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px -5px rgba(202, 255, 0, 0.3);
+      }
+
+      .card {
+        transition: all 0.3s ease;
+      }
+
+      .pulse-button {
+        animation: pulse 2s infinite;
+      }
+
+      @keyframes pulse {
+        0% {
+          box-shadow: 0 0 0 0 rgba(255, 0, 60, 0.7);
+        }
+        70% {
+          box-shadow: 0 0 0 10px rgba(255, 0, 60, 0);
+        }
+        100% {
+          box-shadow: 0 0 0 0 rgba(255, 0, 60, 0);
+        }
+      }
+
+      /* Particle animation */
+      .particle {
+        position: absolute;
+        border-radius: 50%;
+        opacity: 0.5;
+        animation: float 15s infinite ease-in-out;
+      }
+
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateY(0) translateX(0);
+        }
+        25% {
+          transform: translateY(-50px) translateX(50px);
+        }
+        50% {
+          transform: translateY(-100px) translateX(-50px);
+        }
+        75% {
+          transform: translateY(-50px) translateX(-100px);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav class="fixed top-0 left-0 right-0 z-50 glass">
+      <div class="container mx-auto px-6 py-4">
+        <div class="flex items-center justify-between">
+          <div
+            class="text-2xl font-bold tracking-wider text-crimsyte-red neon-text-red"
+          >
+            Crimsyte
+          </div>
+          <div class="hidden md:flex space-x-8">
+            <a
+              href="#home"
+              class="text-white hover:text-crimsyte-red transition duration-300"
+              >Home</a
+            >
+            <a
+              href="#about"
+              class="text-white hover:text-crimsyte-red transition duration-300"
+              >About</a
+            >
+            <a
+              href="#services"
+              class="text-white hover:text-crimsyte-red transition duration-300"
+              >Services</a
+            >
+            <!-- <a
+              href="#clients"
+              class="text-white hover:text-crimsyte-red transition duration-300"
+              >Clients</a
+            > -->
+            <a
+              href="#testimonials"
+              class="text-white hover:text-crimsyte-red transition duration-300"
+              >Testimonials</a
+            >
+            <a
+              href="#contact"
+              class="text-white hover:text-crimsyte-red transition duration-300"
+              >Contact</a
+            >
+          </div>
+          <div class="md:hidden">
+            <button class="text-white focus:outline-none">
+              <svg
+                class="w-6 h-6"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M4 6h16M4 12h16M4 18h16"
+                ></path>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section
+      id="home"
+      class="relative min-h-screen flex items-center justify-center overflow-hidden"
+    >
+      <!-- Particles -->
+      <div
+        class="particle bg-crimsyte-red w-24 h-24 top-1/4 left-1/4 opacity-10"
+        style="animation-delay: 0s"
+      ></div>
+      <div
+        class="particle bg-crimsyte-blue w-32 h-32 top-1/3 right-1/4 opacity-10"
+        style="animation-delay: 2s"
+      ></div>
+      <div
+        class="particle bg-crimsyte-purple w-40 h-40 bottom-1/4 left-1/3 opacity-10"
+        style="animation-delay: 4s"
+      ></div>
+      <div
+        class="particle bg-crimsyte-red w-20 h-20 bottom-1/3 right-1/3 opacity-10"
+        style="animation-delay: 6s"
+      ></div>
+
+      <div class="container mx-auto px-6 z-10 text-center">
+        <h1
+          class="text-5xl md:text-7xl lg:text-8xl font-black uppercase tracking-wider mb-6 leading-tight"
+        >
+          <span class="text-white">We Engineer</span><br />
+          <span class="text-crimsyte-red neon-text-red"
+            >Digital Experiences</span
+          ><br />
+          <span class="text-white">That Hit Hard</span>
+        </h1>
+        <p
+          class="text-xl md:text-2xl font-light tracking-widest mb-12 text-white/80"
+        >
+          DESIGN. CODE. IMPACT.
+        </p>
+        <a
+          href="#contact"
+          class="inline-block bg-crimsyte-red text-white font-bold py-4 px-8 rounded-lg uppercase tracking-wider neon-glow-red hover:bg-white hover:text-crimsyte-red transition duration-300 pulse-button"
+        >
+          Let's Talk
+        </a>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 md:py-32">
+      <div class="container mx-auto px-6">
+        <h2
+          class="text-4xl md:text-5xl font-bold uppercase tracking-wider mb-16 text-center"
+        >
+          About <span class="text-crimsyte-red neon-text-red">crimsyte</span>
+        </h2>
+
+        <div class="flex flex-col md:flex-row items-center gap-12">
+          <div
+            class="w-full md:w-1/2 gradient-bg p-8 rounded-2xl card gradient-card-red"
+          >
+            <h3 class="text-2xl font-bold mb-4">Our Story</h3>
+            <p class="text-white/80 leading-relaxed">
+              Founded by a collective of rogue designers and developers who were
+              tired of the status quo, crimsyte emerged from the digital
+              underground with a mission to disrupt the creative industry. We
+              believe in pushing boundaries, challenging conventions, and
+              creating work that demands attention.
+            </p>
+            <p class="text-white/80 leading-relaxed mt-4">
+              Our team combines cutting-edge technical expertise with bold
+              creative vision to engineer digital experiences that leave a
+              lasting impression. We're not just building websites—we're
+              crafting digital ecosystems that transform brands and captivate
+              audiences.
+            </p>
+          </div>
+
+          <div class="w-full md:w-1/2 grid grid-cols-2 gap-6">
+            <div
+              class="bg-crimsyte-black p-6 rounded-xl border border-crimsyte-red/30 card gradient-card-red"
+            >
+              <h4 class="text-xl font-bold mb-2">Vision</h4>
+              <p class="text-white/70">
+                To redefine digital experiences through fearless creativity and
+                technical excellence.
+              </p>
+            </div>
+            <div
+              class="bg-crimsyte-black p-6 rounded-xl border border-crimsyte-blue/30 card gradient-card-blue"
+            >
+              <h4 class="text-xl font-bold mb-2">Mission</h4>
+              <p class="text-white/70">
+                Crafting digital solutions that break through the noise and
+                deliver measurable impact.
+              </p>
+            </div>
+            <div
+              class="bg-crimsyte-black p-6 rounded-xl border border-crimsyte-purple/30 card gradient-card-purple"
+            >
+              <h4 class="text-xl font-bold mb-2">Values</h4>
+              <p class="text-white/70">
+                Bold innovation, technical precision, and relentless pursuit of
+                excellence.
+              </p>
+            </div>
+            <div
+              class="bg-crimsyte-black p-6 rounded-xl border border-crimsyte-green/30 card gradient-card-green"
+            >
+              <h4 class="text-xl font-bold mb-2">Approach</h4>
+              <p class="text-white/70">
+                Strategic thinking paired with disruptive execution for maximum
+                impact.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-20 md:py-32 bg-crimsyte-black/50">
+      <div class="container mx-auto px-6">
+        <h2
+          class="text-4xl md:text-5xl font-bold uppercase tracking-wider mb-16 text-center"
+        >
+          Our <span class="text-crimsyte-red neon-text-red">Services</span>
+        </h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div
+            class="bg-crimsyte-black p-8 rounded-xl border border-crimsyte-red/30 card gradient-card-red"
+          >
+            <div
+              class="w-16 h-16 bg-crimsyte-red/20 rounded-full flex items-center justify-center mb-6"
+            >
+              <svg
+                class="w-8 h-8 text-crimsyte-red"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"
+                ></path>
+              </svg>
+            </div>
+            <h3 class="text-xl font-bold mb-4">High-Voltage Branding</h3>
+            <p class="text-white/70">
+              We forge unforgettable brand identities that electrify your
+              audience and set you apart from competitors.
+            </p>
+          </div>
+
+          <div
+            class="bg-crimsyte-black p-8 rounded-xl border border-crimsyte-blue/30 card gradient-card-blue"
+          >
+            <div
+              class="w-16 h-16 bg-crimsyte-blue/20 rounded-full flex items-center justify-center mb-6"
+            >
+              <svg
+                class="w-8 h-8 text-crimsyte-blue"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                ></path>
+              </svg>
+            </div>
+            <h3 class="text-xl font-bold mb-4">
+              Conversion-Focused Web Design
+            </h3>
+            <p class="text-white/70">
+              Beautiful, functional websites engineered to convert visitors into
+              customers with strategic UX and compelling visuals.
+            </p>
+          </div>
+
+          <div
+            class="bg-crimsyte-black p-8 rounded-xl border border-crimsyte-purple/30 card gradient-card-purple"
+          >
+            <div
+              class="w-16 h-16 bg-crimsyte-purple/20 rounded-full flex items-center justify-center mb-6"
+            >
+              <svg
+                class="w-8 h-8 text-crimsyte-purple"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z"
+                ></path>
+              </svg>
+            </div>
+            <h3 class="text-xl font-bold mb-4">UI/UX Systems</h3>
+            <p class="text-white/70">
+              Comprehensive design systems that ensure consistency, scalability,
+              and exceptional user experiences across all touchpoints.
+            </p>
+          </div>
+
+          <div
+            class="bg-crimsyte-black p-8 rounded-xl border border-crimsyte-green/30 card gradient-card-green"
+          >
+            <div
+              class="w-16 h-16 bg-crimsyte-green/20 rounded-full flex items-center justify-center mb-6"
+            >
+              <svg
+                class="w-8 h-8 text-crimsyte-green"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M13 10V3L4 14h7v7l9-11h-7z"
+                ></path>
+              </svg>
+            </div>
+            <h3 class="text-xl font-bold mb-4">Performance Optimization</h3>
+            <p class="text-white/70">
+              Lightning-fast digital experiences that keep users engaged and
+              boost your search engine rankings.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Clients Section -->
+    <!-- <section id="clients" class="py-20 md:py-32">
+      <div class="container mx-auto px-6">
+        <h2
+          class="text-4xl md:text-5xl font-bold uppercase tracking-wider mb-16 text-center"
+        >
+          Our <span class="text-crimsyte-red neon-text-red">Clients</span>
+        </h2>
+
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-12 items-center">
+          <div class="text-center">
+            <div
+              class="text-2xl font-bold text-white/40 hover:text-crimsyte-red transition duration-300"
+            >
+              VEXTRA
+            </div>
+          </div>
+          <div class="text-center">
+            <div
+              class="text-2xl font-bold text-white/40 hover:text-crimsyte-blue transition duration-300"
+            >
+              LUMINOID
+            </div>
+          </div>
+          <div class="text-center">
+            <div
+              class="text-2xl font-bold text-white/40 hover:text-crimsyte-purple transition duration-300"
+            >
+              CORELYTICS
+            </div>
+          </div>
+          <div class="text-center">
+            <div
+              class="text-2xl font-bold text-white/40 hover:text-crimsyte-green transition duration-300"
+            >
+              OMNIDECK
+            </div>
+          </div>
+          <div class="text-center">
+            <div
+              class="text-2xl font-bold text-white/40 hover:text-crimsyte-red transition duration-300"
+            >
+              NEXAWAVE
+            </div>
+          </div>
+          <div class="text-center">
+            <div
+              class="text-2xl font-bold text-white/40 hover:text-crimsyte-blue transition duration-300"
+            >
+              SYNTHREX
+            </div>
+          </div>
+          <div class="text-center">
+            <div
+              class="text-2xl font-bold text-white/40 hover:text-crimsyte-purple transition duration-300"
+            >
+              QUANTUMLOOP
+            </div>
+          </div>
+          <div class="text-center">
+            <div
+              class="text-2xl font-bold text-white/40 hover:text-crimsyte-green transition duration-300"
+            >
+              CYBERFORGE
+            </div>
+          </div>
+        </div>
+      </div>
+    </section> -->
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="py-20 md:py-32 bg-crimsyte-black/50">
+      <div class="container mx-auto px-6">
+        <h2 class="text-4xl md:text-5xl font-bold uppercase tracking-wider mb-16 text-center">
+          Client <span class="text-crimsyte-red neon-text-red">Testimonials</span>
+        </h2>
+    
+        <!-- Promo Callout -->
+        <div class="bg-crimsyte-black p-8 rounded-xl border border-crimsyte-purple/30 card gradient-card-purple flex flex-col justify-between max-w-xl mx-auto">
+          <div>
+            <h4 class="text-xl font-bold text-white mb-2">Want to be featured here?</h4>
+            <p class="text-white/80">
+              Be one of our <span class="text-crimsyte-purple font-semibold">first clients</span> and get a
+              <span class="text-crimsyte-purple font-semibold">hefty discount</span> on your project — plus
+              the chance to be featured in our showcase testimonials.
+            </p>
+          </div>
+          <button class="mt-6 px-4 py-2 bg-crimsyte-purple text-white rounded-full hover:shadow-[0_0_15px_#a259ff] transition">
+            <a href="#contact">Contact Us</a>
+          </button>
+        </div>
+      </div>
+        <!-- </h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div
+            class="bg-crimsyte-black p-8 rounded-xl border border-crimsyte-red/30 card gradient-card-red"
+          >
+            <div class="flex items-center mb-6">
+              <div class="w-12 h-12 rounded-full overflow-hidden bg-crimsyte-red/30 mr-4">
+                <img 
+                  src="image.png" 
+                  alt="Avatar" 
+                  class="w-full h-full object-cover scale-[1.05]" 
+                  loading="lazy"
+                />
+              </div>
+              
+              
+              <div>
+                <h4 class="font-bold">Talia Gray</h4>
+                <p class="text-white/60 text-sm">Founder @ Vextra</p>
+              </div>
+            </div>
+            <p class="text-white/80 italic">
+              "Crimsyte didn't just meet expectations — they broke them. Their
+              team delivered a website that perfectly captures our brand while
+              driving real business results."
+            </p>
+          </div>
+
+          <div
+            class="bg-crimsyte-black p-8 rounded-xl border border-crimsyte-blue/30 card gradient-card-blue"
+          >
+            <div class="flex items-center mb-6">
+              <div
+                class="w-12 h-12 bg-crimsyte-blue/30 rounded-full mr-4"
+              ></div>
+              <div>
+                <h4 class="font-bold">Marcus Chen</h4>
+                <p class="text-white/60 text-sm">CTO @ Luminoid</p>
+              </div>
+            </div>
+            <p class="text-white/80 italic">
+              "Working with Crimsyte was transformative for our digital
+              presence. Their technical expertise combined with bold design
+              choices resulted in a platform that outperforms all our
+              competitors."
+            </p>
+          </div>
+
+          <div
+            class="bg-crimsyte-black p-8 rounded-xl border border-crimsyte-purple/30 card gradient-card-purple"
+          >
+            <div class="flex items-center mb-6">
+              <div
+                class="w-12 h-12 bg-crimsyte-purple/30 rounded-full mr-4"
+              ></div>
+              <div>
+                <h4 class="font-bold">Elena Rodriguez</h4>
+                <p class="text-white/60 text-sm">
+                  Marketing Director @ Corelytics
+                </p>
+              </div>
+            </div>
+            <p class="text-white/80 italic">
+              "The team at Crimsyte understands how to balance aesthetic appeal
+              with conversion optimization. Our new site is not only stunning
+              but has increased our lead generation by 137%."
+            </p>
+          </div>
+        </div>
+      </div> -->
+    </section>
+
+    <!-- CTA Section -->
+    <section id="contact" class="py-20 md:py-32">
+      <div class="container mx-auto px-6">
+        <div class="max-w-4xl mx-auto text-center">
+          <h2
+            class="text-4xl md:text-6xl font-black uppercase tracking-wider mb-8"
+          >
+            Let's Build Something
+            <span class="text-crimsyte-red neon-text-red">Legendary</span>
+          </h2>
+          <p class="text-xl text-white/80 mb-12 max-w-2xl mx-auto">
+            Ready to stand out in the digital landscape? Our team of creative
+            technologists is prepared to bring your vision to life.
+          </p>
+          <div class="bg-crimsyte-black/50 p-4 rounded-lg border border-crimsyte-red/30 text-center">
+            <p class="text-xl font-medium text-crimsyte-red">Contact us at mandibchaulagain8@gmail.com</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 border-t border-white/10">
+      <div class="container mx-auto px-6">
+        <div class="flex flex-col md:flex-row justify-between items-center">
+          <div class="mb-8 md:mb-0">
+            <div
+              class="text-2xl font-bold tracking-wider text-crimsyte-red neon-text-red mb-4"
+            >
+              Crimsyte
+            </div>
+            <p class="text-white/60">Kathmandu, Nepal</p>
+            <p class="text-white/60">mandibchaulagain8@gmail.com</p>
+          </div>
+
+          <div class="flex space-x-8">
+            <!-- GitHub -->
+            <a
+              href="https://github.com/mandibchaulagain"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-white/60 hover:text-crimsyte-red transition duration-300"
+              aria-label="GitHub"
+            >
+              <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                <path
+                  d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.385.6.112.82-.26.82-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.547-1.387-1.335-1.757-1.335-1.757-1.09-.745.083-.73.083-.73 1.204.085 1.838 1.238 1.838 1.238 1.07 1.834 2.807 1.305 3.492.998.107-.776.418-1.306.762-1.605-2.666-.304-5.466-1.334-5.466-5.93 0-1.31.468-2.382 1.236-3.22-.124-.303-.536-1.524.117-3.176 0 0 1.008-.323 3.3 1.23a11.51 11.51 0 0 1 3.003-.404 11.5 11.5 0 0 1 3.003.404c2.292-1.553 3.3-1.23 3.3-1.23.653 1.652.241 2.873.118 3.176.77.838 1.236 1.91 1.236 3.22 0 4.61-2.807 5.624-5.478 5.924.43.372.823 1.103.823 2.223v3.293c0 .319.22.693.825.576C20.565 21.797 24 17.3 24 12c0-6.63-5.37-12-12-12z"
+                />
+              </svg>
+            </a>
+          
+            <!-- Twitter -->
+            <a
+              href="https://x.com/mandibCh"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-white/60 hover:text-crimsyte-red transition duration-300"
+              aria-label="Twitter"
+            >
+              <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                <path
+                  d="M23.954 4.569c-.885.39-1.83.654-2.825.775 1.014-.611 1.794-1.574 2.163-2.724-.949.564-2.005.974-3.127 1.195-.896-.958-2.178-1.555-3.594-1.555-3.18 0-5.515 2.967-4.797 6.045-4.09-.205-7.717-2.165-10.145-5.144-1.29 2.214-.668 5.108 1.523 6.574-.796-.026-1.548-.243-2.212-.608-.054 2.28 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.627 1.956 2.444 3.38 4.6 3.42-2.07 1.624-4.678 2.347-7.29 2.04 2.18 1.397 4.767 2.212 7.548 2.212 9.054 0 14-7.496 13.995-14.146.962-.695 1.8-1.56 2.457-2.548l-.047-.02z"
+                />
+              </svg>
+            </a>
+          
+            <!-- Upwork -->
+            <a
+              href="https://www.upwork.com/freelancers/~0193ff64be534e76f1"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-white/60 hover:text-crimsyte-red transition duration-300"
+              aria-label="Upwork"
+            >
+              <svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
+                <path
+                  d="M21.5 8.15c-.61 0-1.16.14-1.66.4a4.25 4.25 0 00-7.8-.1 4.44 4.44 0 01-2.89-2.8H6.5v5.16c0 .88-.7 1.6-1.56 1.6s-1.56-.72-1.56-1.6V5H0v5.81c0 2.2 1.75 4 3.94 4h.01a3.8 3.8 0 003.06-1.52 7.13 7.13 0 001.63 1.35v5.85h2.9v-4.3a11.05 11.05 0 002.24.23c.48 0 .95-.03 1.41-.09a4.27 4.27 0 007.46-2.57v-.01c0-2.35-1.91-4.27-4.25-4.27zm-1.49 6.27a1.36 1.36 0 01-1.57-1.14v-.01a7.18 7.18 0 00-.23-1.31c.14-.62.71-1.07 1.39-1.07.79 0 1.44.66 1.44 1.47 0 .67-.43 1.24-1.03 1.44z"
+                />
+              </svg>
+            </a>
+          </div>
+          
+        </div>
+
+        <div class="mt-12 text-center text-white/40 text-sm">
+          &copy; 2025 Crimsyte Creative Agency. All rights reserved.
+        </div>
+      </div>
+    </footer>
+
+    <!-- Simple JavaScript for smooth scrolling and mobile menu -->
+    <script>
+      // Smooth scrolling for anchor links
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+
+          const targetId = this.getAttribute("href");
+          const targetElement = document.querySelector(targetId);
+
+          if (targetElement) {
+            window.scrollTo({
+              top: targetElement.offsetTop - 80, // Offset for the fixed navbar
+              behavior: "smooth",
+            });
+          }
+        });
+      });
+
+      // Mobile menu toggle
+      const menuButton = document.querySelector("nav button");
+      const mobileMenu = document.createElement("div");
+      mobileMenu.className =
+        "fixed inset-0 bg-crimsyte-black/95 z-40 flex items-center justify-center transform translate-x-full transition-transform duration-300 ease-in-out glass";
+      mobileMenu.innerHTML = `
+            <div class="flex flex-col items-center space-y-8">
+                <a href="#home" class="text-2xl text-white hover:text-crimsyte-red transition duration-300">Home</a>
+                <a href="#about" class="text-2xl text-white hover:text-crimsyte-red transition duration-300">About</a>
+                <a href="#services" class="text-2xl text-white hover:text-crimsyte-red transition duration-300">Services</a>
+                
+                <a href="#testimonials" class="text-2xl text-white hover:text-crimsyte-red transition duration-300">Testimonials</a>
+                <a href="#contact" class="text-2xl text-white hover:text-crimsyte-red transition duration-300">Contact</a>
+                <button class="mt-8 text-white">
+                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
+            </div>
+        `;
+        // <a href="#clients" class="text-2xl text-white hover:text-crimsyte-red transition duration-300">Clients</a> removed from above
+      document.body.appendChild(mobileMenu);
+
+      let menuOpen = false;
+
+      menuButton.addEventListener("click", () => {
+        menuOpen = !menuOpen;
+        if (menuOpen) {
+          mobileMenu.classList.remove("translate-x-full");
+        } else {
+          mobileMenu.classList.add("translate-x-full");
+        }
+      });
+
+      // Close mobile menu when clicking a link
+      mobileMenu.querySelectorAll("a").forEach((link) => {
+        link.addEventListener("click", () => {
+          menuOpen = false;
+          mobileMenu.classList.add("translate-x-full");
+        });
+      });
+
+      // Close button in mobile menu
+      mobileMenu.querySelector("button").addEventListener("click", () => {
+        menuOpen = false;
+        mobileMenu.classList.add("translate-x-full");
+      });
+
+      // Add scroll animation for elements
+      const animateOnScroll = () => {
+        const elements = document.querySelectorAll(".card");
+
+        elements.forEach((element) => {
+          const elementPosition = element.getBoundingClientRect().top;
+          const windowHeight = window.innerHeight;
+
+          if (elementPosition < windowHeight - 100) {
+            element.style.opacity = "1";
+            element.style.transform = "translateY(0)";
+          }
+        });
+      };
+
+      // Set initial styles for animation
+      document.querySelectorAll(".card").forEach((card) => {
+        card.style.opacity = "0";
+        card.style.transform = "translateY(20px)";
+        card.style.transition = "opacity 0.6s ease, transform 0.6s ease";
+      });
+
+      // Run on scroll
+      window.addEventListener("scroll", animateOnScroll);
+
+      // Run once on page load
+      window.addEventListener("load", animateOnScroll);
+    </script>
+  </body>
+</html>
