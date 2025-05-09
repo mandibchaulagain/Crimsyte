@@ -1,0 +1,1775 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title> | Premium Early Learning Center</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: {
+                50: "#f0f9ff",
+                100: "#e0f2fe",
+                200: "#bae6fd",
+                300: "#7dd3fc",
+                400: "#38bdf8",
+                500: "#0ea5e9",
+                600: "#0284c7",
+                700: "#0369a1",
+                800: "#075985",
+                900: "#0c4a6e",
+              },
+              secondary: {
+                50: "#fdf2f8",
+                100: "#fce7f3",
+                200: "#fbcfe8",
+                300: "#f9a8d4",
+                400: "#f472b6",
+                500: "#ec4899",
+              },
+              accent: {
+                50: "#f0fdfa",
+                100: "#ccfbf1",
+                200: "#99f6e4",
+                300: "#5eead4",
+                400: "#2dd4bf",
+                500: "#14b8a6",
+              },
+              warm: {
+                50: "#fffbeb",
+                100: "#fef3c7",
+                200: "#fde68a",
+                300: "#fcd34d",
+                400: "#fbbf24",
+                500: "#f59e0b",
+              },
+            },
+            fontFamily: {
+              sans: ["Poppins", "sans-serif"],
+            },
+            boxShadow: {
+              soft: "0 4px 20px rgba(0, 0, 0, 0.05)",
+            },
+          },
+        },
+      };
+    </script>
+    <style type="text/tailwindcss">
+      @layer utilities {
+        .text-shadow-sm {
+          text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+        }
+        .transition-all-300 {
+          transition: all 300ms ease-in-out;
+        }
+        .shape-blob {
+          border-radius: 42% 58% 70% 30% / 45% 45% 55% 55%;
+        }
+        .shape-blob-2 {
+          border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+        }
+        .shape-blob-3 {
+          border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+        }
+      }
+    </style>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="font-sans text-gray-700 bg-gray-50">
+    <!-- Top Bar -->
+    <div class="bg-primary-500 text-white py-1">
+      <div
+        class="container mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center"
+      >
+        <div class="text-sm">
+          <span class="mr-4">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-4 w-4 inline-block mr-1"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
+              />
+            </svg>
+            (555) 123-4567
+          </span>
+          <span>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-4 w-4 inline-block mr-1"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+              />
+            </svg>
+            info@sunshinekids.com
+          </span>
+        </div>
+        <div class="text-sm">
+          <span>Mon-Fri: 7:00 AM - 6:00 PM</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Header -->
+    <header class="bg-white shadow-soft sticky top-0 z-50">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center py-4">
+          <div class="flex items-center">
+            <div class="text-2xl font-bold">
+              <span class="text-primary-500">Sunshine</span>
+              <span class="text-warm-400">Kids</span>
+              <span class="text-sm font-medium text-gray-500 block"
+                >Early Learning Center</span
+              >
+            </div>
+          </div>
+
+          <!-- Desktop Navigation -->
+          <nav class="hidden md:flex space-x-8">
+            <a
+              href="#home"
+              class="text-gray-600 hover:text-primary-500 font-medium transition-all-300"
+              >Home</a
+            >
+            <a
+              href="#about"
+              class="text-gray-600 hover:text-primary-500 font-medium transition-all-300"
+              >About</a
+            >
+            <a
+              href="#programs"
+              class="text-gray-600 hover:text-primary-500 font-medium transition-all-300"
+              >Programs</a
+            >
+            <a
+              href="#philosophy"
+              class="text-gray-600 hover:text-primary-500 font-medium transition-all-300"
+              >Philosophy</a
+            >
+            <a
+              href="#parents"
+              class="text-gray-600 hover:text-primary-500 font-medium transition-all-300"
+              >Parents</a
+            >
+            <a
+              href="#contact"
+              class="text-gray-600 hover:text-primary-500 font-medium transition-all-300"
+              >Contact</a
+            >
+          </nav>
+
+          <!-- Mobile Navigation Button -->
+          <div class="md:hidden">
+            <button
+              id="mobile-menu-button"
+              class="text-gray-500 hover:text-primary-500 focus:outline-none"
+            >
+              <svg
+                class="h-6 w-6"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M4 6h16M4 12h16M4 18h16"
+                ></path>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- Mobile Navigation Menu -->
+        <div id="mobile-menu" class="md:hidden hidden pb-4">
+          <div class="flex flex-col space-y-3">
+            <a
+              href="#home"
+              class="text-gray-600 hover:text-primary-500 font-medium transition-all-300"
+              >Home</a
+            >
+            <a
+              href="#about"
+              class="text-gray-600 hover:text-primary-500 font-medium transition-all-300"
+              >About</a
+            >
+            <a
+              href="#programs"
+              class="text-gray-600 hover:text-primary-500 font-medium transition-all-300"
+              >Programs</a
+            >
+            <a
+              href="#philosophy"
+              class="text-gray-600 hover:text-primary-500 font-medium transition-all-300"
+              >Philosophy</a
+            >
+            <a
+              href="#parents"
+              class="text-gray-600 hover:text-primary-500 font-medium transition-all-300"
+              >Parents</a
+            >
+            <a
+              href="#contact"
+              class="text-gray-600 hover:text-primary-500 font-medium transition-all-300"
+              >Contact</a
+            >
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section
+      id="home"
+      class="relative overflow-hidden bg-warm-50 py-20 lg:py-28"
+    >
+      <!-- Decorative Elements -->
+      <div
+        class="absolute top-20 left-10 w-16 h-16 bg-secondary-200 rounded-full opacity-50 animate-pulse"
+      ></div>
+      <div
+        class="absolute bottom-20 left-1/4 w-20 h-20 bg-accent-200 shape-blob opacity-60"
+      ></div>
+      <div
+        class="absolute top-1/3 right-10 w-24 h-24 bg-primary-200 shape-blob-2 opacity-60"
+      ></div>
+      <div
+        class="absolute bottom-10 right-1/4 w-16 h-16 bg-warm-200 shape-blob-3 opacity-70"
+      ></div>
+
+      <!-- Math Symbols -->
+      <div
+        class="absolute top-1/4 left-1/3 text-5xl text-primary-300 opacity-20 transform -rotate-12"
+      >
+        +
+      </div>
+      <div
+        class="absolute bottom-1/3 right-1/3 text-6xl text-secondary-300 opacity-20 transform rotate-12"
+      >
+        ÷
+      </div>
+      <div
+        class="absolute top-2/3 left-1/5 text-5xl text-accent-300 opacity-20 transform rotate-45"
+      >
+        ×
+      </div>
+      <div
+        class="absolute top-1/5 right-1/4 text-6xl text-warm-300 opacity-20 transform -rotate-15"
+      >
+        −
+      </div>
+
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div class="flex flex-col lg:flex-row items-center">
+          <div class="lg:w-1/2 lg:pr-12 mb-10 lg:mb-0">
+            <h1
+              class="text-4xl md:text-5xl font-bold text-gray-800 mb-6 leading-tight"
+            >
+              Where <span class="text-primary-500">Learning</span> is Fun and
+              <span class="text-secondary-500">Imagination</span> Grows
+            </h1>
+            <p class="text-xl text-gray-600 mb-8">
+              Nurturing young minds in a safe, creative environment where every
+              child discovers the joy of learning through play and exploration.
+            </p>
+            <div
+              class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4"
+            >
+              <a
+                href="#programs"
+                class="bg-primary-500 hover:bg-primary-600 text-white font-medium py-3 px-6 rounded-full shadow-md hover:shadow-lg transition-all-300 text-center"
+              >
+                Explore Programs
+              </a>
+              <a
+                href="#contact"
+                class="bg-white hover:bg-gray-100 text-primary-500 font-medium py-3 px-6 rounded-full shadow-md hover:shadow-lg transition-all-300 text-center"
+              >
+                Schedule a Tour
+              </a>
+            </div>
+          </div>
+          <div class="lg:w-1/2 relative">
+            <div
+              class="absolute -top-6 -left-6 w-24 h-24 bg-primary-100 rounded-full"
+            ></div>
+            <div
+              class="absolute -bottom-6 -right-6 w-32 h-32 bg-secondary-100 rounded-full"
+            ></div>
+            <img
+              src="image2.jpg"
+              alt="Happy children playing and learning"
+              class="rounded-2xl shadow-xl relative z-10"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-white">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+          <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
+            Welcome to Sunshine Kids
+          </h2>
+          <div class="w-20 h-1 bg-primary-300 mx-auto rounded-full"></div>
+          <p class="mt-6 text-xl text-gray-600 max-w-3xl mx-auto">
+            A place where children learn, grow, and thrive in a nurturing
+            environment designed to inspire curiosity and joy.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+          <div
+            class="bg-primary-50 rounded-xl p-8 shadow-soft hover:shadow-md transition-all-300 transform hover:-translate-y-1"
+          >
+            <div
+              class="w-16 h-16 bg-primary-100 rounded-full flex items-center justify-center mb-6"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-8 w-8 text-primary-500"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"
+                />
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold mb-3 text-gray-800">
+              Educational Excellence
+            </h3>
+            <p class="text-gray-600">
+              Our curriculum is designed to foster cognitive, social, emotional,
+              and physical development through engaging activities and
+              play-based learning.
+            </p>
+          </div>
+
+          <div
+            class="bg-secondary-50 rounded-xl p-8 shadow-soft hover:shadow-md transition-all-300 transform hover:-translate-y-1"
+          >
+            <div
+              class="w-16 h-16 bg-secondary-100 rounded-full flex items-center justify-center mb-6"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-8 w-8 text-secondary-500"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"
+                />
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold mb-3 text-gray-800">
+              Dedicated Teachers
+            </h3>
+            <p class="text-gray-600">
+              Our passionate educators are trained in early childhood
+              development and committed to creating a supportive, stimulating
+              environment for every child.
+            </p>
+          </div>
+
+          <div
+            class="bg-accent-50 rounded-xl p-8 shadow-soft hover:shadow-md transition-all-300 transform hover:-translate-y-1"
+          >
+            <div
+              class="w-16 h-16 bg-accent-100 rounded-full flex items-center justify-center mb-6"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-8 w-8 text-accent-500"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
+                />
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold mb-3 text-gray-800">
+              Safe Environment
+            </h3>
+            <p class="text-gray-600">
+              Safety is our top priority. Our facility is designed with child
+              safety in mind, and we maintain strict security protocols to
+              ensure peace of mind.
+            </p>
+          </div>
+        </div>
+
+        <div class="mt-20 flex flex-col md:flex-row items-center gap-12">
+          <div class="md:w-1/2">
+            <img
+              src="image2.jpg"
+              alt="Our learning center"
+              class="rounded-2xl shadow-lg"
+            />
+          </div>
+          <div class="md:w-1/2">
+            <h3 class="text-2xl font-bold text-gray-800 mb-6">Our Story</h3>
+            <p class="text-gray-600 mb-4">
+              Founded in 2010, Sunshine Kids Early Learning Center was born from
+              a vision to create a place where children could learn and grow in
+              a nurturing, stimulating environment that feels like a second
+              home.
+            </p>
+            <p class="text-gray-600 mb-4">
+              Our center is designed to inspire curiosity, creativity, and a
+              love of learning that will stay with children throughout their
+              lives. We believe that every child is unique, with their own
+              strengths, interests, and learning style.
+            </p>
+            <p class="text-gray-600">
+              At Sunshine Kids, we're more than just a childcare center – we're
+              partners with parents in raising happy, confident, and
+              well-rounded children who are prepared for future success.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Programs Section -->
+    <section
+      id="programs"
+      class="py-20 bg-gradient-to-b from-white to-primary-50"
+    >
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+          <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
+            Our Programs
+          </h2>
+          <div class="w-20 h-1 bg-warm-300 mx-auto rounded-full"></div>
+          <p class="mt-6 text-xl text-gray-600 max-w-3xl mx-auto">
+            Age-appropriate programs designed to nurture development and inspire
+            a lifelong love of learning.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+          <!-- Infants Program -->
+          <div
+            class="bg-white rounded-xl overflow-hidden shadow-soft group hover:shadow-md transition-all-300"
+          >
+            <div class="relative h-64 overflow-hidden">
+              <img
+                src="image2.jpg"
+                alt="Infant care"
+                class="w-full h-full object-cover transition-all duration-500 group-hover:scale-105"
+              />
+              <div class="absolute inset-0 bg-primary-500 bg-opacity-20"></div>
+              <div
+                class="absolute top-4 left-4 bg-primary-500 text-white text-sm font-medium py-1 px-3 rounded-full"
+              >
+                6 weeks - 12 months
+              </div>
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-bold text-gray-800 mb-2">Infant Care</h3>
+              <p class="text-gray-600 mb-4">
+                A nurturing environment where infants receive personalized care
+                to support their developmental milestones in a safe, loving
+                atmosphere.
+              </p>
+              <a
+                href="#contact"
+                class="text-primary-500 font-medium hover:text-primary-600 transition-all-300 inline-flex items-center"
+              >
+                Learn more
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-4 w-4 ml-1"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M9 5l7 7-7 7"
+                  />
+                </svg>
+              </a>
+            </div>
+          </div>
+
+          <!-- Toddlers Program -->
+          <div
+            class="bg-white rounded-xl overflow-hidden shadow-soft group hover:shadow-md transition-all-300"
+          >
+            <div class="relative h-64 overflow-hidden">
+              <img
+                src="image2.jpg"
+                alt="Toddler program"
+                class="w-full h-full object-cover transition-all duration-500 group-hover:scale-105"
+              />
+              <div
+                class="absolute inset-0 bg-secondary-500 bg-opacity-20"
+              ></div>
+              <div
+                class="absolute top-4 left-4 bg-secondary-500 text-white text-sm font-medium py-1 px-3 rounded-full"
+              >
+                1 - 2 years
+              </div>
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-bold text-gray-800 mb-2">
+                Toddler Program
+              </h3>
+              <p class="text-gray-600 mb-4">
+                Engaging activities that encourage exploration, language
+                development, and social skills as toddlers discover the world
+                around them.
+              </p>
+              <a
+                href="#contact"
+                class="text-secondary-500 font-medium hover:text-secondary-600 transition-all-300 inline-flex items-center"
+              >
+                Learn more
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-4 w-4 ml-1"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M9 5l7 7-7 7"
+                  />
+                </svg>
+              </a>
+            </div>
+          </div>
+
+          <!-- Preschool Program -->
+          <div
+            class="bg-white rounded-xl overflow-hidden shadow-soft group hover:shadow-md transition-all-300"
+          >
+            <div class="relative h-64 overflow-hidden">
+              <img
+                src="image2.jpg"
+                alt="Preschool program"
+                class="w-full h-full object-cover transition-all duration-500 group-hover:scale-105"
+              />
+              <div class="absolute inset-0 bg-accent-500 bg-opacity-20"></div>
+              <div
+                class="absolute top-4 left-4 bg-accent-500 text-white text-sm font-medium py-1 px-3 rounded-full"
+              >
+                3 - 4 years
+              </div>
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-bold text-gray-800 mb-2">Preschool</h3>
+              <p class="text-gray-600 mb-4">
+                A structured curriculum that balances play with learning to
+                develop pre-reading, math, and social skills in preparation for
+                kindergarten.
+              </p>
+              <a
+                href="#contact"
+                class="text-accent-500 font-medium hover:text-accent-600 transition-all-300 inline-flex items-center"
+              >
+                Learn more
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-4 w-4 ml-1"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M9 5l7 7-7 7"
+                  />
+                </svg>
+              </a>
+            </div>
+          </div>
+
+          <!-- Pre-K Program -->
+          <div
+            class="bg-white rounded-xl overflow-hidden shadow-soft group hover:shadow-md transition-all-300"
+          >
+            <div class="relative h-64 overflow-hidden">
+              <img
+                src="image2.jpg"
+                alt="Pre-K program"
+                class="w-full h-full object-cover transition-all duration-500 group-hover:scale-105"
+              />
+              <div class="absolute inset-0 bg-warm-500 bg-opacity-20"></div>
+              <div
+                class="absolute top-4 left-4 bg-warm-500 text-white text-sm font-medium py-1 px-3 rounded-full"
+              >
+                4 - 5 years
+              </div>
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-bold text-gray-800 mb-2">
+                Pre-Kindergarten
+              </h3>
+              <p class="text-gray-600 mb-4">
+                Advanced learning experiences that build kindergarten readiness
+                through literacy, numeracy, science, and creative expression.
+              </p>
+              <a
+                href="#contact"
+                class="text-warm-500 font-medium hover:text-warm-600 transition-all-300 inline-flex items-center"
+              >
+                Learn more
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-4 w-4 ml-1"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M9 5l7 7-7 7"
+                  />
+                </svg>
+              </a>
+            </div>
+          </div>
+
+          <!-- Before & After School -->
+          <div
+            class="bg-white rounded-xl overflow-hidden shadow-soft group hover:shadow-md transition-all-300"
+          >
+            <div class="relative h-64 overflow-hidden">
+              <img
+                src="image2.jpg"
+                alt="Before and after school program"
+                class="w-full h-full object-cover transition-all duration-500 group-hover:scale-105"
+              />
+              <div class="absolute inset-0 bg-primary-500 bg-opacity-20"></div>
+              <div
+                class="absolute top-4 left-4 bg-primary-500 text-white text-sm font-medium py-1 px-3 rounded-full"
+              >
+                5 - 12 years
+              </div>
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-bold text-gray-800 mb-2">
+                Before & After School
+              </h3>
+              <p class="text-gray-600 mb-4">
+                Supervised care with homework help, recreational activities, and
+                enrichment programs for school-age children.
+              </p>
+              <a
+                href="#contact"
+                class="text-primary-500 font-medium hover:text-primary-600 transition-all-300 inline-flex items-center"
+              >
+                Learn more
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-4 w-4 ml-1"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M9 5l7 7-7 7"
+                  />
+                </svg>
+              </a>
+            </div>
+          </div>
+
+          <!-- Summer Camp -->
+          <div
+            class="bg-white rounded-xl overflow-hidden shadow-soft group hover:shadow-md transition-all-300"
+          >
+            <div class="relative h-64 overflow-hidden">
+              <img
+                src="image2.jpg"
+                alt="Summer camp"
+                class="w-full h-full object-cover transition-all duration-500 group-hover:scale-105"
+              />
+              <div
+                class="absolute inset-0 bg-secondary-500 bg-opacity-20"
+              ></div>
+              <div
+                class="absolute top-4 left-4 bg-secondary-500 text-white text-sm font-medium py-1 px-3 rounded-full"
+              >
+                3 - 12 years
+              </div>
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-bold text-gray-800 mb-2">Summer Camp</h3>
+              <p class="text-gray-600 mb-4">
+                Exciting themed weeks with field trips, outdoor activities, arts
+                and crafts, and special guests to make summer memorable.
+              </p>
+              <a
+                href="#contact"
+                class="text-secondary-500 font-medium hover:text-secondary-600 transition-all-300 inline-flex items-center"
+              >
+                Learn more
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-4 w-4 ml-1"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M9 5l7 7-7 7"
+                  />
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Philosophy Section -->
+    <section id="philosophy" class="py-20 bg-accent-50">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+          <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
+            Our Teaching Philosophy
+          </h2>
+          <div class="w-20 h-1 bg-accent-300 mx-auto rounded-full"></div>
+          <p class="mt-6 text-xl text-gray-600 max-w-3xl mx-auto">
+            We believe in innovative teaching methods that spark curiosity and
+            foster a lifelong love of learning.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+          <div>
+            <img
+              src="image2.jpg"
+              alt="Children engaged in learning activities"
+              class="rounded-2xl shadow-lg"
+            />
+          </div>
+          <div>
+            <div class="space-y-8">
+              <div class="flex">
+                <div class="flex-shrink-0 mt-1">
+                  <div
+                    class="w-10 h-10 bg-accent-100 rounded-full flex items-center justify-center"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      class="h-5 w-5 text-accent-500"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"
+                      />
+                    </svg>
+                  </div>
+                </div>
+                <div class="ml-4">
+                  <h3 class="text-xl font-semibold text-gray-800 mb-2">
+                    Play-Based Learning
+                  </h3>
+                  <p class="text-gray-600">
+                    We embrace the power of play as children's natural way of
+                    learning. Through guided play experiences, children develop
+                    critical thinking, problem-solving, and social skills.
+                  </p>
+                </div>
+              </div>
+
+              <div class="flex">
+                <div class="flex-shrink-0 mt-1">
+                  <div
+                    class="w-10 h-10 bg-accent-100 rounded-full flex items-center justify-center"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      class="h-5 w-5 text-accent-500"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z"
+                      />
+                    </svg>
+                  </div>
+                </div>
+                <div class="ml-4">
+                  <h3 class="text-xl font-semibold text-gray-800 mb-2">
+                    Language-Rich Environment
+                  </h3>
+                  <p class="text-gray-600">
+                    We create environments filled with conversation, stories,
+                    and songs to develop strong language and literacy skills
+                    that form the foundation for future academic success.
+                  </p>
+                </div>
+              </div>
+
+              <div class="flex">
+                <div class="flex-shrink-0 mt-1">
+                  <div
+                    class="w-10 h-10 bg-accent-100 rounded-full flex items-center justify-center"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      class="h-5 w-5 text-accent-500"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                      />
+                    </svg>
+                  </div>
+                </div>
+                <div class="ml-4">
+                  <h3 class="text-xl font-semibold text-gray-800 mb-2">
+                    Social-Emotional Learning
+                  </h3>
+                  <p class="text-gray-600">
+                    We prioritize helping children understand and manage
+                    emotions, set goals, show empathy, establish positive
+                    relationships, and make responsible decisions.
+                  </p>
+                </div>
+              </div>
+
+              <div class="flex">
+                <div class="flex-shrink-0 mt-1">
+                  <div
+                    class="w-10 h-10 bg-accent-100 rounded-full flex items-center justify-center"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      class="h-5 w-5 text-accent-500"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                      />
+                    </svg>
+                  </div>
+                </div>
+                <div class="ml-4">
+                  <h3 class="text-xl font-semibold text-gray-800 mb-2">
+                    STEAM Exploration
+                  </h3>
+                  <p class="text-gray-600">
+                    We integrate Science, Technology, Engineering, Arts, and
+                    Mathematics through hands-on activities that encourage
+                    experimentation, creativity, and discovery.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="parents" class="py-20 bg-white">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+          <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
+            What Parents Say
+          </h2>
+          <div class="w-20 h-1 bg-secondary-300 mx-auto rounded-full"></div>
+          <p class="mt-6 text-xl text-gray-600 max-w-3xl mx-auto">
+            Hear from families who have experienced the Sunshine Kids
+            difference.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div class="bg-secondary-50 rounded-xl p-8 shadow-soft">
+            <div class="flex items-center mb-4">
+              <div class="text-secondary-500">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-5 w-5 inline-block"
+                  fill="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"
+                  />
+                </svg>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-5 w-5 inline-block"
+                  fill="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"
+                  />
+                </svg>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-5 w-5 inline-block"
+                  fill="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"
+                  />
+                </svg>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-5 w-5 inline-block"
+                  fill="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"
+                  />
+                </svg>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-5 w-5 inline-block"
+                  fill="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"
+                  />
+                </svg>
+              </div>
+            </div>
+            <p class="text-gray-600 italic mb-6">
+              "Sunshine Kids has been a second home for our daughter. The staff
+              is caring, attentive, and truly invested in her development. We've
+              seen tremendous growth in her social skills and confidence."
+            </p>
+            <div class="flex items-center">
+              <img
+                src="image2.jpg"
+                alt="Parent"
+                class="w-12 h-12 rounded-full object-cover mr-4"
+              />
+              <div>
+                <h4 class="font-semibold text-gray-800">
+                  Jennifer & Mark Wilson
+                </h4>
+                <p class="text-gray-500 text-sm">Parents of Emma, age 4</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-secondary-50 rounded-xl p-8 shadow-soft">
+            <div class="flex items-center mb-4">
+              <div class="text-secondary-500">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-5 w-5 inline-block"
+                  fill="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"
+                  />
+                </svg>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-5 w-5 inline-block"
+                  fill="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"
+                  />
+                </svg>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-5 w-5 inline-block"
+                  fill="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"
+                  />
+                </svg>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-5 w-5 inline-block"
+                  fill="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"
+                  />
+                </svg>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-5 w-5 inline-block"
+                  fill="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"
+                  />
+                </svg>
+              </div>
+            </div>
+            <p class="text-gray-600 italic mb-6">
+              "The curriculum at Sunshine Kids is exceptional. My son is always
+              excited to tell me about the new things he's learned. The teachers
+              make learning fun and engaging while maintaining a structured
+              environment."
+            </p>
+            <div class="flex items-center">
+              <img
+                src="image2.jpg"
+                alt="Parent"
+                class="w-12 h-12 rounded-full object-cover mr-4"
+              />
+              <div>
+                <h4 class="font-semibold text-gray-800">Robert Taylor</h4>
+                <p class="text-gray-500 text-sm">Father of James, age 3</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-secondary-50 rounded-xl p-8 shadow-soft">
+            <div class="flex items-center mb-4">
+              <div class="text-secondary-500">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-5 w-5 inline-block"
+                  fill="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"
+                  />
+                </svg>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-5 w-5 inline-block"
+                  fill="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"
+                  />
+                </svg>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-5 w-5 inline-block"
+                  fill="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"
+                  />
+                </svg>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-5 w-5 inline-block"
+                  fill="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"
+                  />
+                </svg>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-5 w-5 inline-block"
+                  fill="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"
+                  />
+                </svg>
+              </div>
+            </div>
+            <p class="text-gray-600 italic mb-6">
+              "As a working parent, I appreciate the flexibility and
+              communication Sunshine Kids provides. The staff goes above and
+              beyond to accommodate our schedule, and the daily updates give me
+              peace of mind."
+            </p>
+            <div class="flex items-center">
+              <img
+                src="image2.jpg"
+                alt="Parent"
+                class="w-12 h-12 rounded-full object-cover mr-4"
+              />
+              <div>
+                <h4 class="font-semibold text-gray-800">Sophia Martinez</h4>
+                <p class="text-gray-500 text-sm">Mother of Olivia, age 4</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Gallery -->
+        <div class="mt-20">
+          <h3 class="text-2xl font-bold text-gray-800 mb-10 text-center">
+            Life at Sunshine Kids
+          </h3>
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <div class="overflow-hidden rounded-xl relative">
+                <img
+                  src="image2.jpg"
+                  alt="Children playing"
+                  class="w-full h-64 object-cover hover:scale-110 transition-all duration-500"
+                />
+                <span class="block text-center mt-2 text-lg font-semibold text-gray-800 hover:text-blue-500 transition-all duration-300">
+                  Children Playing
+                </span>
+              </div>
+              <div class="overflow-hidden rounded-xl relative">
+                <img
+                  src="image2.jpg"
+                  alt="Children playing"
+                  class="w-full h-64 object-cover hover:scale-110 transition-all duration-500"
+                />
+                <span class="block text-center mt-2 text-lg font-semibold text-gray-800 hover:text-blue-500 transition-all duration-300">
+                  Children Playing
+                </span>
+              </div>
+              <div class="overflow-hidden rounded-xl relative">
+                <img
+                  src="image2.jpg"
+                  alt="Children playing"
+                  class="w-full h-64 object-cover hover:scale-110 transition-all duration-500"
+                />
+                <span class="block text-center mt-2 text-lg font-semibold text-gray-800 hover:text-blue-500 transition-all duration-300">
+                  Children Playing
+                </span>
+              </div>
+              <div class="overflow-hidden rounded-xl relative">
+                <img
+                  src="image2.jpg"
+                  alt="Children playing"
+                  class="w-full h-64 object-cover hover:scale-110 transition-all duration-500"
+                />
+                <span class="block text-center mt-2 text-lg font-semibold text-gray-800 hover:text-blue-500 transition-all duration-300">
+                  Children Playing
+                </span>
+              </div>
+              <div class="overflow-hidden rounded-xl relative">
+                <img
+                  src="image2.jpg"
+                  alt="Children playing"
+                  class="w-full h-64 object-cover hover:scale-110 transition-all duration-500"
+                />
+                <span class="block text-center mt-2 text-lg font-semibold text-gray-800 hover:text-blue-500 transition-all duration-300">
+                  Children Playing
+                </span>
+              </div>
+              <div class="overflow-hidden rounded-xl relative">
+                <img
+                  src="image2.jpg"
+                  alt="Children playing"
+                  class="w-full h-64 object-cover hover:scale-110 transition-all duration-500"
+                />
+                <span class="block text-center mt-2 text-lg font-semibold text-gray-800 hover:text-blue-500 transition-all duration-300">
+                  Children Playing
+                </span>
+              </div>
+              <div class="overflow-hidden rounded-xl relative">
+                <img
+                  src="image2.jpg"
+                  alt="Children playing"
+                  class="w-full h-64 object-cover hover:scale-110 transition-all duration-500"
+                />
+                <span class="block text-center mt-2 text-lg font-semibold text-gray-800 hover:text-blue-500 transition-all duration-300">
+                  Children Playing
+                </span>
+              </div>
+              <div class="overflow-hidden rounded-xl relative">
+                <img
+                  src="image2.jpg"
+                  alt="Children playing"
+                  class="w-full h-64 object-cover hover:scale-110 transition-all duration-500"
+                />
+                <span class="block text-center mt-2 text-lg font-semibold text-gray-800 hover:text-blue-500 transition-all duration-300">
+                  Children Playing
+                </span>
+              </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section
+      id="contact"
+      class="py-20 bg-gradient-to-b from-primary-50 to-white"
+    >
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+          <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
+            Contact Us
+          </h2>
+          <div class="w-20 h-1 bg-warm-300 mx-auto rounded-full"></div>
+          <p class="mt-6 text-xl text-gray-600 max-w-3xl mx-auto">
+            We'd love to hear from you! Reach out with any questions or to
+            schedule a tour.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+          <div class="bg-white rounded-xl p-8 shadow-soft">
+            <h3 class="text-2xl font-semibold text-gray-800 mb-6">
+              Get in Touch
+            </h3>
+            <form method="POST" action="Childcare Agency\mailsendScript.py" id="contact-form">
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-6">
+                <div>
+                  <label
+                    for="first-name"
+                    class="block text-gray-700 font-medium mb-2"
+                    >First Name</label
+                  >
+                  <input
+                    type="text"
+                    id="first-name"
+                    name="first_name"
+                    class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-primary-500 focus:ring focus:ring-primary-200 focus:ring-opacity-50 transition-all-300"
+                  />
+                </div>
+                <div>
+                  <label
+                    for="last-name"
+                    class="block text-gray-700 font-medium mb-2"
+                    >Last Name</label
+                  >
+                  <input
+                    type="text"
+                    id="last-name"
+                    class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-primary-500 focus:ring focus:ring-primary-200 focus:ring-opacity-50 transition-all-300"
+                  />
+                </div>
+              </div>
+
+              <div class="mb-6">
+                <label for="email" class="block text-gray-700 font-medium mb-2"
+                  >Email Address</label
+                >
+                <input
+                  type="email"
+                  id="email"
+                  class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-primary-500 focus:ring focus:ring-primary-200 focus:ring-opacity-50 transition-all-300"
+                />
+              </div>
+
+              <div class="mb-6">
+                <label for="phone" class="block text-gray-700 font-medium mb-2"
+                  >Phone Number</label
+                >
+                <input
+                  type="tel"
+                  id="phone"
+                  class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-primary-500 focus:ring focus:ring-primary-200 focus:ring-opacity-50 transition-all-300"
+                />
+              </div>
+
+              <div class="mb-6">
+                <label
+                  for="program"
+                  class="block text-gray-700 font-medium mb-2"
+                  >Program of Interest</label
+                >
+                <select
+                  id="program"
+                  class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-primary-500 focus:ring focus:ring-primary-200 focus:ring-opacity-50 transition-all-300"
+                >
+                  <option value="">Select a Program</option>
+                  <option value="infant">
+                    Infant Care (6 weeks - 12 months)
+                  </option>
+                  <option value="toddler">Toddler Program (1-2 years)</option>
+                  <option value="preschool">Preschool (3-4 years)</option>
+                  <option value="prek">Pre-Kindergarten (4-5 years)</option>
+                  <option value="before-after">
+                    Before & After School (5-12 years)
+                  </option>
+                  <option value="summer">Summer Camp</option>
+                </select>
+              </div>
+
+              <div class="mb-6">
+                <label
+                  for="message"
+                  class="block text-gray-700 font-medium mb-2"
+                  >Message</label
+                >
+                <textarea
+                  id="message"
+                  rows="4"
+                  class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-primary-500 focus:ring focus:ring-primary-200 focus:ring-opacity-50 transition-all-300"
+                ></textarea>
+              </div>
+
+              <button
+                type="submit"
+                class="bg-primary-500 hover:bg-primary-600 text-white font-medium py-3 px-6 rounded-lg shadow-md hover:shadow-lg transition-all-300 w-full"
+              >
+                Send Message
+              </button>
+            </form>
+          </div>
+
+          <div>
+            <div class="bg-white rounded-xl p-8 shadow-soft mb-8">
+              <h3 class="text-2xl font-semibold text-gray-800 mb-6">
+                Contact Information
+              </h3>
+              <div class="space-y-4">
+                <div class="flex items-start">
+                  <div class="flex-shrink-0 mt-1">
+                    <div
+                      class="w-10 h-10 bg-primary-100 rounded-full flex items-center justify-center"
+                    >
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="h-5 w-5 text-primary-500"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
+                        />
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
+                        />
+                      </svg>
+                    </div>
+                  </div>
+                  <div class="ml-4">
+                    <h4 class="text-lg font-semibold text-gray-800">Address</h4>
+                    <p class="text-gray-600">
+                      123 Sunshine Avenue<br />
+                      Pleasantville, CA 94123
+                    </p>
+                  </div>
+                </div>
+
+                <div class="flex items-start">
+                  <div class="flex-shrink-0 mt-1">
+                    <div
+                      class="w-10 h-10 bg-primary-100 rounded-full flex items-center justify-center"
+                    >
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="h-5 w-5 text-primary-500"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
+                        />
+                      </svg>
+                    </div>
+                  </div>
+                  <div class="ml-4">
+                    <h4 class="text-lg font-semibold text-gray-800">Phone</h4>
+                    <p class="text-gray-600">(555) 123-4567</p>
+                  </div>
+                </div>
+
+                <div class="flex items-start">
+                  <div class="flex-shrink-0 mt-1">
+                    <div
+                      class="w-10 h-10 bg-primary-100 rounded-full flex items-center justify-center"
+                    >
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="h-5 w-5 text-primary-500"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                        />
+                      </svg>
+                    </div>
+                  </div>
+                  <div class="ml-4">
+                    <h4 class="text-lg font-semibold text-gray-800">Email</h4>
+                    <p class="text-gray-600">info@sunshinekids.com</p>
+                  </div>
+                </div>
+
+                <div class="flex items-start">
+                  <div class="flex-shrink-0 mt-1">
+                    <div
+                      class="w-10 h-10 bg-primary-100 rounded-full flex items-center justify-center"
+                    >
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="h-5 w-5 text-primary-500"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
+                        />
+                      </svg>
+                    </div>
+                  </div>
+                  <div class="ml-4">
+                    <h4 class="text-lg font-semibold text-gray-800">Hours</h4>
+                    <p class="text-gray-600">
+                      Monday - Friday: 7:00 AM - 6:00 PM<br />
+                      Saturday: 9:00 AM - 1:00 PM<br />
+                      Sunday: Closed
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="bg-white rounded-xl overflow-hidden shadow-soft">
+              <img
+                src="/placeholder.svg?height=300&width=600"
+                alt="Map location"
+                class="w-full h-64 object-cover"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-primary-800 text-white py-12">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div>
+            <h3 class="text-xl font-bold mb-4">Sunshine Kids</h3>
+            <p class="text-white mb-4">
+              Providing exceptional early childhood education and care for
+              children ages 6 weeks to 12 years in a nurturing, stimulating
+              environment.
+            </p>
+            <div class="flex space-x-4">
+              <a
+                href="#"
+                class="text-white hover:text-warm-300 transition-all-300"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-6 w-6"
+                  fill="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M22.675 0h-21.35c-.732 0-1.325.593-1.325 1.325v21.351c0 .731.593 1.324 1.325 1.324h11.495v-9.294h-3.128v-3.622h3.128v-2.671c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12v9.293h6.116c.73 0 1.323-.593 1.323-1.325v-21.35c0-.732-.593-1.325-1.325-1.325z"
+                  />
+                </svg>
+              </a>
+              <a
+                href="#"
+                class="text-white hover:text-warm-300 transition-all-300"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-6 w-6"
+                  fill="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"
+                  />
+                </svg>
+              </a>
+              <a
+                href="#"
+                class="text-white hover:text-warm-300 transition-all-300"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-6 w-6"
+                  fill="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"
+                  />
+                </svg>
+              </a>
+              <a
+                href="#"
+                class="text-white hover:text-warm-300 transition-all-300"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-6 w-6"
+                  fill="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"
+                  />
+                </svg>
+              </a>
+            </div>
+          </div>
+
+          <div>
+            <h3 class="text-xl font-bold mb-4">Quick Links</h3>
+            <ul class="space-y-2">
+              <li>
+                <a
+                  href="#home"
+                  class="text-white hover:text-warm-300 transition-all-300"
+                  >Home</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#about"
+                  class="text-white hover:text-warm-300 transition-all-300"
+                  >About Us</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#programs"
+                  class="text-white hover:text-warm-300 transition-all-300"
+                  >Programs</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#philosophy"
+                  class="text-white hover:text-warm-300 transition-all-300"
+                  >Philosophy</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#parents"
+                  class="text-white hover:text-warm-300 transition-all-300"
+                  >Parents</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#contact"
+                  class="text-white hover:text-warm-300 transition-all-300"
+                  >Contact</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 class="text-xl font-bold mb-4">Programs</h3>
+            <ul class="space-y-2">
+              <li>
+                <a
+                  href="#"
+                  class="text-white hover:text-warm-300 transition-all-300"
+                  >Infant Care (6 weeks - 12 months)</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="text-white hover:text-warm-300 transition-all-300"
+                  >Toddler Program (1-2 years)</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="text-white hover:text-warm-300 transition-all-300"
+                  >Preschool (3-4 years)</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="text-white hover:text-warm-300 transition-all-300"
+                  >Pre-K (4-5 years)</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="text-white hover:text-warm-300 transition-all-300"
+                  >Before & After School</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="text-white hover:text-warm-300 transition-all-300"
+                  >Summer Camp</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 class="text-xl font-bold mb-4">Newsletter</h3>
+            <p class="text-white mb-4">
+              Subscribe to our newsletter for updates, parenting tips, and
+              special offers.
+            </p>
+            <form class="space-y-3">
+              <div>
+                <input
+                  type="email"
+                  placeholder="Your email address"
+                  class="w-full px-4 py-3 rounded-lg bg-primary-700 border border-primary-600 text-white placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-warm-400"
+                />
+              </div>
+              <button
+                type="submit"
+                class="bg-warm-400 hover:bg-warm-500 text-white font-medium py-2 px-4 rounded-lg transition-all-300 w-full"
+              >
+                Subscribe
+              </button>
+            </form>
+          </div>
+        </div>
+
+        <div
+          class="border-t border-primary-700 mt-12 pt-8 text-center text-white text-sm"
+        >
+          <p>
+            &copy; 2025 Sunshine Kids Early Learning Center. All rights
+            reserved.
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Mobile Menu Toggle Script -->
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const mobileMenuButton = document.getElementById("mobile-menu-button");
+        const mobileMenu = document.getElementById("mobile-menu");
+
+        mobileMenuButton.addEventListener("click", function () {
+          mobileMenu.classList.toggle("hidden");
+        });
+
+        // Close mobile menu when clicking on a link
+        const mobileLinks = mobileMenu.querySelectorAll("a");
+        mobileLinks.forEach((link) => {
+          link.addEventListener("click", function () {
+            mobileMenu.classList.add("hidden");
+          });
+        });
+
+        // Smooth scrolling for all anchor links
+        document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+          anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+
+            const targetId = this.getAttribute("href");
+            if (targetId === "#") return;
+
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+              window.scrollTo({
+                top: targetElement.offsetTop - 80, // Adjust for header height
+                behavior: "smooth",
+              });
+            }
+          });
+        });
+      });
+    </script>
+  </body>
+</html>

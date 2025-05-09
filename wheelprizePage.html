@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mystery Box Prize Wheel</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .wheel-container {
+            position: relative;
+            width: 100%;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        
+        .wheel {
+            transition: transform 5s cubic-bezier(0.17, 0.67, 0.83, 0.67);
+            transform-origin: center;
+        }
+        
+        .wheel-pointer {
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40px;
+            height: 40px;
+            z-index: 10;
+        }
+        
+        .modal {
+            animation: fadeIn 0.3s ease-out;
+        }
+        
+        .tier-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-900">
+    <!-- Header -->
+    <header class="bg-gradient-to-r from-purple-600 to-indigo-600 text-white">
+        <div class="container mx-auto px-4 py-6">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center">
+                    <i class="fas fa-gift text-3xl mr-3"></i>
+                    <h1 class="text-2xl font-bold">Mystery Box Wheel</h1>
+                </div>
+                <nav>
+                    <ul class="flex space-x-6">
+                        <li><a href="#tiers" class="hover:text-purple-200 transition">Tiers</a></li>
+                        <li><a href="#how-it-works" class="hover:text-purple-200 transition">How It Works</a></li>
+                        <li><a href="#winners" class="hover:text-purple-200 transition">Recent Winners</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="py-20 bg-gradient-to-b from-indigo-600 to-purple-700 text-white">
+        <div class="container mx-auto px-4 text-center">
+            <h1 class="text-5xl font-bold mb-6">Spin & Win Amazing Prizes!</h1>
+            <p class="text-xl mb-10 max-w-2xl mx-auto">Choose your favorite tier, spin the wheel, and win incredible mystery boxes with exclusive items inside.</p>
+            <a href="#tiers" class="bg-white text-purple-700 font-bold py-3 px-8 rounded-full hover:bg-purple-100 transition shadow-lg">Choose Your Tier</a>
+        </div>
+    </section>
+
+    <!-- Tiers Section -->
+    <section id="tiers" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold text-center mb-16">Choose Your Tier</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Tier 1: Adidas -->
+                <div class="tier-card bg-white rounded-xl shadow-lg overflow-hidden transition duration-300">
+                    <div class="h-48 bg-blue-600 flex items-center justify-center">
+                        <i class="fas fa-tshirt text-white text-6xl"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold mb-2">Adidas Mystery Box</h3>
+                        <p class="text-gray-600 mb-4">Premium sportswear, shoes, and accessories from Adidas.</p>
+                        <div class="flex justify-between items-center mb-4">
+                            <span class="text-gray-500">Starting at</span>
+                            <span class="text-2xl font-bold">$49.99</span>
+                        </div>
+                        <button class="select-tier-btn w-full bg-blue-600 text-white py-3 rounded-lg font-bold hover:bg-blue-700 transition" data-tier="adidas">Select & Spin</button>
+                    </div>
+                </div>
+                
+                <!-- Tier 2: Gadgets -->
+                <div class="tier-card bg-white rounded-xl shadow-lg overflow-hidden transition duration-300">
+                    <div class="h-48 bg-green-600 flex items-center justify-center">
+                        <i class="fas fa-laptop text-white text-6xl"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold mb-2">Tech Gadgets Box</h3>
+                        <p class="text-gray-600 mb-4">Latest electronics, accessories, gadgets, and smart devices.</p>
+                        <div class="flex justify-between items-center mb-4">
+                            <span class="text-gray-500">Starting at</span>
+                            <span class="text-2xl font-bold">$79.99</span>
+                        </div>
+                        <button class="select-tier-btn w-full bg-green-600 text-white py-3 rounded-lg font-bold hover:bg-green-700 transition" data-tier="gadgets">Select & Spin</button>
+                    </div>
+                </div>
+                
+                <!-- Tier 3: Luxury -->
+                <div class="tier-card bg-white rounded-xl shadow-lg overflow-hidden transition duration-300">
+                    <div class="h-48 bg-purple-600 flex items-center justify-center">
+                        <i class="fas fa-gem text-white text-6xl"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold mb-2">Luxury Mystery Box</h3>
+                        <p class="text-gray-600 mb-4">Premium designer items, watches, and exclusive accessories.</p>
+                        <div class="flex justify-between items-center mb-4">
+                            <span class="text-gray-500">Starting at</span>
+                            <span class="text-2xl font-bold">$149.99</span>
+                        </div>
+                        <button class="select-tier-btn w-full bg-purple-600 text-white py-3 rounded-lg font-bold hover:bg-purple-700 transition" data-tier="luxury">Select & Spin</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Wheel Section (Hidden initially) -->
+    <section id="wheel-section" class="py-20 bg-gray-100 hidden">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-4xl font-bold mb-10">Spin The Wheel</h2>
+            <p id="selected-tier-text" class="text-xl mb-10">You selected: <span class="font-bold">Adidas Mystery Box</span></p>
+            
+            <div class="wheel-container mb-10">
+                <div class="wheel-pointer">
+                    <svg viewBox="0 0 30 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M15 0L30 30H0L15 0Z" fill="#4C1D95"/>
+                        <circle cx="15" cy="32" r="10" fill="#4C1D95"/>
+                    </svg>
+                </div>
+                <svg class="wheel" viewBox="0 0 500 500" width="100%" height="100%">
+                    <!-- Wheel segments will be dynamically generated -->
+                    <circle cx="250" cy="250" r="250" fill="#f3f4f6" />
+                    <g id="wheel-segments"></g>
+                    <circle cx="250" cy="250" r="50" fill="white" stroke="#4C1D95" stroke-width="2" />
+                    <text x="250" y="250" text-anchor="middle" dominant-baseline="middle" font-size="16" font-weight="bold">SPIN</text>
+                </svg>
+            </div>
+            
+            <button id="spin-button" class="bg-purple-700 text-white font-bold py-4 px-10 rounded-full text-xl hover:bg-purple-800 transition shadow-lg">Spin Now</button>
+            
+            <div class="mt-10">
+                <p class="text-gray-500">You must complete payment to see your prize</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Payment Modal (Hidden initially) -->
+    <div id="payment-modal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+        <div class="modal bg-white rounded-xl p-8 max-w-md w-full">
+            <div class="flex justify-between items-center mb-6">
+                <h3 class="text-2xl font-bold">Complete Your Purchase</h3>
+                <button id="close-modal" class="text-gray-500 hover:text-gray-700">
+                    <i class="fas fa-times text-xl"></i>
+                </button>
+            </div>
+            
+            <div class="mb-6">
+                <p class="text-gray-600 mb-4">You're about to purchase:</p>
+                <div class="bg-gray-100 p-4 rounded-lg">
+                    <p id="payment-tier-name" class="font-bold text-lg">Adidas Mystery Box</p>
+                    <p id="payment-tier-price" class="text-purple-700 font-bold text-xl mt-2">$49.99</p>
+                </div>
+            </div>
+            
+            <form id="payment-form" class="space-y-4">
+                <div>
+                    <label class="block text-gray-700 mb-2">Card Number</label>
+                    <input type="text" placeholder="1234 5678 9012 3456" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-600">
+                </div>
+                
+                <div class="grid grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-gray-700 mb-2">Expiry Date</label>
+                        <input type="text" placeholder="MM/YY" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-600">
+                    </div>
+                    <div>
+                        <label class="block text-gray-700 mb-2">CVC</label>
+                        <input type="text" placeholder="123" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-600">
+                    </div>
+                </div>
+                
+                <div>
+                    <label class="block text-gray-700 mb-2">Name on Card</label>
+                    <input type="text" placeholder="John Doe" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-600">
+                </div>
+                
+                <button type="button" id="complete-payment" class="w-full bg-purple-700 text-white font-bold py-3 rounded-lg hover:bg-purple-800 transition">Pay Now</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Prize Reveal Modal (Hidden initially) -->
+    <div id="prize-modal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+        <div class="modal bg-white rounded-xl p-8 max-w-md w-full text-center">
+            <div class="mb-6">
+                <i class="fas fa-gift text-purple-600 text-6xl mb-4"></i>
+                <h3 class="text-3xl font-bold">Congratulations!</h3>
+                <p class="text-xl mt-2">You've won:</p>
+            </div>
+            
+            <div class="bg-purple-100 p-6 rounded-lg mb-6">
+                <p id="prize-name" class="font-bold text-2xl text-purple-700">Adidas Ultra Boost</p>
+                <p id="prize-description" class="text-gray-600 mt-2">Premium running shoes with responsive cushioning.</p>
+            </div>
+            
+            <p class="text-gray-600 mb-6">Your prize will be shipped to your address within 5-7 business days.</p>
+            
+            <button id="close-prize-modal" class="bg-purple-700 text-white font-bold py-3 px-8 rounded-lg hover:bg-purple-800 transition">Awesome!</button>
+        </div>
+    </div>
+
+    <!-- How It Works Section -->
+    <section id="how-it-works" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold text-center mb-16">How It Works</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="text-center">
+                    <div class="w-20 h-20 bg-purple-600 rounded-full flex items-center justify-center text-white text-2xl font-bold mx-auto mb-6">1</div>
+                    <h3 class="text-xl font-bold mb-4">Choose Your Tier</h3>
+                    <p class="text-gray-600">Select from our range of mystery box tiers based on your interests and budget.</p>
+                </div>
+                
+                <div class="text-center">
+                    <div class="w-20 h-20 bg-purple-600 rounded-full flex items-center justify-center text-white text-2xl font-bold mx-auto mb-6">2</div>
+                    <h3 class="text-xl font-bold mb-4">Spin The Wheel</h3>
+                    <p class="text-gray-600">After payment, spin the wheel to determine which amazing item from your chosen tier you'll receive.</p>
+                </div>
+                
+                <div class="text-center">
+                    <div class="w-20 h-20 bg-purple-600 rounded-full flex items-center justify-center text-white text-2xl font-bold mx-auto mb-6">3</div>
+                    <h3 class="text-xl font-bold mb-4">Receive Your Prize</h3>
+                    <p class="text-gray-600">We'll ship your mystery box directly to your door. Each box contains one premium item.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Recent Winners Section -->
+    <section id="winners" class="py-20 bg-gray-100">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold text-center mb-16">Recent Winners</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                    <div class="h-48 bg-gray-200"></div>
+                    <div class="p-4">
+                        <p class="font-bold">John D.</p>
+                        <p class="text-purple-600">Adidas Yeezy Boost</p>
+                        <p class="text-gray-500 text-sm mt-2">2 days ago</p>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                    <div class="h-48 bg-gray-200"></div>
+                    <div class="p-4">
+                        <p class="font-bold">Sarah M.</p>
+                        <p class="text-purple-600">Apple Watch Series 7</p>
+                        <p class="text-gray-500 text-sm mt-2">3 days ago</p>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                    <div class="h-48 bg-gray-200"></div>
+                    <div class="p-4">
+                        <p class="font-bold">Mike T.</p>
+                        <p class="text-purple-600">Gucci Wallet</p>
+                        <p class="text-gray-500 text-sm mt-2">5 days ago</p>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                    <div class="h-48 bg-gray-200"></div>
+                    <div class="p-4">
+                        <p class="font-bold">Emma R.</p>
+                        <p class="text-purple-600">Adidas Ultraboost</p>
+                        <p class="text-gray-500 text-sm mt-2">1 week ago</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold text-center mb-16">Frequently Asked Questions</h2>
+            
+            <div class="max-w-3xl mx-auto space-y-6">
+                <div class="border border-gray-200 rounded-lg p-6">
+                    <h3 class="text-xl font-bold mb-2">How do I know the wheel isn't rigged?</h3>
+                    <p class="text-gray-600">Our wheel uses a certified random number generator that ensures fair and unbiased results for all participants. The system is regularly audited by third-party companies.</p>
+                </div>
+                
+                <div class="border border-gray-200 rounded-lg p-6">
+                    <h3 class="text-xl font-bold mb-2">When will I receive my prize?</h3>
+                    <p class="text-gray-600">All prizes are shipped within 1-2 business days after winning. Delivery typically takes 5-7 business days depending on your location.</p>
+                </div>
+                
+                <div class="border border-gray-200 rounded-lg p-6">
+                    <h3 class="text-xl font-bold mb-2">Can I exchange my prize for something else?</h3>
+                    <p class="text-gray-600">We don't offer exchanges for prizes won on the wheel. Each spin represents a fair chance at all items in your chosen tier.</p>
+                </div>
+                
+                <div class="border border-gray-200 rounded-lg p-6">
+                    <h3 class="text-xl font-bold mb-2">Are the items new and authentic?</h3>
+                    <p class="text-gray-600">Yes, all items are 100% authentic and brand new. We source our products directly from authorized retailers and distributors.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Mystery Box Wheel</h3>
+                    <p class="text-gray-400">The most exciting way to shop for premium products.</p>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Home</a></li>
+                        <li><a href="#tiers" class="text-gray-400 hover:text-white transition">Tiers</a></li>
+                        <li><a href="#how-it-works" class="text-gray-400 hover:text-white transition">How It Works</a></li>
+                        <li><a href="#winners" class="text-gray-400 hover:text-white transition">Winners</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Legal</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Terms of Service</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Privacy Policy</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Refund Policy</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Contact Us</h4>
+                    <ul class="space-y-2">
+                        <li class="text-gray-400"><i class="fas fa-envelope mr-2"></i> support@mysteryboxwheel.com</li>
+                        <li class="text-gray-400"><i class="fas fa-phone mr-2"></i> (123) 456-7890</li>
+                    </ul>
+                    <div class="flex space-x-4 mt-4">
+                        <a href="#" class="text-gray-400 hover:text-white transition"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white transition"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white transition"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-10 pt-6 text-center text-gray-500">
+                <p>&copy; 2025 Mystery Box Wheel. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Tier data with items and probabilities
+        const tierData = {
+            adidas: {
+                name: "Adidas Mystery Box",
+                price: "$49.99",
+                items: [
+                    { name: "Adidas Ultra Boost", description: "Premium running shoes with responsive cushioning.", probability: 5 },
+                    { name: "Adidas Originals T-Shirt", description: "Classic cotton t-shirt with trefoil logo.", probability: 25 },
+                    { name: "Adidas Backpack", description: "Durable backpack for everyday use.", probability: 20 },
+                    { name: "Adidas Cap", description: "Adjustable cap with embroidered logo.", probability: 30 },
+                    { name: "Adidas Socks Pack", description: "Set of 3 pairs of athletic socks.", probability: 15 },
+                    { name: "Adidas Water Bottle", description: "BPA-free water bottle with flip-top lid.", probability: 5 }
+                ]
+            },
+            gadgets: {
+                name: "Tech Gadgets Box",
+                price: "$79.99",
+                items: [
+                    { name: "Wireless Earbuds", description: "True wireless earbuds with noise cancellation.", probability: 10 },
+                    { name: "Smart Watch", description: "Fitness tracker with heart rate monitoring.", probability: 5 },
+                    { name: "Portable Charger", description: "10,000mAh power bank for on-the-go charging.", probability: 25 },
+                    { name: "Bluetooth Speaker", description: "Compact speaker with rich sound quality.", probability: 15 },
+                    { name: "Phone Gimbal", description: "Stabilizer for smartphone photography and videos.", probability: 10 },
+                    { name: "Tech Organizer", description: "Travel pouch for cables and accessories.", probability: 35 }
+                ]
+            },
+            luxury: {
+                name: "Luxury Mystery Box",
+                price: "$149.99",
+                items: [
+                    { name: "Designer Wallet", description: "Genuine leather wallet from a premium brand.", probability: 15 },
+                    { name: "Luxury Watch", description: "Elegant timepiece with premium craftsmanship.", probability: 5 },
+                    { name: "Silk Tie", description: "Hand-crafted silk tie with unique pattern.", probability: 20 },
+                    { name: "Designer Sunglasses", description: "UV protection sunglasses with premium frame.", probability: 10 },
+                    { name: "Leather Belt", description: "Genuine leather belt with designer buckle.", probability: 25 },
+                    { name: "Premium Fragrance", description: "Exclusive scent in an elegant bottle.", probability: 25 }
+                ]
+            }
+        };
+
+        // Colors for wheel segments
+        const colors = [
+            '#EF4444', '#F59E0B', '#10B981', '#3B82F6', '#8B5CF6', '#EC4899',
+            '#F87171', '#FBBF24', '#34D399', '#60A5FA', '#A78BFA', '#F472B6'
+        ];
+
+        let selectedTier = null;
+        let isSpinning = false;
+        let wheelItems = [];
+
+        // Select tier buttons
+        document.querySelectorAll('.select-tier-btn').forEach(button => {
+            button.addEventListener('click', () => {
+                const tier = button.getAttribute('data-tier');
+                selectedTier = tier;
+                
+                // Update UI
+                document.getElementById('selected-tier-text').innerHTML = `You selected: <span class="font-bold">${tierData[tier].name}</span>`;
+                document.getElementById('payment-tier-name').textContent = tierData[tier].name;
+                document.getElementById('payment-tier-price').textContent = tierData[tier].price;
+                
+                // Show wheel section
+                document.getElementById('wheel-section').classList.remove('hidden');
+                
+                // Scroll to wheel section
+                document.getElementById('wheel-section').scrollIntoView({ behavior: 'smooth' });
+                
+                // Generate wheel segments
+                generateWheel(tier);
+            });
+        });
+
+        // Generate wheel segments based on selected tier
+        function generateWheel(tier) {
+            const items = tierData[tier].items;
+            wheelItems = items;
+            
+            const segmentGroup = document.getElementById('wheel-segments');
+            segmentGroup.innerHTML = '';
+            
+            let cumulativeProbability = 0;
+            const totalProbability = items.reduce((sum, item) => sum + item.probability, 0);
+            
+            items.forEach((item, index) => {
+                const startAngle = cumulativeProbability / totalProbability * 360;
+                cumulativeProbability += item.probability;
+                const endAngle = cumulativeProbability / totalProbability * 360;
+                
+                const startRad = (startAngle - 90) * Math.PI / 180;
+                const endRad = (endAngle - 90) * Math.PI / 180;
+                
+                const x1 = 250 + 200 * Math.cos(startRad);
+                const y1 = 250 + 200 * Math.sin(startRad);
+                const x2 = 250 + 200 * Math.cos(endRad);
+                const y2 = 250 + 200 * Math.sin(endRad);
+                
+                const largeArcFlag = endAngle - startAngle > 180 ? 1 : 0;
+                
+                // Create segment path
+                const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+                path.setAttribute("d", `M 250 250 L ${x1} ${y1} A 200 200 0 ${largeArcFlag} 1 ${x2} ${y2} Z`);
+                path.setAttribute("fill", colors[index % colors.length]);
+                segmentGroup.appendChild(path);
+                
+                // Add text
+                const textAngle = (startAngle + endAngle) / 2;
+                const textRad = (textAngle - 90) * Math.PI / 180;
+                const textX = 250 + 120 * Math.cos(textRad);
+                const textY = 250 + 120 * Math.sin(textRad);
+                
+                const text = document.createElementNS("http://www.w3.org/2000/svg", "text");
+                text.setAttribute("x", textX);
+                text.setAttribute("y", textY);
+                text.setAttribute("text-anchor", "middle");
+                text.setAttribute("dominant-baseline", "middle");
+                text.setAttribute("fill", "white");
+                text.setAttribute("font-size", "12");
+                text.setAttribute("font-weight", "bold");
+                text.setAttribute("transform", `rotate(${textAngle}, ${textX}, ${textY})`);
+                text.textContent = item.name;
+                segmentGroup.appendChild(text);
+            });
+        }
+
+        // Spin button click handler
+        document.getElementById('spin-button').addEventListener('click', () => {
+            if (isSpinning) return;
+            
+            // Show payment modal
+            document.getElementById('payment-modal').classList.remove('hidden');
+        });
+
+        // Close payment modal
+        document.getElementById('close-modal').addEventListener('click', () => {
+            document.getElementById('payment-modal').classList.add('hidden');
+        });
+
+        // Complete payment button
+        document.getElementById('complete-payment').addEventListener('click', () => {
+            // Hide payment modal
+            document.getElementById('payment-modal').classList.add('hidden');
+            
+            // Start spinning the wheel
+            spinWheel();
+        });
+
+        // Spin the wheel
+        function spinWheel() {
+            if (isSpinning) return;
+            isSpinning = true;
+            
+            // Calculate random result based on probabilities
+            const items = wheelItems;
+            const totalProbability = items.reduce((sum, item) => sum + item.probability, 0);
+            let randomValue = Math.random() * totalProbability;
+            
+            let selectedIndex = 0;
+            let cumulativeProbability = 0;
+            
+            for (let i = 0; i < items.length; i++) {
+                cumulativeProbability += items[i].probability;
+                if (randomValue <= cumulativeProbability) {
+                    selectedIndex = i;
+                    break;
+                }
+            }
+            
+            // Calculate rotation angle
+            const segmentSize = 360 / items.length;
+            const targetAngle = 360 * 5 + (selectedIndex * segmentSize) + Math.random() * segmentSize;
+            
+            // Animate wheel
+            const wheel = document.querySelector('.wheel');
+            wheel.style.transform = `rotate(${targetAngle}deg)`;
+            
+            // Show prize after animation completes
+            setTimeout(() => {
+                isSpinning = false;
+                
+                // Update prize modal
+                document.getElementById('prize-name').textContent = items[selectedIndex].name;
+                document.getElementById('prize-description').textContent = items[selectedIndex].description;
+                
+                // Show prize modal
+                document.getElementById('prize-modal').classList.remove('hidden');
+            }, 5000);
+        }
+
+        // Close prize modal
+        document.getElementById('close-prize-modal').addEventListener('click', () => {
+            document.getElementById('prize-modal').classList.add('hidden');
+            
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    </script>
+</body>
+</html>

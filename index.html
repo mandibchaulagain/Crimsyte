@@ -4,6 +4,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Crimsyte | Creative Agency</title>
+    <meta
+      name="description"
+      content="Crimsyte - We engineer digital experiences that hit hard. A creative agency specializing in high-voltage branding, web design, and digital solutions."
+    />
     <link
       href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
       rel="stylesheet"
@@ -55,6 +59,18 @@
       .text-crimsyte-purple {
         color: var(--crimsyte-purple);
       }
+      .border-crimsyte-purple {
+        border-color: var(--crimsyte-purple);
+      }
+      .text-crimsyte-green {
+        color: var(--crimsyte-green);
+      }
+      .bg-crimsyte-green {
+        background-color: var(--crimsyte-green);
+      }
+      .border-crimsyte-green {
+        border-color: var(--crimsyte-green);
+      }
 
       .neon-glow-red {
         box-shadow: 0 0 15px rgba(255, 0, 60, 0.5);
@@ -68,12 +84,24 @@
         box-shadow: 0 0 15px rgba(162, 89, 255, 0.5);
       }
 
+      .neon-glow-green {
+        box-shadow: 0 0 15px rgba(202, 255, 0, 0.5);
+      }
+
       .neon-text-red {
         text-shadow: 0 0 10px rgba(255, 0, 60, 0.7);
       }
 
       .neon-text-blue {
         text-shadow: 0 0 10px rgba(0, 224, 255, 0.7);
+      }
+
+      .neon-text-purple {
+        text-shadow: 0 0 10px rgba(162, 89, 255, 0.7);
+      }
+
+      .neon-text-green {
+        text-shadow: 0 0 10px rgba(202, 255, 0, 0.7);
       }
 
       .glass {
@@ -173,9 +201,137 @@
           transform: translateY(-50px) translateX(-100px);
         }
       }
+
+      /* Loading animation */
+      .loading-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: var(--crimsyte-black);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 9999;
+        transition: opacity 0.5s ease-out, visibility 0.5s ease-out;
+      }
+
+      .loading-logo {
+        font-size: 3rem;
+        font-weight: 900;
+        color: var(--crimsyte-red);
+        text-shadow: 0 0 10px rgba(255, 0, 60, 0.7);
+        animation: pulse-text 2s infinite;
+      }
+
+      @keyframes pulse-text {
+        0% {
+          opacity: 1;
+        }
+        50% {
+          opacity: 0.5;
+        }
+        100% {
+          opacity: 1;
+        }
+      }
+
+      /* Scroll indicator */
+      .scroll-indicator {
+        animation: bounce 2s infinite;
+      }
+
+      @keyframes bounce {
+        0%,
+        20%,
+        50%,
+        80%,
+        100% {
+          transform: translateY(0);
+        }
+        40% {
+          transform: translateY(-20px);
+        }
+        60% {
+          transform: translateY(-10px);
+        }
+      }
+
+      /* Portfolio styles */
+      .portfolio-item {
+        position: relative;
+        overflow: hidden;
+        border-radius: 0.75rem;
+        transition: all 0.3s ease;
+      }
+
+      .portfolio-item:hover {
+        transform: translateY(-5px);
+      }
+
+      .portfolio-item:hover .portfolio-overlay {
+        opacity: 1;
+      }
+
+      .portfolio-item:hover img {
+        transform: scale(1.05);
+      }
+
+      .portfolio-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          to top,
+          rgba(14, 14, 16, 0.9) 0%,
+          rgba(14, 14, 16, 0.5) 50%,
+          rgba(14, 14, 16, 0.3) 100%
+        );
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        padding: 1.5rem;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+
+      .portfolio-item img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s ease;
+      }
+
+      .portfolio-tag {
+        display: inline-block;
+        padding: 0.25rem 0.75rem;
+        border-radius: 9999px;
+        font-size: 0.75rem;
+        font-weight: 600;
+        margin-right: 0.5rem;
+        margin-bottom: 0.5rem;
+      }
+
+      /* Filter buttons */
+      .filter-btn {
+        transition: all 0.3s ease;
+      }
+
+      .filter-btn.active {
+        background-color: var(--crimsyte-red);
+        color: white;
+      }
     </style>
   </head>
   <body>
+    <!-- Loading Screen -->
+    <div class="loading-overlay" id="loadingOverlay">
+      <div class="loading-logo">CRIMSYTE</div>
+    </div>
+
     <!-- Navbar -->
     <nav class="fixed top-0 left-0 right-0 z-50 glass">
       <div class="container mx-auto px-6 py-4">
@@ -201,11 +357,11 @@
               class="text-white hover:text-crimsyte-red transition duration-300"
               >Services</a
             >
-            <!-- <a
-              href="#clients"
+            <a
+              href="#portfolio"
               class="text-white hover:text-crimsyte-red transition duration-300"
-              >Clients</a
-            > -->
+              >Portfolio</a
+            >
             <a
               href="#testimonials"
               class="text-white hover:text-crimsyte-red transition duration-300"
@@ -218,7 +374,11 @@
             >
           </div>
           <div class="md:hidden">
-            <button class="text-white focus:outline-none">
+            <button
+              class="text-white focus:outline-none"
+              id="mobileMenuButton"
+              aria-label="Menu"
+            >
               <svg
                 class="w-6 h-6"
                 fill="none"
@@ -283,6 +443,25 @@
         >
           Let's Talk
         </a>
+
+        <div
+          class="absolute bottom-10 left-1/2 transform -translate-x-1/2 scroll-indicator"
+        >
+          <svg
+            class="w-8 h-8 text-crimsyte-red"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M19 14l-7 7m0 0l-7-7m7 7V3"
+            ></path>
+          </svg>
+        </div>
       </div>
     </section>
 
@@ -316,7 +495,7 @@
             </p>
           </div>
 
-          <div class="w-full md:w-1/2 grid grid-cols-2 gap-6">
+          <div class="w-full md:w-1/2 grid grid-cols-1 sm:grid-cols-2 gap-6">
             <div
               class="bg-crimsyte-black p-6 rounded-xl border border-crimsyte-red/30 card gradient-card-red"
             >
@@ -394,6 +573,11 @@
               We forge unforgettable brand identities that electrify your
               audience and set you apart from competitors.
             </p>
+            <a
+              href="#contact"
+              class="inline-block mt-4 text-crimsyte-red hover:text-white transition duration-300"
+              >Learn more →</a
+            >
           </div>
 
           <div
@@ -424,6 +608,11 @@
               Beautiful, functional websites engineered to convert visitors into
               customers with strategic UX and compelling visuals.
             </p>
+            <a
+              href="#contact"
+              class="inline-block mt-4 text-crimsyte-blue hover:text-white transition duration-300"
+              >Learn more →</a
+            >
           </div>
 
           <div
@@ -452,6 +641,11 @@
               Comprehensive design systems that ensure consistency, scalability,
               and exceptional user experiences across all touchpoints.
             </p>
+            <a
+              href="#contact"
+              class="inline-block mt-4 text-crimsyte-purple hover:text-white transition duration-300"
+              >Learn more →</a
+            >
           </div>
 
           <div
@@ -480,174 +674,566 @@
               Lightning-fast digital experiences that keep users engaged and
               boost your search engine rankings.
             </p>
+            <a
+              href="#contact"
+              class="inline-block mt-4 text-crimsyte-green hover:text-white transition duration-300"
+              >Learn more →</a
+            >
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Clients Section -->
-    <!-- <section id="clients" class="py-20 md:py-32">
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="py-20 md:py-32">
       <div class="container mx-auto px-6">
         <h2
           class="text-4xl md:text-5xl font-bold uppercase tracking-wider mb-16 text-center"
         >
-          Our <span class="text-crimsyte-red neon-text-red">Clients</span>
+          Our
+          <span class="text-crimsyte-purple neon-text-purple">Portfolio</span>
         </h2>
 
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-12 items-center">
-          <div class="text-center">
-            <div
-              class="text-2xl font-bold text-white/40 hover:text-crimsyte-red transition duration-300"
-            >
-              VEXTRA
+        <!-- Filter Buttons -->
+        <div class="flex flex-wrap justify-center gap-4 mb-12">
+          <button
+            class="filter-btn px-4 py-2 rounded-full border border-crimsyte-red/30 text-white hover:bg-crimsyte-red/20 transition active"
+            data-filter="all"
+          >
+            All Projects
+          </button>
+          <button
+            class="filter-btn px-4 py-2 rounded-full border border-crimsyte-blue/30 text-white hover:bg-crimsyte-blue/20 transition"
+            data-filter="web"
+          >
+            Web Design
+          </button>
+          <button
+            class="filter-btn px-4 py-2 rounded-full border border-crimsyte-purple/30 text-white hover:bg-crimsyte-purple/20 transition"
+            data-filter="branding"
+          >
+            Branding
+          </button>
+          <button
+            class="filter-btn px-4 py-2 rounded-full border border-crimsyte-green/30 text-white hover:bg-crimsyte-green/20 transition"
+            data-filter="ecommerce"
+          >
+            E-Commerce
+          </button>
+        </div>
+
+        <!-- Portfolio Grid -->
+        <div
+          class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 portfolio-grid"
+        >
+          <!-- Portfolio Item 1 -->
+          <div class="portfolio-item h-80 card" data-category="web">
+            <img
+              src="Childcare Agency\image.png"
+              alt="Childcare Agency Website"
+              class="w-full h-full object-cover"
+              id="childcare-img"
+            />
+            <div class="portfolio-overlay">
+              <div class="mb-2">
+                <span class="portfolio-tag bg-crimsyte-red/20 text-crimsyte-red"
+                  >Web Design</span
+                >
+                <span
+                  class="portfolio-tag bg-crimsyte-blue/20 text-crimsyte-blue"
+                  >UI/UX</span
+                >
+              </div>
+              <h3 class="text-xl font-bold mb-1">Childcare Agency</h3>
+              <p class="text-white/70 mb-4">
+                Professional website for a childcare service provider
+              </p>
+              <a
+                href="Childcare Agency\childcareagency1.html"
+                class="text-crimsyte-red hover:text-white transition"
+                >View Project →</a
+              >
             </div>
           </div>
-          <div class="text-center">
-            <div
-              class="text-2xl font-bold text-white/40 hover:text-crimsyte-blue transition duration-300"
-            >
-              LUMINOID
+
+          <!-- Portfolio Item 2 -->
+          <div class="portfolio-item h-80 card" data-category="web">
+            <img
+              src="elliotElite.png"
+              alt="Elliot Elite Plumbing Website"
+              class="w-full h-full object-cover"
+              id="plumbing-img"
+            />
+            <div class="portfolio-overlay">
+              <div class="mb-2">
+                <span class="portfolio-tag bg-crimsyte-red/20 text-crimsyte-red"
+                  >Web Design</span
+                >
+                <span
+                  class="portfolio-tag bg-crimsyte-green/20 text-crimsyte-green"
+                  >SEO</span
+                >
+              </div>
+              <h3 class="text-xl font-bold mb-1">Elliot Elite Plumbing</h3>
+              <p class="text-white/70 mb-4">
+                Service-based website with online booking system
+              </p>
+              <a
+                href="elliotElitePlumbing.html"
+                class="text-crimsyte-red hover:text-white transition"
+                >View Project →</a
+              >
             </div>
           </div>
-          <div class="text-center">
-            <div
-              class="text-2xl font-bold text-white/40 hover:text-crimsyte-purple transition duration-300"
-            >
-              CORELYTICS
+
+          <!-- Portfolio Item 3 -->
+          <div class="portfolio-item h-80 card" data-category="web branding">
+            <img
+              src="everretElectric.png"
+              alt="Everret Electric Website"
+              class="w-full h-full object-cover"
+              id="electric-img"
+            />
+            <div class="portfolio-overlay">
+              <div class="mb-2">
+                <span class="portfolio-tag bg-crimsyte-red/20 text-crimsyte-red"
+                  >Web Design</span
+                >
+                <span
+                  class="portfolio-tag bg-crimsyte-purple/20 text-crimsyte-purple"
+                  >Branding</span
+                >
+              </div>
+              <h3 class="text-xl font-bold mb-1">Everret Electric</h3>
+              <p class="text-white/70 mb-4">
+                Electrical contractor website with service listings
+              </p>
+              <a
+                href="everretElectric.html"
+                class="text-crimsyte-red hover:text-white transition"
+                >View Project →</a
+              >
             </div>
           </div>
-          <div class="text-center">
-            <div
-              class="text-2xl font-bold text-white/40 hover:text-crimsyte-green transition duration-300"
-            >
-              OMNIDECK
+
+          <!-- Portfolio Item 4 -->
+          <div class="portfolio-item h-80 card" data-category="ecommerce">
+            <img
+              src="atlantaGiftShop.png"
+              alt="Atlanta Gift Shop Website"
+              class="w-full h-full object-cover"
+              id="giftshop-img"
+            />
+            <div class="portfolio-overlay">
+              <div class="mb-2">
+                <span
+                  class="portfolio-tag bg-crimsyte-blue/20 text-crimsyte-blue"
+                  >E-Commerce</span
+                >
+                <span
+                  class="portfolio-tag bg-crimsyte-green/20 text-crimsyte-green"
+                  >UX Design</span
+                >
+              </div>
+              <h3 class="text-xl font-bold mb-1">Atlanta Gift Shop</h3>
+              <p class="text-white/70 mb-4">
+                E-commerce website with product catalog and secure checkout
+              </p>
+              <a
+                href="atlantaGiftShop.html"
+                class="text-crimsyte-blue hover:text-white transition"
+                >View Project →</a
+              >
             </div>
           </div>
-          <div class="text-center">
-            <div
-              class="text-2xl font-bold text-white/40 hover:text-crimsyte-red transition duration-300"
-            >
-              NEXAWAVE
+
+          <!-- Portfolio Item 5 -->
+          <div class="portfolio-item h-80 card" data-category="web branding">
+            <img
+              src="georgiaCanineRescue.png"
+              alt="Georgia Canine Rescue Website"
+              class="w-full h-full object-cover"
+              id="canine-img"
+            />
+            <div class="portfolio-overlay">
+              <div class="mb-2">
+                <span class="portfolio-tag bg-crimsyte-red/20 text-crimsyte-red"
+                  >Web Design</span
+                >
+                <span
+                  class="portfolio-tag bg-crimsyte-purple/20 text-crimsyte-purple"
+                  >Branding</span
+                >
+              </div>
+              <h3 class="text-xl font-bold mb-1">Georgia Canine Rescue</h3>
+              <p class="text-white/70 mb-4">
+                Non-profit website with adoption listings and donation portal
+              </p>
+              <a
+                href="georgiaCanineRescue.html"
+                class="text-crimsyte-purple hover:text-white transition"
+                >View Project →</a
+              >
             </div>
           </div>
-          <div class="text-center">
-            <div
-              class="text-2xl font-bold text-white/40 hover:text-crimsyte-blue transition duration-300"
-            >
-              SYNTHREX
+
+          <!-- Portfolio Item 6 -->
+          <div class="portfolio-item h-80 card" data-category="web">
+            <img
+              src="pistolPressureWashing.png"
+              alt="Pistol Pressure Washing Website"
+              class="w-full h-full object-cover"
+              id="pressure-img"
+            />
+            <div class="portfolio-overlay">
+              <div class="mb-2">
+                <span class="portfolio-tag bg-crimsyte-red/20 text-crimsyte-red"
+                  >Web Design</span
+                >
+                <span
+                  class="portfolio-tag bg-crimsyte-green/20 text-crimsyte-green"
+                  >Conversion</span
+                >
+              </div>
+              <h3 class="text-xl font-bold mb-1">Pistol Pressure Washing</h3>
+              <p class="text-white/70 mb-4">
+                Service business website with before/after gallery
+              </p>
+              <a
+                href="pistolPressureWashing.html"
+                class="text-crimsyte-green hover:text-white transition"
+                >View Project →</a
+              >
             </div>
           </div>
-          <div class="text-center">
-            <div
-              class="text-2xl font-bold text-white/40 hover:text-crimsyte-purple transition duration-300"
-            >
-              QUANTUMLOOP
+
+          <!-- Portfolio Item 7 -->
+          <div class="portfolio-item h-80 card" data-category="web">
+            <img
+              src="davisStreetAntiques.png"
+              alt="Davis Street Antiques Website"
+              class="w-full h-full object-cover"
+              id="antiques-img"
+            />
+            <div class="portfolio-overlay">
+              <div class="mb-2">
+                <span class="portfolio-tag bg-crimsyte-red/20 text-crimsyte-red"
+                  >Web Design</span
+                >
+                <span
+                  class="portfolio-tag bg-crimsyte-blue/20 text-crimsyte-blue"
+                  >UI/UX</span
+                >
+              </div>
+              <h3 class="text-xl font-bold mb-1">Davis Street Antiques</h3>
+              <p class="text-white/70 mb-4">
+                Elegant website for an antique store with product gallery
+              </p>
+              <a
+                href="davisStreetAntiques.html"
+                class="text-crimsyte-red hover:text-white transition"
+                >View Project →</a
+              >
             </div>
           </div>
-          <div class="text-center">
-            <div
-              class="text-2xl font-bold text-white/40 hover:text-crimsyte-green transition duration-300"
-            >
-              CYBERFORGE
+
+          <!-- Portfolio Item 8 -->
+          <div class="portfolio-item h-80 card" data-category="web ecommerce">
+            <img
+              src="ozloGiftshop.png"
+              alt="Ozlo Gift Shop Website"
+              class="w-full h-full object-cover"
+              id="ozlo-img"
+            />
+            <div class="portfolio-overlay">
+              <div class="mb-2">
+                <span
+                  class="portfolio-tag bg-crimsyte-blue/20 text-crimsyte-blue"
+                  >E-Commerce</span
+                >
+                <span
+                  class="portfolio-tag bg-crimsyte-black/80 text-crimsyte-purple"
+                  >Branding</span
+                >
+              </div>
+              <h3 class="text-xl font-bold mb-1">Ozlo Gift Shop</h3>
+              <p class="text-white/70 mb-4">
+                Modern e-commerce platform with custom product filtering
+              </p>
+              <a
+                href="ozloGiftshop.html"
+                class="text-crimsyte-blue hover:text-white transition"
+                >View Project →</a
+              >
+            </div>
+          </div>
+
+          <!-- Portfolio Item 9 -->
+          <div class="portfolio-item h-80 card" data-category="web branding">
+            <img
+              src="salonLihga.png"
+              alt="Salon Lihqa Website"
+              class="w-full h-full object-cover"
+              id="salon-img"
+            />
+            <div class="portfolio-overlay">
+              <div class="mb-2">
+                <span class="portfolio-tag bg-crimsyte-red/20 text-crimsyte-red"
+                  >Web Design</span
+                >
+                <span
+                  class="portfolio-tag bg-crimsyte-purple/20 text-crimsyte-purple"
+                  >Branding</span
+                >
+              </div>
+              <h3 class="text-xl font-bold mb-1">Salon Lihqa</h3>
+              <p class="text-white/70 mb-4">
+                Premium salon website with online booking and gallery
+              </p>
+              <a
+                href="salonLihga.html"
+                class="text-crimsyte-purple hover:text-white transition"
+                >View Project →</a
+              >
             </div>
           </div>
         </div>
-      </div>
-    </section> -->
 
-    <!-- Testimonials Section -->
-    <section id="testimonials" class="py-20 md:py-32 bg-crimsyte-black/50">
+        
+      </div>
+    </section>
+
+    <!-- Process Section -->
+    <section class="py-20 md:py-32 bg-crimsyte-black/50">
       <div class="container mx-auto px-6">
-        <h2 class="text-4xl md:text-5xl font-bold uppercase tracking-wider mb-16 text-center">
-          Client <span class="text-crimsyte-red neon-text-red">Testimonials</span>
+        <h2
+          class="text-4xl md:text-5xl font-bold uppercase tracking-wider mb-16 text-center"
+        >
+          Our <span class="text-crimsyte-blue neon-text-blue">Process</span>
         </h2>
-    
-        <!-- Promo Callout -->
-        <div class="bg-crimsyte-black p-8 rounded-xl border border-crimsyte-purple/30 card gradient-card-purple flex flex-col justify-between max-w-xl mx-auto">
-          <div>
-            <h4 class="text-xl font-bold text-white mb-2">Want to be featured here?</h4>
-            <p class="text-white/80">
-              Be one of our <span class="text-crimsyte-purple font-semibold">first clients</span> and get a
-              <span class="text-crimsyte-purple font-semibold">hefty discount</span> on your project — plus
-              the chance to be featured in our showcase testimonials.
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div class="relative">
+            <div
+              class="w-12 h-12 bg-crimsyte-blue/20 rounded-full flex items-center justify-center mb-6 text-crimsyte-blue font-bold text-xl"
+            >
+              01
+            </div>
+            <h3 class="text-xl font-bold mb-4">Discovery</h3>
+            <p class="text-white/70">
+              We dive deep into your business, audience, and goals to understand
+              what makes you unique.
+            </p>
+            <div
+              class="absolute top-6 left-12 w-full h-0.5 bg-crimsyte-blue/20 hidden lg:block"
+            ></div>
+          </div>
+
+          <div class="relative">
+            <div
+              class="w-12 h-12 bg-crimsyte-red/20 rounded-full flex items-center justify-center mb-6 text-crimsyte-red font-bold text-xl"
+            >
+              02
+            </div>
+            <h3 class="text-xl font-bold mb-4">Strategy</h3>
+            <p class="text-white/70">
+              We develop a comprehensive plan that aligns with your objectives
+              and sets the foundation for success.
+            </p>
+            <div
+              class="absolute top-6 left-12 w-full h-0.5 bg-crimsyte-red/20 hidden lg:block"
+            ></div>
+          </div>
+
+          <div class="relative">
+            <div
+              class="w-12 h-12 bg-crimsyte-purple/20 rounded-full flex items-center justify-center mb-6 text-crimsyte-purple font-bold text-xl"
+            >
+              03
+            </div>
+            <h3 class="text-xl font-bold mb-4">Creation</h3>
+            <p class="text-white/70">
+              Our team brings your vision to life with cutting-edge design and
+              development techniques.
+            </p>
+            <div
+              class="absolute top-6 left-12 w-full h-0.5 bg-crimsyte-purple/20 hidden lg:block"
+            ></div>
+          </div>
+
+          <div class="relative">
+            <div
+              class="w-12 h-12 bg-crimsyte-green/20 rounded-full flex items-center justify-center mb-6 text-crimsyte-green font-bold text-xl"
+            >
+              04
+            </div>
+            <h3 class="text-xl font-bold mb-4">Launch & Optimize</h3>
+            <p class="text-white/70">
+              We deploy your project and continuously refine it to ensure
+              optimal performance and results.
             </p>
           </div>
-          <button class="mt-6 px-4 py-2 bg-crimsyte-purple text-white rounded-full hover:shadow-[0_0_15px_#a259ff] transition">
-            <a href="#contact">Contact Us</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="py-20 md:py-32">
+      <div class="container mx-auto px-6">
+        <h2
+          class="text-4xl md:text-5xl font-bold uppercase tracking-wider mb-16 text-center"
+        >
+          Client
+          <span class="text-crimsyte-red neon-text-red">Testimonials</span>
+        </h2>
+
+        <!-- Promo Callout -->
+        <div
+          class="bg-crimsyte-black p-8 rounded-xl border border-crimsyte-purple/30 card gradient-card-purple flex flex-col justify-between max-w-xl mx-auto"
+        >
+          <div>
+            <h4 class="text-xl font-bold text-white mb-2">
+              Want to be featured here?
+            </h4>
+            <p class="text-white/80">
+              Be one of our
+              <span class="text-crimsyte-purple font-semibold"
+                >first clients</span
+              >
+              and get a
+              <span class="text-crimsyte-purple font-semibold"
+                >hefty discount</span
+              >
+              on your project — plus the chance to be featured in our showcase
+              testimonials.
+            </p>
+          </div>
+          <a href="#contact">
+          <button
+            class="mt-6 px-4 py-2 bg-crimsyte-purple text-white rounded-full hover:shadow-[0_0_15px_#a259ff] transition underline"
+          >
+          Contact Us</a>
           </button>
         </div>
       </div>
-        <!-- </h2>
+    </section>
 
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+    <!-- FAQ Section -->
+    <section class="py-20 md:py-32 bg-crimsyte-black/50">
+      <div class="container mx-auto px-6">
+        <h2
+          class="text-4xl md:text-5xl font-bold uppercase tracking-wider mb-16 text-center"
+        >
+          Frequently
+          <span class="text-crimsyte-blue neon-text-blue">Asked</span>
+        </h2>
+
+        <div class="max-w-3xl mx-auto space-y-6">
           <div
-            class="bg-crimsyte-black p-8 rounded-xl border border-crimsyte-red/30 card gradient-card-red"
+            class="bg-crimsyte-black p-6 rounded-xl border border-crimsyte-blue/30"
           >
-            <div class="flex items-center mb-6">
-              <div class="w-12 h-12 rounded-full overflow-hidden bg-crimsyte-red/30 mr-4">
-                <img 
-                  src="image.png" 
-                  alt="Avatar" 
-                  class="w-full h-full object-cover scale-[1.05]" 
-                  loading="lazy"
-                />
-              </div>
-              
-              
-              <div>
-                <h4 class="font-bold">Talia Gray</h4>
-                <p class="text-white/60 text-sm">Founder @ Vextra</p>
-              </div>
+            <button
+              class="flex justify-between items-center w-full text-left focus:outline-none"
+              aria-expanded="false"
+            >
+              <h3 class="text-xl font-bold">
+                What types of projects do you work on?
+              </h3>
+              <svg
+                class="w-6 h-6 text-crimsyte-blue transform transition-transform"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M19 9l-7 7-7-7"
+                ></path>
+              </svg>
+            </button>
+            <div class="mt-4 hidden">
+              <p class="text-white/70">
+                We specialize in branding, web design, UI/UX systems, and
+                digital performance optimization. Our team excels at creating
+                high-impact digital experiences for businesses looking to make a
+                bold statement in their industry.
+              </p>
             </div>
-            <p class="text-white/80 italic">
-              "Crimsyte didn't just meet expectations — they broke them. Their
-              team delivered a website that perfectly captures our brand while
-              driving real business results."
-            </p>
           </div>
 
           <div
-            class="bg-crimsyte-black p-8 rounded-xl border border-crimsyte-blue/30 card gradient-card-blue"
+            class="bg-crimsyte-black p-6 rounded-xl border border-crimsyte-red/30"
           >
-            <div class="flex items-center mb-6">
-              <div
-                class="w-12 h-12 bg-crimsyte-blue/30 rounded-full mr-4"
-              ></div>
-              <div>
-                <h4 class="font-bold">Marcus Chen</h4>
-                <p class="text-white/60 text-sm">CTO @ Luminoid</p>
-              </div>
+            <button
+              class="flex justify-between items-center w-full text-left focus:outline-none"
+              aria-expanded="false"
+            >
+              <h3 class="text-xl font-bold">How much do your services cost?</h3>
+              <svg
+                class="w-6 h-6 text-crimsyte-red transform transition-transform"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M19 9l-7 7-7-7"
+                ></path>
+              </svg>
+            </button>
+            <div class="mt-4 hidden">
+              <p class="text-white/70">
+                Our pricing is customized based on the scope and requirements of
+                each project. We offer competitive rates and flexible packages
+                to accommodate different budgets. Contact us for a personalized
+                quote tailored to your specific needs.
+              </p>
             </div>
-            <p class="text-white/80 italic">
-              "Working with Crimsyte was transformative for our digital
-              presence. Their technical expertise combined with bold design
-              choices resulted in a platform that outperforms all our
-              competitors."
-            </p>
           </div>
 
           <div
-            class="bg-crimsyte-black p-8 rounded-xl border border-crimsyte-purple/30 card gradient-card-purple"
+            class="bg-crimsyte-black p-6 rounded-xl border border-crimsyte-purple/30"
           >
-            <div class="flex items-center mb-6">
-              <div
-                class="w-12 h-12 bg-crimsyte-purple/30 rounded-full mr-4"
-              ></div>
-              <div>
-                <h4 class="font-bold">Elena Rodriguez</h4>
-                <p class="text-white/60 text-sm">
-                  Marketing Director @ Corelytics
-                </p>
-              </div>
+            <button
+              class="flex justify-between items-center w-full text-left focus:outline-none"
+              aria-expanded="false"
+            >
+              <h3 class="text-xl font-bold">
+                How long does a typical project take?
+              </h3>
+              <svg
+                class="w-6 h-6 text-crimsyte-purple transform transition-transform"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M19 9l-7 7-7-7"
+                ></path>
+              </svg>
+            </button>
+            <div class="mt-4 hidden">
+              <p class="text-white/70">
+                Project timelines vary depending on complexity and scope. A
+                typical website project might take 4-8 weeks from concept to
+                launch, while more comprehensive branding and digital ecosystem
+                projects can take 2-3 months. We'll provide a detailed timeline
+                during our initial consultation.
+              </p>
             </div>
-            <p class="text-white/80 italic">
-              "The team at Crimsyte understands how to balance aesthetic appeal
-              with conversion optimization. Our new site is not only stunning
-              but has increased our lead generation by 137%."
-            </p>
           </div>
         </div>
-      </div> -->
+      </div>
     </section>
 
     <!-- CTA Section -->
@@ -664,8 +1250,57 @@
             Ready to stand out in the digital landscape? Our team of creative
             technologists is prepared to bring your vision to life.
           </p>
-          <div class="bg-crimsyte-black/50 p-4 rounded-lg border border-crimsyte-red/30 text-center">
-            <p class="text-xl font-medium text-crimsyte-red">Contact us at mandibchaulagain8@gmail.com</p>
+
+          <div
+            class="bg-crimsyte-black p-8 rounded-xl border border-crimsyte-red/30 max-w-xl mx-auto"
+          >
+            <form id="contactForm" class="space-y-6">
+              <div>
+                <label for="name" class="block text-white mb-2">Name</label>
+                <input
+                  type="text"
+                  id="name"
+                  class="w-full bg-crimsyte-black/50 border border-crimsyte-red/30 rounded-lg p-3 text-white focus:outline-none focus:border-crimsyte-red"
+                  required
+                />
+              </div>
+
+              <div>
+                <label for="email" class="block text-white mb-2">Email</label>
+                <input
+                  type="email"
+                  id="email"
+                  class="w-full bg-crimsyte-black/50 border border-crimsyte-red/30 rounded-lg p-3 text-white focus:outline-none focus:border-crimsyte-red"
+                  required
+                />
+              </div>
+
+              <div>
+                <label for="message" class="block text-white mb-2"
+                  >Message</label
+                >
+                <textarea
+                  id="message"
+                  rows="4"
+                  class="w-full bg-crimsyte-black/50 border border-crimsyte-red/30 rounded-lg p-3 text-white focus:outline-none focus:border-crimsyte-red"
+                  required
+                ></textarea>
+              </div>
+
+              <button
+                type="submit"
+                class="w-full bg-crimsyte-red text-white font-bold py-3 px-6 rounded-lg uppercase tracking-wider neon-glow-red hover:bg-white hover:text-crimsyte-red transition duration-300"
+              >
+                Send Message
+              </button>
+            </form>
+
+            <div class="mt-8 text-center">
+              <p class="text-white/80">Or contact us directly at:</p>
+              <p class="text-xl font-medium text-crimsyte-red mt-2">
+                mandibchaulagain8@gmail.com (we respond faster through mail)
+              </p>
+            </div>
           </div>
         </div>
       </div>
@@ -686,6 +1321,19 @@
           </div>
 
           <div class="flex space-x-8">
+            <a
+  href="https://www.facebook.com/mandib.chaulagain.2025/" 
+  target="_blank"
+  rel="noopener noreferrer"
+  class="text-white/60 hover:text-crimsyte-blue transition duration-300"
+  aria-label="Facebook"
+>
+  <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+    <path
+      d="M22 12.073C22 6.479 17.523 2 12 2S2 6.479 2 12.073C2 17.293 5.704 21.49 10.938 22v-7.654H8.29v-3.25h2.648V9.615c0-2.785 1.635-4.358 4.136-4.358 1.208 0 2.465.091 2.465.091v2.719h-1.388c-1.374 0-1.799.853-1.799 1.729v2.073h3.124l-.5 3.25h-2.624v7.654C18.296 21.49 22 17.293 22 12.073z"
+    />
+  </svg>
+</a>
             <!-- GitHub -->
             <a
               href="https://github.com/mandibchaulagain"
@@ -700,7 +1348,7 @@
                 />
               </svg>
             </a>
-          
+
             <!-- Twitter -->
             <a
               href="https://x.com/mandibCh"
@@ -715,7 +1363,7 @@
                 />
               </svg>
             </a>
-          
+
             <!-- Upwork -->
             <a
               href="https://www.upwork.com/freelancers/~0193ff64be534e76f1"
@@ -731,7 +1379,6 @@
               </svg>
             </a>
           </div>
-          
         </div>
 
         <div class="mt-12 text-center text-white/40 text-sm">
@@ -740,8 +1387,74 @@
       </div>
     </footer>
 
+    <!-- Mobile Menu -->
+    <div
+      id="mobileMenu"
+      class="fixed inset-0 bg-crimsyte-black/95 z-40 flex items-center justify-center transform translate-x-full transition-transform duration-300 ease-in-out glass"
+    >
+      <div class="flex flex-col items-center space-y-8">
+        <a
+          href="#home"
+          class="text-2xl text-white hover:text-crimsyte-red transition duration-300"
+          >Home</a
+        >
+        <a
+          href="#about"
+          class="text-2xl text-white hover:text-crimsyte-red transition duration-300"
+          >About</a
+        >
+        <a
+          href="#services"
+          class="text-2xl text-white hover:text-crimsyte-red transition duration-300"
+          >Services</a
+        >
+        <a
+          href="#portfolio"
+          class="text-2xl text-white hover:text-crimsyte-red transition duration-300"
+          >Portfolio</a
+        >
+        <a
+          href="#testimonials"
+          class="text-2xl text-white hover:text-crimsyte-red transition duration-300"
+          >Testimonials</a
+        >
+        <a
+          href="#contact"
+          class="text-2xl text-white hover:text-crimsyte-red transition duration-300"
+          >Contact</a
+        >
+        <button id="closeMenu" class="mt-8 text-white" aria-label="Close menu">
+          <svg
+            class="w-8 h-8"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M6 18L18 6M6 6l12 12"
+            ></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+
     <!-- Simple JavaScript for smooth scrolling and mobile menu -->
     <script>
+      // Loading screen
+      document.addEventListener("DOMContentLoaded", function () {
+        setTimeout(function () {
+          const loadingOverlay = document.getElementById("loadingOverlay");
+          loadingOverlay.style.opacity = "0";
+          setTimeout(function () {
+            loadingOverlay.style.display = "none";
+          }, 500);
+        }, 1500);
+      });
+
       // Smooth scrolling for anchor links
       document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
         anchor.addEventListener("click", function (e) {
@@ -760,36 +1473,20 @@
       });
 
       // Mobile menu toggle
-      const menuButton = document.querySelector("nav button");
-      const mobileMenu = document.createElement("div");
-      mobileMenu.className =
-        "fixed inset-0 bg-crimsyte-black/95 z-40 flex items-center justify-center transform translate-x-full transition-transform duration-300 ease-in-out glass";
-      mobileMenu.innerHTML = `
-            <div class="flex flex-col items-center space-y-8">
-                <a href="#home" class="text-2xl text-white hover:text-crimsyte-red transition duration-300">Home</a>
-                <a href="#about" class="text-2xl text-white hover:text-crimsyte-red transition duration-300">About</a>
-                <a href="#services" class="text-2xl text-white hover:text-crimsyte-red transition duration-300">Services</a>
-                
-                <a href="#testimonials" class="text-2xl text-white hover:text-crimsyte-red transition duration-300">Testimonials</a>
-                <a href="#contact" class="text-2xl text-white hover:text-crimsyte-red transition duration-300">Contact</a>
-                <button class="mt-8 text-white">
-                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-                    </svg>
-                </button>
-            </div>
-        `;
-        // <a href="#clients" class="text-2xl text-white hover:text-crimsyte-red transition duration-300">Clients</a> removed from above
-      document.body.appendChild(mobileMenu);
+      const mobileMenuButton = document.getElementById("mobileMenuButton");
+      const mobileMenu = document.getElementById("mobileMenu");
+      const closeMenu = document.getElementById("closeMenu");
 
       let menuOpen = false;
 
-      menuButton.addEventListener("click", () => {
+      mobileMenuButton.addEventListener("click", () => {
         menuOpen = !menuOpen;
         if (menuOpen) {
           mobileMenu.classList.remove("translate-x-full");
+          document.body.style.overflow = "hidden"; // Prevent scrolling when menu is open
         } else {
           mobileMenu.classList.add("translate-x-full");
+          document.body.style.overflow = ""; // Re-enable scrolling
         }
       });
 
@@ -798,13 +1495,15 @@
         link.addEventListener("click", () => {
           menuOpen = false;
           mobileMenu.classList.add("translate-x-full");
+          document.body.style.overflow = ""; // Re-enable scrolling
         });
       });
 
       // Close button in mobile menu
-      mobileMenu.querySelector("button").addEventListener("click", () => {
+      closeMenu.addEventListener("click", () => {
         menuOpen = false;
         mobileMenu.classList.add("translate-x-full");
+        document.body.style.overflow = ""; // Re-enable scrolling
       });
 
       // Add scroll animation for elements
@@ -828,6 +1527,95 @@
         card.style.transform = "translateY(20px)";
         card.style.transition = "opacity 0.6s ease, transform 0.6s ease";
       });
+
+      // FAQ accordion functionality
+      document
+        .querySelectorAll("section:nth-of-type(7) button")
+        .forEach((button) => {
+          button.addEventListener("click", () => {
+            const content = button.nextElementSibling;
+            const icon = button.querySelector("svg");
+
+            // Toggle content visibility
+            if (content.classList.contains("hidden")) {
+              content.classList.remove("hidden");
+              icon.classList.add("rotate-180");
+              button.setAttribute("aria-expanded", "true");
+            } else {
+              content.classList.add("hidden");
+              icon.classList.remove("rotate-180");
+              button.setAttribute("aria-expanded", "false");
+            }
+          });
+        });
+
+      // Portfolio filtering functionality
+      const filterButtons = document.querySelectorAll(".filter-btn");
+      const portfolioItems = document.querySelectorAll(".portfolio-item");
+
+      filterButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+          // Remove active class from all buttons
+          filterButtons.forEach((btn) => btn.classList.remove("active"));
+
+          // Add active class to clicked button
+          button.classList.add("active");
+
+          // Get filter value
+          const filterValue = button.getAttribute("data-filter");
+
+          // Filter portfolio items
+          portfolioItems.forEach((item) => {
+            const categories = item.getAttribute("data-category");
+
+            if (filterValue === "all" || categories.includes(filterValue)) {
+              item.style.display = "block";
+              setTimeout(() => {
+                item.style.opacity = "1";
+                item.style.transform = "translateY(0)";
+              }, 100);
+            } else {
+              item.style.opacity = "0";
+              item.style.transform = "translateY(20px)";
+              setTimeout(() => {
+                item.style.display = "none";
+              }, 300);
+            }
+          });
+        });
+      });
+
+      // Contact form submission
+      const contactForm = document.getElementById("contactForm");
+      if (contactForm) {
+        contactForm.addEventListener("submit", function (e) {
+          e.preventDefault();
+
+          // Simple form validation
+          const name = document.getElementById("name").value;
+          const email = document.getElementById("email").value;
+          const message = document.getElementById("message").value;
+
+          if (name && email && message) {
+            // In a real implementation, you would send this data to your server
+            alert("Thanks for your message! We'll get back to you soon.");
+            contactForm.reset();
+          } else {
+            alert("Please fill out all fields.");
+          }
+        });
+      }
+
+      // Function to update portfolio images when they're uploaded
+      function updatePortfolioImage(imageId, imagePath) {
+        const imageElement = document.getElementById(imageId);
+        if (imageElement) {
+          imageElement.src = imagePath;
+        }
+      }
+
+      // Example usage:
+      // updatePortfolioImage('childcare-img', 'path/to/your/childcare-image.jpg');
 
       // Run on scroll
       window.addEventListener("scroll", animateOnScroll);

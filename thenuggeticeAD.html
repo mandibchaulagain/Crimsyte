@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nugget Ice | Premium Experience</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/three@0.132.2/build/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.132.2/examples/js/controls/OrbitControls.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.132.2/examples/js/loaders/GLTFLoader.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.11.4/dist/gsap.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #0a0f1a;
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+        
+        #canvas-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            z-index: 1;
+        }
+        
+        .content {
+            position: relative;
+            z-index: 2;
+            pointer-events: none;
+        }
+        
+        .header {
+            padding: 2rem 4rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            pointer-events: auto;
+        }
+        
+        .nav {
+            display: flex;
+            gap: 2rem;
+        }
+        
+        .nav-item {
+            font-size: 0.9rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            pointer-events: auto;
+            opacity: 0.7;
+            transition: opacity 0.3s ease;
+        }
+        
+        .nav-item:hover {
+            opacity: 1;
+        }
+        
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 0 4rem;
+        }
+        
+        .hero-title {
+            font-size: 5rem;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            max-width: 800px;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.2rem;
+            font-weight: 400;
+            opacity: 0.8;
+            max-width: 500px;
+            margin-bottom: 2rem;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background-color: #e11d48;
+            color: white;
+            padding: 1rem 2.5rem;
+            border-radius: 30px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            pointer-events: auto;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: none;
+            outline: none;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(225, 29, 72, 0.3);
+        }
+        
+        .specs {
+            position: absolute;
+            bottom: 4rem;
+            right: 4rem;
+            display: flex;
+            gap: 2rem;
+        }
+        
+        .spec-item {
+            text-align: center;
+        }
+        
+        .spec-value {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #e11d48;
+        }
+        
+        .spec-label {
+            font-size: 0.8rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            opacity: 0.7;
+        }
+        
+        .scroll-indicator {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .scroll-text {
+            font-size: 0.8rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            opacity: 0.7;
+        }
+        
+        .scroll-icon {
+            width: 30px;
+            height: 50px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 15px;
+            position: relative;
+        }
+        
+        .scroll-icon::before {
+            content: '';
+            position: absolute;
+            top: 8px;
+            left: 50%;
+            width: 6px;
+            height: 6px;
+            background-color: white;
+            border-radius: 50%;
+            transform: translateX(-50%);
+            animation: scrollAnimation 2s infinite;
+        }
+        
+        @keyframes scrollAnimation {
+            0% {
+                opacity: 1;
+                transform: translateX(-50%) translateY(0);
+            }
+            100% {
+                opacity: 0;
+                transform: translateX(-50%) translateY(20px);
+            }
+        }
+        
+        .product-info {
+            position: absolute;
+            top: 50%;
+            right: 4rem;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 1rem;
+        }
+        
+        .product-tag {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .product-price {
+            font-size: 3rem;
+            font-weight: 700;
+        }
+        
+        .product-price span {
+            font-size: 1.5rem;
+            opacity: 0.7;
+        }
+        
+        .controls {
+            position: absolute;
+            bottom: 4rem;
+            left: 4rem;
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .control-button {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            pointer-events: auto;
+            transition: background-color 0.3s ease;
+        }
+        
+        .control-button:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+        
+        .loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #0a0f1a;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            transition: opacity 1s ease;
+        }
+        
+        .loader {
+            width: 50px;
+            height: 50px;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: #e11d48;
+            animation: spin 1s ease-in-out infinite;
+        }
+        
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+        
+        .feature-tag {
+            position: absolute;
+            padding: 0.5rem 1rem;
+            background-color: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            pointer-events: none;
+        }
+        
+        .feature-tag.visible {
+            opacity: 1;
+        }
+        
+        #tag-display {
+            top: 40%;
+            left: 25%;
+        }
+        
+        #tag-payment {
+            top: 60%;
+            left: 30%;
+        }
+        
+        #tag-ice {
+            top: 50%;
+            right: 30%;
+        }
+        
+        @media (max-width: 768px) {
+            .header {
+                padding: 1.5rem 2rem;
+            }
+            
+            .hero {
+                padding: 0 2rem;
+            }
+            
+            .hero-title {
+                font-size: 3rem;
+            }
+            
+            .product-info, .specs, .controls {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="loading-screen">
+        <div class="loader"></div>
+    </div>
+
+    <div id="canvas-container"></div>
+    
+    <div class="content">
+        <header class="header">
+            <div class="logo">NUGGET ICE</div>
+            <nav class="nav">
+                <div class="nav-item">Features</div>
+                <div class="nav-item">Technology</div>
+                <div class="nav-item">Partners</div>
+                <div class="nav-item">Contact</div>
+            </nav>
+        </header>
+        
+        <section class="hero">
+            <h1 class="hero-title">The Premium Ice Experience</h1>
+            <p class="hero-subtitle">Clean design. Advanced tech. Next level customer experience.</p>
+            <button class="cta-button">Partner With Us</button>
+            
+            <div class="product-info">
+                <div class="product-tag">Premium Quality</div>
+                <div class="product-price">$1.99 <span>/ 8LB</span></div>
+            </div>
+            
+            <div class="specs">
+                <div class="spec-item">
+                    <div class="spec-value">500+</div>
+                    <div class="spec-label">LBS/Day</div>
+                </div>
+                <div class="spec-item">
+                    <div class="spec-value">3×3</div>
+                    <div class="spec-label">Footprint</div>
+                </div>
+                <div class="spec-item">
+                    <div class="spec-value">24/7</div>
+                    <div class="spec-label">Operation</div>
+                </div>
+            </div>
+            
+            <div class="controls">
+                <div class="control-button" id="rotate-left">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="15 18 9 12 15 6"></polyline>
+                    </svg>
+                </div>
+                <div class="control-button" id="rotate-right">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="9 18 15 12 9 6"></polyline>
+                    </svg>
+                </div>
+            </div>
+            
+            <div class="scroll-indicator">
+                <div class="scroll-text">Scroll to explore</div>
+                <div class="scroll-icon"></div>
+            </div>
+        </section>
+        
+        <div class="feature-tag" id="tag-display">Premium LED Display</div>
+        <div class="feature-tag" id="tag-payment">Contactless Payment</div>
+        <div class="feature-tag" id="tag-ice">Premium Nugget Ice</div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Three.js setup
+            const canvasContainer = document.getElementById('canvas-container');
+            const scene = new THREE.Scene();
+            const camera = new THREE.PerspectiveCamera(40, window.innerWidth / window.innerHeight, 0.1, 1000);
+            const renderer = new THREE.WebGLRenderer({ 
+                antialias: true, 
+                alpha: true,
+                powerPreference: "high-performance"
+            });
+            
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2)); // Limit pixel ratio for performance
+            renderer.shadowMap.enabled = true;
+            renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+            renderer.outputEncoding = THREE.sRGBEncoding;
+            canvasContainer.appendChild(renderer.domElement);
+            
+            // Camera position
+            camera.position.set(0, 0, 10);
+            
+            // Lighting
+            const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
+            scene.add(ambientLight);
+            
+            const directionalLight1 = new THREE.DirectionalLight(0xffffff, 1);
+            directionalLight1.position.set(5, 5, 5);
+            directionalLight1.castShadow = true;
+            directionalLight1.shadow.mapSize.width = 1024; // Reduced for performance
+            directionalLight1.shadow.mapSize.height = 1024;
+            scene.add(directionalLight1);
+            
+            const directionalLight2 = new THREE.DirectionalLight(0xffffff, 0.5);
+            directionalLight2.position.set(-5, 5, -5);
+            scene.add(directionalLight2);
+            
+            // Spotlight for dramatic effect
+            const spotlight = new THREE.SpotLight(0xe11d48, 2, 30, Math.PI / 6, 0.5, 1);
+            spotlight.position.set(0, 10, 0);
+            spotlight.castShadow = true;
+            spotlight.shadow.mapSize.width = 1024; // Reduced for performance
+            spotlight.shadow.mapSize.height = 1024;
+            scene.add(spotlight);
+            
+            // Add a point light to highlight the machine
+            const pointLight = new THREE.PointLight(0x0ea5e9, 1, 20);
+            pointLight.position.set(5, 0, 5);
+            scene.add(pointLight);
+            
+            // Create a floor
+            const floorGeometry = new THREE.PlaneGeometry(30, 30);
+            const floorMaterial = new THREE.MeshStandardMaterial({
+                color: 0x0a0f1a,
+                metalness: 0.5,
+                roughness: 0.2,
+                side: THREE.DoubleSide
+            });
+            const floor = new THREE.Mesh(floorGeometry, floorMaterial);
+            floor.rotation.x = -Math.PI / 2;
+            floor.position.y = -4;
+            floor.receiveShadow = true;
+            scene.add(floor);
+            
+            // Create ice machine model
+            const machineWidth = 3;
+            const machineHeight = 6;
+            const machineDepth = 3;
+            
+            const machineGeometry = new THREE.BoxGeometry(machineWidth, machineHeight, machineDepth);
+            const machineMaterial = new THREE.MeshStandardMaterial({
+                color: 0xe11d48,
+                metalness: 0.3,
+                roughness: 0.2
+            });
+            const machine = new THREE.Mesh(machineGeometry, machineMaterial);
+            machine.castShadow = true;
+            machine.receiveShadow = true;
+            scene.add(machine);
+            
+            // Create display window
+            const displayWindowGeometry = new THREE.PlaneGeometry(1.5, 1.5);
+            const displayWindowMaterial = new THREE.MeshStandardMaterial({
+                color: 0x000000,
+                metalness: 0.5,
+                roughness: 0.1
+            });
+            const displayWindow = new THREE.Mesh(displayWindowGeometry, displayWindowMaterial);
+            displayWindow.position.set(0, 0, machineDepth / 2 + 0.01);
+            machine.add(displayWindow);
+            
+            // Create payment interface
+            const paymentInterfaceGeometry = new THREE.PlaneGeometry(0.8, 1.2);
+            const paymentInterfaceMaterial = new THREE.MeshStandardMaterial({
+                color: 0x111111,
+                metalness: 0.7,
+                roughness: 0.2
+            });
+            const paymentInterface = new THREE.Mesh(paymentInterfaceGeometry, paymentInterfaceMaterial);
+            paymentInterface.position.set(-0.8, 0, machineDepth / 2 + 0.01);
+            machine.add(paymentInterface);
+            
+            // Create payment buttons
+            const buttonGeometry = new THREE.PlaneGeometry(0.3, 0.3);
+            const buttonMaterial = new THREE.MeshStandardMaterial({
+                color: 0xffa500,
+                metalness: 0.5,
+                roughness: 0.3,
+                emissive: 0xffa500,
+                emissiveIntensity: 0.2
+            });
+            
+            const button1 = new THREE.Mesh(buttonGeometry, buttonMaterial);
+            button1.position.set(-0.8, 0.2, machineDepth / 2 + 0.02);
+            machine.add(button1);
+            
+            const button2 = new THREE.Mesh(buttonGeometry, buttonMaterial);
+            button2.position.set(-0.8, -0.2, machineDepth / 2 + 0.02);
+            machine.add(button2);
+            
+            // Create NUGGET ICE text
+            const createText = (text, size, yPos) => {
+                const canvas = document.createElement('canvas');
+                const context = canvas.getContext('2d');
+                canvas.width = 1024;
+                canvas.height = 512;
+                
+                context.fillStyle = '#e11d48';
+                context.fillRect(0, 0, canvas.width, canvas.height);
+                
+                context.font = 'bold 120px Montserrat';
+                context.textAlign = 'center';
+                context.textBaseline = 'middle';
+                context.fillStyle = '#ffffff';
+                context.fillText(text, canvas.width / 2, canvas.height / 2);
+                
+                const texture = new THREE.CanvasTexture(canvas);
+                const material = new THREE.MeshBasicMaterial({
+                    map: texture,
+                    transparent: true
+                });
+                
+                const geometry = new THREE.PlaneGeometry(size, size / 2);
+                const mesh = new THREE.Mesh(geometry, material);
+                mesh.position.set(0, yPos, machineDepth / 2 + 0.01);
+                return mesh;
+            };
+            
+            const nuggetText = createText('NUGGET', 2.5, 2);
+            machine.add(nuggetText);
+            
+            const iceText = createText('ICE', 2.5, 1);
+            machine.add(iceText);
+            
+            const priceText = createText('$1.99 8LB', 2, -1.5);
+            machine.add(priceText);
+            
+            // Create ice in the display window
+            const iceGroup = new THREE.Group();
+            displayWindow.add(iceGroup);
+            
+            const createIceCube = () => {
+                const geometries = [
+                    new THREE.IcosahedronGeometry(0.05, 0),
+                    new THREE.TetrahedronGeometry(0.05, 0),
+                    new THREE.OctahedronGeometry(0.05, 0)
+                ];
+                
+                const material = new THREE.MeshPhysicalMaterial({
+                    color: 0xffffff,
+                    transparent: true,
+                    opacity: 0.8,
+                    roughness: 0.1,
+                    metalness: 0.2,
+                    clearcoat: 1.0,
+                    clearcoatRoughness: 0.1,
+                    transmission: 0.9,
+                    ior: 1.5
+                });
+                
+                const geometry = geometries[Math.floor(Math.random() * geometries.length)];
+                const cube = new THREE.Mesh(geometry, material);
+                
+                cube.position.x = (Math.random() - 0.5) * 1.2;
+                cube.position.y = (Math.random() - 0.5) * 1.2;
+                cube.position.z = (Math.random() - 0.5) * 0.2 + 0.1;
+                
+                cube.rotation.x = Math.random() * Math.PI;
+                cube.rotation.y = Math.random() * Math.PI;
+                cube.rotation.z = Math.random() * Math.PI;
+                
+                cube.scale.set(
+                    Math.random() * 0.5 + 0.8,
+                    Math.random() * 0.5 + 0.8,
+                    Math.random() * 0.5 + 0.8
+                );
+                
+                return cube;
+            };
+            
+            // Add multiple ice cubes (reduced count for performance)
+            for (let i = 0; i < 50; i++) {
+                const iceCube = createIceCube();
+                iceGroup.add(iceCube);
+            }
+            
+            // Add particle effects
+            const particlesGeometry = new THREE.BufferGeometry();
+            const particlesCount = 100; // Reduced for performance
+            
+            const posArray = new Float32Array(particlesCount * 3);
+            for (let i = 0; i < particlesCount * 3; i++) {
+                posArray[i] = (Math.random() - 0.5) * 20;
+            }
+            
+            particlesGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
+            
+            const particlesMaterial = new THREE.PointsMaterial({
+                size: 0.02,
+                color: 0xffffff,
+                transparent: true,
+                opacity: 0.5
+            });
+            
+            const particlesMesh = new THREE.Points(particlesGeometry, particlesMaterial);
+            scene.add(particlesMesh);
+            
+            // Controls
+            const controls = new THREE.OrbitControls(camera, renderer.domElement);
+            controls.enableDamping = true;
+            controls.dampingFactor = 0.05;
+            controls.enableZoom = true;
+            controls.enablePan = false;
+            controls.autoRotate = true;
+            controls.autoRotateSpeed = 0.5;
+            controls.minDistance = 6;
+            controls.maxDistance = 15;
+            
+            // Handle window resize
+            function handleResize() {
+                camera.aspect = window.innerWidth / window.innerHeight;
+                camera.updateProjectionMatrix();
+                renderer.setSize(window.innerWidth, window.innerHeight);
+            }
+            
+            window.addEventListener('resize', handleResize);
+            
+            // Control buttons
+            document.getElementById('rotate-left')?.addEventListener('click', () => {
+                gsap.to(machine.rotation, {
+                    y: machine.rotation.y - Math.PI / 2,
+                    duration: 1,
+                    ease: 'power2.inOut'
+                });
+            });
+            
+            document.getElementById('rotate-right')?.addEventListener('click', () => {
+                gsap.to(machine.rotation, {
+                    y: machine.rotation.y + Math.PI / 2,
+                    duration: 1,
+                    ease: 'power2.inOut'
+                });
+            });
+            
+            // Feature tags animation
+            const showFeatureTags = () => {
+                const tags = document.querySelectorAll('.feature-tag');
+                if (!tags.length) return;
+                
+                tags.forEach((tag, index) => {
+                    setTimeout(() => {
+                        tag.classList.add('visible');
+                        
+                        setTimeout(() => {
+                            tag.classList.remove('visible');
+                        }, 3000);
+                    }, index * 4000);
+                });
+                
+                setTimeout(showFeatureTags, tags.length * 4000);
+            };
+            
+            // Animate ice cubes
+            const animateIceCubes = () => {
+                if (!iceGroup.children.length) return;
+                
+                iceGroup.children.forEach(cube => {
+                    cube.rotation.x += Math.random() * 0.01;
+                    cube.rotation.y += Math.random() * 0.01;
+                    cube.rotation.z += Math.random() * 0.01;
+                });
+            };
+            
+            // Animate particles
+            const animateParticles = () => {
+                if (!particlesMesh) return;
+                particlesMesh.rotation.y += 0.0005;
+            };
+            
+            // Animation loop
+            const animate = () => {
+                requestAnimationFrame(animate);
+                
+                controls.update();
+                animateIceCubes();
+                animateParticles();
+                
+                // Animate spotlight
+                const time = Date.now() * 0.001;
+                spotlight.position.x = Math.sin(time * 0.5) * 5;
+                spotlight.position.z = Math.cos(time * 0.5) * 5;
+                
+                renderer.render(scene, camera);
+            };
+            
+            // Initial animations
+            const initAnimations = () => {
+                // Hide loading screen
+                const loadingScreen = document.querySelector('.loading-screen');
+                if (loadingScreen) {
+                    loadingScreen.style.opacity = '0';
+                    setTimeout(() => {
+                        loadingScreen.style.display = 'none';
+                    }, 1000);
+                }
+                
+                // Animate machine
+                gsap.from(machine.position, {
+                    y: -10,
+                    duration: 2,
+                    ease: 'power3.out'
+                });
+                
+                gsap.from(machine.rotation, {
+                    y: Math.PI * 2,
+                    duration: 2,
+                    ease: 'power3.out'
+                });
+                
+                // Animate text elements
+                const textElements = document.querySelectorAll('.hero-title, .hero-subtitle, .cta-button, .product-info, .specs');
+                if (textElements.length) {
+                    textElements.forEach((el, index) => {
+                        gsap.from(el, {
+                            opacity: 0,
+                            y: 50,
+                            duration: 1,
+                            delay: 0.5 + index * 0.2,
+                            ease: 'power3.out'
+                        });
+                    });
+                }
+                
+                // Start feature tags animation after a delay
+                setTimeout(showFeatureTags, 3000);
+            };
+            
+            // Start animation
+            animate();
+            
+            // Start initial animations after a short delay
+            setTimeout(initAnimations, 1000);
+            
+            // Clean up on unmount
+            window.addEventListener('beforeunload', () => {
+                window.removeEventListener('resize', handleResize);
+                // Add any other cleanup needed
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nugget Ice - Premium Ice Experience</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/three@0.132.2/build/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.11.4/dist/gsap.min.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#e11d48',
+                        secondary: '#f8fafc',
+                        dark: '#0f172a',
+                        light: '#f1f5f9',
+                        accent: '#0ea5e9',
+                    },
+                    fontFamily: {
+                        sans: ['Montserrat', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            overflow-x: hidden;
+        }
+        
+        .hero-section {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        #ice-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            
+            
+        }
+        
+        .gradient-text {
+            background: linear-gradient(to right, #e11d48, #f43f5e);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .glass-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .ice-machine {
+            transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+        
+        .ice-machine:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        }
+        
+        .scroll-indicator {
+            animation: bounce 2s infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-20px);
+            }
+            60% {
+                transform: translateY(-10px);
+            }
+        }
+        
+        .nav-link {
+            position: relative;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background-color: #e11d48;
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .benefit-card {
+            transition: all 0.3s ease;
+        }
+        
+        .benefit-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        .partner-card {
+            transition: all 0.3s ease;
+        }
+        
+        .partner-card:hover {
+            transform: scale(1.05);
+        }
+        
+        .testimonial-card {
+            position: relative;
+        }
+        
+        .testimonial-card::before {
+            content: '"';
+            position: absolute;
+            top: -20px;
+            left: 20px;
+            font-size: 120px;
+            color: rgba(225, 29, 72, 0.1);
+            font-family: serif;
+        }
+        
+        .form-input {
+            transition: all 0.3s ease;
+        }
+        
+        .form-input:focus {
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body class="font-sans bg-light text-dark">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-md sticky top-0 z-50 py-4">
+        <div class="container mx-auto px-6 flex justify-between items-center">
+            <div class="flex items-center">
+                <div class="text-2xl font-bold mr-2">
+                    <span class="text-primary font-extrabold tracking-tight">NUGGET</span> 
+                    <span class="text-dark font-light">ICE</span>
+                </div>
+                <span class="bg-primary text-white text-xs px-2 py-1 rounded-full font-bold ml-2">PREMIUM</span>
+            </div>
+            <div class="hidden md:flex space-x-10">
+                <a href="#benefits" class="nav-link font-medium hover:text-primary transition">Benefits</a>
+                <a href="#machines" class="nav-link font-medium hover:text-primary transition">Machines</a>
+                <a href="#partners" class="nav-link font-medium hover:text-primary transition">Partners</a>
+                <a href="#contact" class="nav-link font-medium hover:text-primary transition">Contact</a>
+            </div>
+            <button class="md:hidden">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section with 3D Ice -->
+    <section class="hero-section h-screen flex items-center justify-center">
+        <canvas id="ice-canvas"></canvas>
+        <div class="hero-content w-full py-24 px-6">
+            <div class="container mx-auto text-center">
+                <h1 class="text-5xl md:text-7xl font-bold mb-6 text-white">
+                    The <span class="gradient-text">Premium</span> Ice Experience
+                </h1>
+                <p class="text-xl md:text-2xl mb-10 max-w-3xl mx-auto text-gray-200 leading-relaxed">
+                    Elevate your business with our luxury nugget ice machines that drive revenue and enhance customer experience.
+                </p>
+                <div class="flex flex-col sm:flex-row justify-center gap-6">
+                    <a href="#contact" class="bg-primary hover:bg-red-700 text-white font-bold py-4 px-8 rounded-lg transition duration-300 transform hover:scale-105 shadow-lg">
+                        Partner With Us
+                    </a>
+                    <a href="#machines" class="bg-white hover:bg-gray-100 text-dark font-bold py-4 px-8 rounded-lg transition duration-300 transform hover:scale-105 shadow-lg">
+                        Explore Machines
+                    </a>
+                </div>
+                <div class="mt-16 scroll-indicator">
+                    <svg class="w-8 h-8 mx-auto text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Machine Showcase Section -->
+    <section id="machines" class="py-24 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-dark mb-4">The Iconic Nugget Ice Machine</h2>
+                <div class="w-24 h-1 bg-primary mx-auto mb-6"></div>
+                <p class="text-gray-600 max-w-3xl mx-auto text-lg">
+                    Crafted with precision engineering and premium materials for an unparalleled ice experience.
+                </p>
+            </div>
+            <div class="flex flex-col lg:flex-row items-center gap-12 max-w-6xl mx-auto">
+                <div class="lg:w-1/2">
+                    <div class="ice-machine bg-gray-50 p-4 rounded-2xl shadow-xl">
+                        <img src="/placeholder.svg?height=600&width=600" alt="Nugget Ice Machine" class="rounded-xl w-full">
+                    </div>
+                </div>
+                <div class="lg:w-1/2">
+                    <div class="text-5xl font-extrabold mb-6">
+                        <span class="text-primary">NUGGET</span>
+                        <span class="text-dark font-light">ICE</span>
+                    </div>
+                    <div class="flex items-center mb-8">
+                        <span class="text-4xl font-bold text-primary mr-2">$1.99</span>
+                        <span class="text-gray-500">per premium serving</span>
+                    </div>
+                    <p class="text-gray-700 mb-8 text-lg leading-relaxed">
+                        Our signature bright red machines are more than just ice dispensers—they're statement pieces that enhance your space while delivering the most sought-after ice experience in the market.
+                    </p>
+                    <ul class="space-y-6 text-gray-700 mb-10">
+                        <li class="flex items-start">
+                            <svg class="w-6 h-6 text-primary mr-4 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            <span class="text-lg">Contactless self-service with premium payment options</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-6 h-6 text-primary mr-4 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            <span class="text-lg">Elegant compact design (3'×3') fits seamlessly in any space</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-6 h-6 text-primary mr-4 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            <span class="text-lg">Industrial-grade production capacity (500+ lbs/day)</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-6 h-6 text-primary mr-4 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            <span class="text-lg">American craftsmanship with dedicated concierge support</span>
+                        </li>
+                    </ul>
+                    <a href="#contact" class="inline-block bg-primary hover:bg-red-700 text-white font-bold py-4 px-10 rounded-lg transition duration-300 transform hover:scale-105 shadow-lg">
+                        Elevate Your Business
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section id="benefits" class="py-24 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-dark mb-4">The Luxury Partnership</h2>
+                <div class="w-24 h-1 bg-primary mx-auto mb-6"></div>
+                <p class="text-gray-600 max-w-3xl mx-auto text-lg">
+                    Our premium ice machines deliver exceptional value beyond the product itself—they're a complete business enhancement solution.
+                </p>
+            </div>
+            <div class="grid md:grid-cols-3 gap-10 max-w-6xl mx-auto">
+                <!-- Benefit 1 -->
+                <div class="benefit-card bg-white p-10 rounded-2xl text-center shadow-lg">
+                    <div class="w-20 h-20 bg-primary text-white rounded-full flex items-center justify-center mx-auto mb-6">
+                        <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-bold text-dark mb-4">Elevated Foot Traffic</h3>
+                    <p class="text-gray-600 text-lg">
+                        Attract discerning customers who seek out "The Good Ice," increasing overall store visits and complementary purchases.
+                    </p>
+                </div>
+                
+                <!-- Benefit 2 -->
+                <div class="benefit-card bg-white p-10 rounded-2xl text-center shadow-lg">
+                    <div class="w-20 h-20 bg-primary text-white rounded-full flex items-center justify-center mx-auto mb-6">
+                        <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-bold text-dark mb-4">Luxury Revenue Stream</h3>
+                    <p class="text-gray-600 text-lg">
+                        Each $1.99 transaction generates pure profit with zero staffing requirements—automated luxury at its finest.
+                    </p>
+                </div>
+                
+                <!-- Benefit 3 -->
+                <div class="benefit-card bg-white p-10 rounded-2xl text-center shadow-lg">
+                    <div class="w-20 h-20 bg-primary text-white rounded-full flex items-center justify-center mx-auto mb-6">
+                        <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-bold text-dark mb-4">White Glove Service</h3>
+                    <p class="text-gray-600 text-lg">
+                        We manage everything from installation to maintenance with our concierge approach—simply provide the space and collect the profits.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ideal Partners Section -->
+    <section id="partners" class="py-24 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-dark mb-4">Elite Business Partners</h2>
+                <div class="w-24 h-1 bg-primary mx-auto mb-6"></div>
+                <p class="text-gray-600 max-w-3xl mx-auto text-lg">
+                    These premium establishments experience exceptional returns and customer satisfaction with our nugget ice machines:
+                </p>
+            </div>
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
+                <!-- Partner 1 -->
+                <div class="partner-card bg-gray-50 p-8 rounded-xl text-center border border-gray-200 hover:border-primary transition duration-300 shadow-md">
+                    <div class="w-16 h-16 bg-primary text-white rounded-full flex items-center justify-center mx-auto mb-6">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-dark mb-2">Luxury Grocers</h3>
+                    <p class="text-gray-600 mt-3">Whole Foods, Erewhon, Central Market</p>
+                </div>
+                
+                <!-- Partner 2 -->
+                <div class="partner-card bg-gray-50 p-8 rounded-xl text-center border border-gray-200 hover:border-primary transition duration-300 shadow-md">
+                    <div class="w-16 h-16 bg-primary text-white rounded-full flex items-center justify-center mx-auto mb-6">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-dark mb-2">Premium Retailers</h3>
+                    <p class="text-gray-600 mt-3">Williams-Sonoma, Crate & Barrel, Restoration Hardware</p>
+                </div>
+                
+                <!-- Partner 3 -->
+                <div class="partner-card bg-gray-50 p-8 rounded-xl text-center border border-gray-200 hover:border-primary transition duration-300 shadow-md">
+                    <div class="w-16 h-16 bg-primary text-white rounded-full flex items-center justify-center mx-auto mb-6">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-dark mb-2">Upscale Convenience</h3>
+                    <p class="text-gray-600 mt-3">Foxtrot, Wawa, QuikTrip</p>
+                </div>
+                
+                <!-- Partner 4 -->
+                <div class="partner-card bg-gray-50 p-8 rounded-xl text-center border border-gray-200 hover:border-primary transition duration-300 shadow-md">
+                    <div class="w-16 h-16 bg-primary text-white rounded-full flex items-center justify-center mx-auto mb-6">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-dark mb-2">Premium Fuel Stations</h3>
+                    <p class="text-gray-600 mt-3">Shell Select, BP Ultimate, Chevron Extra Mile</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="py-24 bg-dark text-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold mb-4">Luxury Features</h2>
+                <div class="w-24 h-1 bg-primary mx-auto mb-6"></div>
+                <p class="text-gray-300 max-w-3xl mx-auto text-lg">
+                    Every detail of our machines is designed with excellence and sophistication in mind.
+                </p>
+            </div>
+            <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                <div class="glass-card p-8 rounded-xl hover:bg-opacity-20 transition duration-300 transform hover:scale-105">
+                    <div class="text-primary text-2xl font-bold mb-4">Smart Payments</div>
+                    <p class="text-gray-300 text-lg">
+                        Frictionless transactions via contactless cards, mobile wallets, and premium membership options.
+                    </p>
+                </div>
+                <div class="glass-card p-8 rounded-xl hover:bg-opacity-20 transition duration-300 transform hover:scale-105">
+                    <div class="text-primary text-2xl font-bold mb-4">Intelligent Monitoring</div>
+                    <p class="text-gray-300 text-lg">
+                        Advanced IoT technology ensures optimal performance with predictive maintenance and real-time analytics.
+                    </p>
+                </div>
+                <div class="glass-card p-8 rounded-xl hover:bg-opacity-20 transition duration-300 transform hover:scale-105">
+                    <div class="text-primary text-2xl font-bold mb-4">Artisan Craftsmanship</div>
+                    <p class="text-gray-300 text-lg">
+                        Precision-engineered in America with premium materials and backed by our exclusive concierge support.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonial Section -->
+    <section class="py-24 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-dark mb-4">Partner Testimonials</h2>
+                <div class="w-24 h-1 bg-primary mx-auto mb-6"></div>
+                <p class="text-gray-600 max-w-3xl mx-auto text-lg">
+                    Hear from our elite partners about their experience with Nugget Ice.
+                </p>
+            </div>
+            <div class="max-w-4xl mx-auto">
+                <div class="testimonial-card bg-gray-50 rounded-2xl shadow-xl p-10">
+                    <p class="text-xl italic text-gray-700 mb-8 leading-relaxed">
+                        "The Nugget Ice machine has been transformative for our store. Not only has it increased our foot traffic by 22%, but it's become a signature element of our customer experience. The sleek design complements our premium aesthetic, and the revenue it generates is substantial. It's rare to find a partnership that enhances both your brand and your bottom line."
+                    </p>
+                    <div class="flex items-center">
+                        <div class="w-16 h-16 bg-gray-200 rounded-full overflow-hidden mr-5">
+                            <img src="/placeholder.svg?height=64&width=64" alt="Executive" class="w-full h-full object-cover">
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-xl">Alexandra Reynolds</h4>
+                            <p class="text-gray-600">Director of Operations, Foxtrot Market</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section id="contact" class="py-24 bg-primary text-white">
+        <div class="container mx-auto px-6">
+            <div class="max-w-5xl mx-auto text-center">
+                <h2 class="text-4xl font-bold mb-6">Elevate Your Business with Premium Ice</h2>
+                <p class="text-xl mb-12 max-w-3xl mx-auto">
+                    Join our exclusive network of partners and transform your space with "The Good Ice" experience.
+                </p>
+                
+                <form class="grid md:grid-cols-2 gap-8 max-w-3xl mx-auto">
+                    <div>
+                        <label for="name" class="block text-left mb-2 text-lg">Your Name</label>
+                        <input type="text" id="name" class="form-input w-full px-5 py-4 rounded-lg bg-red-800 border border-red-700 text-white focus:outline-none focus:ring-2 focus:ring-white">
+                    </div>
+                    <div>
+                        <label for="business" class="block text-left mb-2 text-lg">Business Name</label>
+                        <input type="text" id="business" class="form-input w-full px-5 py-4 rounded-lg bg-red-800 border border-red-700 text-white focus:outline-none focus:ring-2 focus:ring-white">
+                    </div>
+                    <div>
+                        <label for="email" class="block text-left mb-2 text-lg">Email</label>
+                        <input type="email" id="email" class="form-input w-full px-5 py-4 rounded-lg bg-red-800 border border-red-700 text-white focus:outline-none focus:ring-2 focus:ring-white">
+                    </div>
+                    <div>
+                        <label for="phone" class="block text-left mb-2 text-lg">Phone</label>
+                        <input type="tel" id="phone" class="form-input w-full px-5 py-4 rounded-lg bg-red-800 border border-red-700 text-white focus:outline-none focus:ring-2 focus:ring-white">
+                    </div>
+                    <div class="md:col-span-2">
+                        <label for="location" class="block text-left mb-2 text-lg">Business Location</label>
+                        <input type="text" id="location" class="form-input w-full px-5 py-4 rounded-lg bg-red-800 border border-red-700 text-white focus:outline-none focus:ring-2 focus:ring-white">
+                    </div>
+                    <div class="md:col-span-2">
+                        <label for="message" class="block text-left mb-2 text-lg">Tell Us About Your Business</label>
+                        <textarea id="message" rows="4" class="form-input w-full px-5 py-4 rounded-lg bg-red-800 border border-red-700 text-white focus:outline-none focus:ring-2 focus:ring-white"></textarea>
+                    </div>
+                    <div class="md:col-span-2">
+                        <button type="submit" class="w-full bg-white hover:bg-gray-100 text-primary font-bold py-4 px-8 rounded-lg transition duration-300 transform hover:scale-105 shadow-lg text-lg">
+                            Request Premium Partnership
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-gray-400 py-12">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center mb-8">
+                <div class="flex items-center mb-6 md:mb-0">
+                    <div class="text-2xl font-bold mr-2">
+                        <span class="text-primary font-extrabold">NUGGET</span> 
+                        <span class="text-gray-200 font-light">ICE</span>
+                    </div>
+                    <span class="bg-primary text-white text-xs px-2 py-1 rounded-full ml-2">PREMIUM</span>
+                </div>
+                <div class="flex space-x-8">
+                    <a href="#" class="hover:text-white transition">Privacy</a>
+                    <a href="#" class="hover:text-white transition">Terms</a>
+                    <a href="#" class="hover:text-white transition">Support</a>
+                    <a href="#" class="hover:text-white transition">Contact</a>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-6 pt-8 text-center">
+                <p class="text-sm">&copy; 2025 Nugget Ice Premium. All rights reserved. The Good Ice® is a registered trademark.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 3D Ice Animation Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Set up Three.js scene
+            const canvas = document.getElementById('ice-canvas');
+            const scene = new THREE.Scene();
+            const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+            const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            
+            // Use a lighter background color to make ice more visible
+            renderer.setClearColor(0x1e293b, 0.7); // Lighter blue background
+
+            // Enhanced lighting for better visibility
+            const ambientLight = new THREE.AmbientLight(0xffffff, 0.8); // Brighter ambient light
+            scene.add(ambientLight);
+
+            // Add multiple directional lights for better highlights
+            const directionalLight1 = new THREE.DirectionalLight(0xffffff, 1.2);
+            directionalLight1.position.set(5, 5, 5);
+            scene.add(directionalLight1);
+
+            const directionalLight2 = new THREE.DirectionalLight(0xffffff, 0.8);
+            directionalLight2.position.set(-5, -5, -5);
+            scene.add(directionalLight2);
+
+            // Add colored point lights for dramatic effect
+            const pointLight1 = new THREE.PointLight(0xe11d48, 3, 100); // Brighter red light
+            pointLight1.position.set(0, 10, 0);
+            scene.add(pointLight1);
+
+            const pointLight2 = new THREE.PointLight(0x0ea5e9, 3, 100); // Blue light
+            pointLight2.position.set(10, 0, 10);
+            scene.add(pointLight2);
+
+            const pointLight3 = new THREE.PointLight(0xffffff, 2, 50); // White light
+            pointLight3.position.set(-10, 0, -10);
+            scene.add(pointLight3);
+
+            // Create more visible ice cubes with better materials
+            const iceCubes = [];
+            
+            // Create different ice geometries for variety
+            const geometries = [
+                new THREE.IcosahedronGeometry(1, 0), // Basic icosahedron
+                new THREE.OctahedronGeometry(1, 0),  // Octahedron for variety
+                new THREE.TetrahedronGeometry(1, 0), // Tetrahedron for variety
+                new THREE.BoxGeometry(1, 1, 1)       // Some cubic ice
+            ];
+            
+            // Enhanced ice material with better visibility
+            const iceMaterial = new THREE.MeshPhysicalMaterial({
+                color: 0xffffff,
+                transparent: true,
+                opacity: 0.9,           // More opaque
+                roughness: 0.05,        // More polished
+                metalness: 0.1,
+                clearcoat: 1.0,
+                clearcoatRoughness: 0.1,
+                transmission: 0.95,     // More transparent
+                ior: 1.5,               // Realistic refraction
+                reflectivity: 1.0,      // More reflective
+                side: THREE.DoubleSide  // Render both sides
+            });
+
+            // Create multiple ice cubes with varied sizes and shapes
+            for (let i = 0; i < 30; i++) { // More ice cubes
+                // Randomize the geometry for variety
+                const geometry = geometries[Math.floor(Math.random() * geometries.length)];
+                
+                // Larger ice cubes
+                const scale = Math.random() * 0.8 + 0.6; // Bigger scale range
+                const cube = new THREE.Mesh(geometry, iceMaterial);
+                
+                // Distribute ice cubes in a more visible pattern
+                const radius = 12; // Larger radius
+                const theta = Math.random() * Math.PI * 2;
+                const phi = Math.acos(2 * Math.random() - 1);
+                
+                cube.position.x = radius * Math.sin(phi) * Math.cos(theta);
+                cube.position.y = radius * Math.sin(phi) * Math.sin(theta);
+                cube.position.z = radius * Math.cos(phi);
+                
+                cube.scale.set(scale, scale, scale);
+                cube.rotation.x = Math.random() * Math.PI;
+                cube.rotation.y = Math.random() * Math.PI;
+                
+                scene.add(cube);
+                iceCubes.push({
+                    mesh: cube,
+                    rotationSpeed: {
+                        x: Math.random() * 0.02 - 0.01, // Faster rotation
+                        y: Math.random() * 0.02 - 0.01,
+                        z: Math.random() * 0.02 - 0.01
+                    },
+                    orbitSpeed: Math.random() * 0.002 + 0.001,
+                    orbitRadius: radius,
+                    orbitAngle: Math.random() * Math.PI * 2,
+                    verticalBob: {
+                        speed: Math.random() * 0.01 + 0.005,
+                        amplitude: Math.random() * 2 + 1,
+                        offset: Math.random() * Math.PI * 2
+                    }
+                });
+            }
+
+            // Position camera closer to see ice better
+            camera.position.z = 18;
+
+            // Animation loop
+            function animate() {
+                requestAnimationFrame(animate);
+                
+                // Rotate each ice cube with more dynamic movement
+                iceCubes.forEach(cube => {
+                    cube.mesh.rotation.x += cube.rotationSpeed.x;
+                    cube.mesh.rotation.y += cube.rotationSpeed.y;
+                    cube.mesh.rotation.z += cube.rotationSpeed.z;
+                    
+                    // Orbit around center
+                    cube.orbitAngle += cube.orbitSpeed;
+                    cube.mesh.position.x = cube.orbitRadius * Math.sin(cube.orbitAngle);
+                    cube.mesh.position.z = cube.orbitRadius * Math.cos(cube.orbitAngle);
+                    
+                    // Add vertical bobbing motion
+                    cube.mesh.position.y = Math.sin(Date.now() * cube.verticalBob.speed + cube.verticalBob.offset) * cube.verticalBob.amplitude;
+                });
+                
+                // Slowly rotate the entire scene
+                scene.rotation.y += 0.002;
+                
+                renderer.render(scene, camera);
+            }
+
+            // Handle window resize
+            window.addEventListener('resize', () => {
+                camera.aspect = window.innerWidth / window.innerHeight;
+                camera.updateProjectionMatrix();
+                renderer.setSize(window.innerWidth, window.innerHeight);
+            });
+            
+            // Start animation
+            animate();
+            
+            // Add GSAP animations for smoother intro
+            gsap.from(iceCubes.map(cube => cube.mesh.scale), {
+                x: 0,
+                y: 0,
+                z: 0,
+                duration: 2,
+                stagger: 0.1,
+                ease: "elastic.out(1, 0.5)"
+            });
+            
+            // Animate point lights for dynamic lighting effects
+            const animatePointLights = () => {
+                gsap.to(pointLight1.position, {
+                    x: Math.sin(Date.now() * 0.001) * 15,
+                    z: Math.cos(Date.now() * 0.001) * 15,
+                    duration: 4,
+                    ease: "sine.inOut",
+                    repeat: -1,
+                    yoyo: true
+                });
+                
+                gsap.to(pointLight2.position, {
+                    x: Math.sin(Date.now() * 0.0015 + 2) * 15,
+                    z: Math.cos(Date.now() * 0.0015 + 2) * 15,
+                    duration: 5,
+                    ease: "sine.inOut",
+                    repeat: -1,
+                    yoyo: true
+                });
+            };
+            
+            animatePointLights();
+            
+            gsap.from('.hero-content', {
+                opacity: 0,
+                y: 50,
+                duration: 1.5,
+                delay: 0.5
+            });
+        });
+    </script>
+</body>
+</html>

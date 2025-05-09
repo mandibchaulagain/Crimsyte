@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Everett Electric - Professional Electrical Services</title>
+    <meta name="description" content="Everett Electric provides professional electrical services for residential and commercial properties. Established in 2025, we offer 24/7 emergency services.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'ee-red': '#e31e24',
+                        'ee-black': '#1a1a1a',
+                        'ee-gray': '#f2f2f2',
+                    },
+                    animation: {
+                        'pulse-fast': 'pulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body class="font-sans bg-white">
+    <!-- Header with Navigation -->
+    <header class="sticky top-0 z-50 bg-white shadow-md">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center">
+                <img src="everretElectricLogo.png" alt="Everett Electric Logo" class="h-16">
+            </div>
+            
+            <!-- Mobile Menu Button -->
+            <button id="menu-toggle" class="md:hidden text-ee-black focus:outline-none">
+                <i class="fas fa-bars text-2xl"></i>
+            </button>
+            
+            <!-- Desktop Navigation -->
+            <nav class="hidden md:flex space-x-8">
+                <a href="#home" class="text-ee-black hover:text-ee-red font-medium transition duration-300">Home</a>
+                <a href="#services" class="text-ee-black hover:text-ee-red font-medium transition duration-300">Services</a>
+                <a href="#about" class="text-ee-black hover:text-ee-red font-medium transition duration-300">About Us</a>
+                <a href="#projects" class="text-ee-black hover:text-ee-red font-medium transition duration-300">Projects</a>
+                <a href="#testimonials" class="text-ee-black hover:text-ee-red font-medium transition duration-300">Testimonials</a>
+                <a href="#contact" class="text-ee-black hover:text-ee-red font-medium transition duration-300">Contact</a>
+            </nav>
+            
+            <!-- Emergency Contact Button -->
+            <a href="tel:555-123-4567" class="hidden md:flex items-center bg-ee-red text-white px-4 py-2 rounded-md font-bold hover:bg-red-700 transition duration-300">
+                <i class="fas fa-bolt mr-2 animate-pulse-fast"></i>
+                <span>24/7 EMERGENCY: 555-123-4567</span>
+            </a>
+        </div>
+        
+        <!-- Mobile Navigation Menu -->
+        <nav id="mobile-menu" class="hidden bg-white px-4 py-2 md:hidden">
+            <div class="flex flex-col space-y-3">
+                <a href="#home" class="text-ee-black hover:text-ee-red font-medium py-2 transition duration-300">Home</a>
+                <a href="#services" class="text-ee-black hover:text-ee-red font-medium py-2 transition duration-300">Services</a>
+                <a href="#about" class="text-ee-black hover:text-ee-red font-medium py-2 transition duration-300">About Us</a>
+                <a href="#projects" class="text-ee-black hover:text-ee-red font-medium py-2 transition duration-300">Projects</a>
+                <a href="#testimonials" class="text-ee-black hover:text-ee-red font-medium py-2 transition duration-300">Testimonials</a>
+                <a href="#contact" class="text-ee-black hover:text-ee-red font-medium py-2 transition duration-300">Contact</a>
+                <a href="tel:555-123-4567" class="flex items-center bg-ee-red text-white px-4 py-2 rounded-md font-bold">
+                    <i class="fas fa-bolt mr-2 animate-pulse-fast"></i>
+                    <span>24/7 EMERGENCY: 555-123-4567</span>
+                </a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative bg-gradient-to-r from-ee-black to-gray-800 text-white">
+        <div class="absolute inset-0 overflow-hidden">
+            <div class="lightning absolute h-full w-full opacity-10"></div>
+        </div>
+        <div class="container mx-auto px-4 py-20 md:py-32 relative z-10">
+            <div class="max-w-3xl">
+                <h1 class="text-4xl md:text-6xl font-bold mb-4">
+                    <span class="block">Powering Your World</span>
+                    <span class="text-ee-red">With Excellence</span>
+                </h1>
+                <p class="text-xl md:text-2xl mb-8">Professional electrical services for residential and commercial properties. Licensed, insured, and ready to serve.</p>
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <a href="#contact" class="bg-ee-red hover:bg-red-700 text-white font-bold py-3 px-8 rounded-md text-center transition duration-300 transform hover:scale-105">
+                        Request a Quote
+                    </a>
+                    <a href="#services" class="bg-white hover:bg-gray-100 text-ee-black font-bold py-3 px-8 rounded-md text-center transition duration-300">
+                        Our Services
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-16 bg-ee-gray">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Our Electrical Services</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">We provide comprehensive electrical solutions for all your needs, from simple repairs to complete installations.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Service Card 1 -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden transform transition duration-300 hover:scale-105">
+                    <div class="h-3 bg-ee-red"></div>
+                    <div class="p-6">
+                        <div class="w-16 h-16 bg-ee-red rounded-full flex items-center justify-center mb-4">
+                            <i class="fas fa-home text-white text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Residential Services</h3>
+                        <p class="text-gray-600 mb-4">Complete home electrical solutions including wiring, lighting, panel upgrades, and safety inspections.</p>
+                        <ul class="space-y-2 mb-4">
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-ee-red mr-2"></i>
+                                <span>Electrical panel upgrades</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-ee-red mr-2"></i>
+                                <span>Lighting installation</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-ee-red mr-2"></i>
+                                <span>Outlet and switch installation</span>
+                            </li>
+                        </ul>
+                        <a href="#contact" class="text-ee-red font-medium hover:underline inline-flex items-center">
+                            Learn More
+                            <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Service Card 2 -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden transform transition duration-300 hover:scale-105">
+                    <div class="h-3 bg-ee-red"></div>
+                    <div class="p-6">
+                        <div class="w-16 h-16 bg-ee-red rounded-full flex items-center justify-center mb-4">
+                            <i class="fas fa-building text-white text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Commercial Services</h3>
+                        <p class="text-gray-600 mb-4">Comprehensive electrical solutions for businesses, offices, and commercial properties.</p>
+                        <ul class="space-y-2 mb-4">
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-ee-red mr-2"></i>
+                                <span>Commercial wiring</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-ee-red mr-2"></i>
+                                <span>Lighting systems</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-ee-red mr-2"></i>
+                                <span>Electrical maintenance</span>
+                            </li>
+                        </ul>
+                        <a href="#contact" class="text-ee-red font-medium hover:underline inline-flex items-center">
+                            Learn More
+                            <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Service Card 3 -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden transform transition duration-300 hover:scale-105">
+                    <div class="h-3 bg-ee-red"></div>
+                    <div class="p-6">
+                        <div class="w-16 h-16 bg-ee-red rounded-full flex items-center justify-center mb-4">
+                            <i class="fas fa-bolt text-white text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Emergency Services</h3>
+                        <p class="text-gray-600 mb-4">24/7 emergency electrical services to address urgent issues and prevent further damage.</p>
+                        <ul class="space-y-2 mb-4">
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-ee-red mr-2"></i>
+                                <span>Power outages</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-ee-red mr-2"></i>
+                                <span>Electrical failures</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-ee-red mr-2"></i>
+                                <span>Urgent repairs</span>
+                            </li>
+                        </ul>
+                        <a href="tel:555-123-4567" class="text-ee-red font-medium hover:underline inline-flex items-center">
+                            Call Now
+                            <i class="fas fa-phone ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-16">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row items-center gap-12">
+                <div class="md:w-1/2">
+                    <div class="relative">
+                        <div class="bg-ee-red absolute -top-4 -left-4 w-24 h-24 rounded-tl-lg z-0"></div>
+                        <div class="bg-ee-black absolute -bottom-4 -right-4 w-24 h-24 rounded-br-lg z-0"></div>
+                        <img src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Electrician at work" class="rounded-lg shadow-xl relative z-10">
+                    </div>
+                </div>
+                <div class="md:w-1/2">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4">About Everett Electric</h2>
+                    <p class="text-gray-600 mb-6">Established in 2025, Everett Electric has quickly become a trusted name in electrical services. Our team of certified electricians brings expertise, reliability, and professionalism to every project.</p>
+                    
+                    <div class="mb-6">
+                        <h3 class="text-xl font-bold mb-3">Why Choose Us?</h3>
+                        <ul class="space-y-3">
+                            <li class="flex items-start">
+                                <i class="fas fa-certificate text-ee-red mt-1 mr-3"></i>
+                                <span>Licensed and certified electricians with years of experience</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-shield-alt text-ee-red mt-1 mr-3"></i>
+                                <span>Fully insured and bonded for your protection</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-clock text-ee-red mt-1 mr-3"></i>
+                                <span>Prompt service and on-time project completion</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-dollar-sign text-ee-red mt-1 mr-3"></i>
+                                <span>Transparent pricing with no hidden fees</span>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div class="flex flex-wrap gap-4">
+                        <div class="flex items-center bg-ee-gray p-3 rounded-lg">
+                            <i class="fas fa-award text-ee-red text-2xl mr-3"></i>
+                            <div>
+                                <h4 class="font-bold">Licensed</h4>
+                                <p class="text-sm text-gray-600">State Certified</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center bg-ee-gray p-3 rounded-lg">
+                            <i class="fas fa-user-check text-ee-red text-2xl mr-3"></i>
+                            <div>
+                                <h4 class="font-bold">Insured</h4>
+                                <p class="text-sm text-gray-600">For Your Protection</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center bg-ee-gray p-3 rounded-lg">
+                            <i class="fas fa-bolt text-ee-red text-2xl mr-3"></i>
+                            <div>
+                                <h4 class="font-bold">24/7 Service</h4>
+                                <p class="text-sm text-gray-600">Always Available</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-16 bg-ee-gray">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Our Recent Projects</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Take a look at some of our recent electrical projects and see the quality of our work.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Project 1 -->
+                <div class="bg-white rounded-lg overflow-hidden shadow-lg">
+                    <img src="https://images.unsplash.com/photo-1558211583-d26f610c1eb1?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Residential Wiring Project" class="w-full h-56 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Residential Rewiring</h3>
+                        <p class="text-gray-600 mb-4">Complete rewiring of a 3,000 sq ft home with modern electrical systems and smart home integration.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="bg-ee-red text-white text-sm py-1 px-3 rounded-full">Residential</span>
+                            <a href="#" class="text-ee-red hover:underline">View Details</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 2 -->
+                <div class="bg-white rounded-lg overflow-hidden shadow-lg">
+                    <img src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Commercial Lighting Project" class="w-full h-56 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Office Lighting Upgrade</h3>
+                        <p class="text-gray-600 mb-4">Energy-efficient LED lighting installation for a corporate office, reducing energy costs by 40%.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="bg-ee-red text-white text-sm py-1 px-3 rounded-full">Commercial</span>
+                            <a href="#" class="text-ee-red hover:underline">View Details</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 3 -->
+                <div class="bg-white rounded-lg overflow-hidden shadow-lg">
+                    <img src="https://images.unsplash.com/photo-1555963966-b7ae5252385a?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Industrial Electrical Project" class="w-full h-56 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Industrial Panel Installation</h3>
+                        <p class="text-gray-600 mb-4">Design and installation of a complex electrical panel system for a manufacturing facility.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="bg-ee-red text-white text-sm py-1 px-3 rounded-full">Industrial</span>
+                            <a href="#" class="text-ee-red hover:underline">View Details</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-10">
+                <a href="#contact" class="inline-block bg-ee-black hover:bg-gray-800 text-white font-bold py-3 px-8 rounded-md transition duration-300">
+                    Start Your Project Today
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="py-16">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">What Our Clients Say</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Don't just take our word for it. Here's what our satisfied customers have to say about our services.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Testimonial 1 -->
+                <div class="bg-white p-6 rounded-lg shadow-lg border-t-4 border-ee-red">
+                    <div class="flex items-center mb-4">
+                        <div class="text-ee-red">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <span class="ml-2 text-gray-600">5.0</span>
+                    </div>
+                    <p class="text-gray-600 italic mb-6">"Everett Electric did an amazing job rewiring our home. The team was professional, clean, and completed the work ahead of schedule. Highly recommend their services!"</p>
+                    <div class="flex items-center">
+                        <div class="w-12 h-12 bg-gray-300 rounded-full flex items-center justify-center mr-4">
+                            <span class="text-gray-600 font-bold">JD</span>
+                        </div>
+                        <div>
+                            <h4 class="font-bold">John Doe</h4>
+                            <p class="text-sm text-gray-600">Residential Client</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 2 -->
+                <div class="bg-white p-6 rounded-lg shadow-lg border-t-4 border-ee-red">
+                    <div class="flex items-center mb-4">
+                        <div class="text-ee-red">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <span class="ml-2 text-gray-600">5.0</span>
+                    </div>
+                    <p class="text-gray-600 italic mb-6">"We had an emergency electrical issue at our office, and Everett Electric responded within 30 minutes. They quickly identified and fixed the problem, preventing any business downtime."</p>
+                    <div class="flex items-center">
+                        <div class="w-12 h-12 bg-gray-300 rounded-full flex items-center justify-center mr-4">
+                            <span class="text-gray-600 font-bold">JS</span>
+                        </div>
+                        <div>
+                            <h4 class="font-bold">Jane Smith</h4>
+                            <p class="text-sm text-gray-600">Business Owner</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 3 -->
+                <div class="bg-white p-6 rounded-lg shadow-lg border-t-4 border-ee-red">
+                    <div class="flex items-center mb-4">
+                        <div class="text-ee-red">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                        <span class="ml-2 text-gray-600">4.5</span>
+                    </div>
+                    <p class="text-gray-600 italic mb-6">"The team at Everett Electric installed all the lighting for our new restaurant. They were creative, detail-oriented, and helped us achieve the perfect ambiance. Great value for the quality!"</p>
+                    <div class="flex items-center">
+                        <div class="w-12 h-12 bg-gray-300 rounded-full flex items-center justify-center mr-4">
+                            <span class="text-gray-600 font-bold">RJ</span>
+                        </div>
+                        <div>
+                            <h4 class="font-bold">Robert Johnson</h4>
+                            <p class="text-sm text-gray-600">Restaurant Owner</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-16 bg-ee-black text-white">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row items-center justify-between">
+                <div class="md:w-2/3 mb-8 md:mb-0">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4">Ready to Get Started?</h2>
+                    <p class="text-xl opacity-80">Contact us today for a free consultation and quote on your electrical project.</p>
+                </div>
+                <div>
+                    <a href="#contact" class="inline-block bg-ee-red hover:bg-red-700 text-white font-bold py-3 px-8 rounded-md transition duration-300 transform hover:scale-105">
+                        Request a Quote
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-16">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Contact Us</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Have questions or ready to start your project? Reach out to us using any of the methods below.</p>
+            </div>
+            
+            <div class="flex flex-col lg:flex-row gap-12">
+                <div class="lg:w-1/2">
+                    <form class="bg-white p-8 rounded-lg shadow-lg">
+                        <div class="mb-6">
+                            <label for="name" class="block text-gray-700 font-medium mb-2">Your Name</label>
+                            <input type="text" id="name" class="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-ee-red">
+                        </div>
+                        
+                        <div class="mb-6">
+                            <label for="email" class="block text-gray-700 font-medium mb-2">Email Address</label>
+                            <input type="email" id="email" class="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-ee-red">
+                        </div>
+                        
+                        <div class="mb-6">
+                            <label for="phone" class="block text-gray-700 font-medium mb-2">Phone Number</label>
+                            <input type="tel" id="phone" class="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-ee-red">
+                        </div>
+                        
+                        <div class="mb-6">
+                            <label for="service" class="block text-gray-700 font-medium mb-2">Service Needed</label>
+                            <select id="service" class="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-ee-red">
+                                <option value="">Select a Service</option>
+                                <option value="residential">Residential Electrical</option>
+                                <option value="commercial">Commercial Electrical</option>
+                                <option value="emergency">Emergency Service</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        
+                        <div class="mb-6">
+                            <label for="message" class="block text-gray-700 font-medium mb-2">Message</label>
+                            <textarea id="message" rows="4" class="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-ee-red"></textarea>
+                        </div>
+                        
+                        <button type="submit" class="w-full bg-ee-red hover:bg-red-700 text-white font-bold py-3 px-6 rounded-md transition duration-300">
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+                
+                <div class="lg:w-1/2">
+                    <div class="bg-ee-gray p-8 rounded-lg h-full">
+                        <h3 class="text-2xl font-bold mb-6">Get In Touch</h3>
+                        
+                        <div class="space-y-6">
+                            <div class="flex items-start">
+                                <div class="bg-ee-red rounded-full p-3 mr-4">
+                                    <i class="fas fa-map-marker-alt text-white"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-lg">Our Location</h4>
+                                    <p class="text-gray-600">123 Electric Avenue, Everett, WA 98201</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="bg-ee-red rounded-full p-3 mr-4">
+                                    <i class="fas fa-phone text-white"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-lg">Phone Number</h4>
+                                    <p class="text-gray-600">Office: (555) 456-7890</p>
+                                    <p class="text-gray-600">Emergency: (555) 123-4567</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="bg-ee-red rounded-full p-3 mr-4">
+                                    <i class="fas fa-envelope text-white"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-lg">Email Address</h4>
+                                    <p class="text-gray-600">info@everettelectric.com</p>
+                                    <p class="text-gray-600">support@everettelectric.com</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="bg-ee-red rounded-full p-3 mr-4">
+                                    <i class="fas fa-clock text-white"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-lg">Business Hours</h4>
+                                    <p class="text-gray-600">Monday - Friday: 8:00 AM - 6:00 PM</p>
+                                    <p class="text-gray-600">Saturday: 9:00 AM - 2:00 PM</p>
+                                    <p class="text-gray-600">Sunday: Closed (Emergency Services Available)</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-8">
+                            <h4 class="font-bold text-lg mb-4">Connect With Us</h4>
+                            <div class="flex space-x-4">
+                                <a href="#" class="bg-ee-red hover:bg-red-700 text-white w-10 h-10 rounded-full flex items-center justify-center transition duration-300">
+                                    <i class="fab fa-facebook-f"></i>
+                                </a>
+                                <a href="#" class="bg-ee-red hover:bg-red-700 text-white w-10 h-10 rounded-full flex items-center justify-center transition duration-300">
+                                    <i class="fab fa-twitter"></i>
+                                </a>
+                                <a href="#" class="bg-ee-red hover:bg-red-700 text-white w-10 h-10 rounded-full flex items-center justify-center transition duration-300">
+                                    <i class="fab fa-instagram"></i>
+                                </a>
+                                <a href="#" class="bg-ee-red hover:bg-red-700 text-white w-10 h-10 rounded-full flex items-center justify-center transition duration-300">
+                                    <i class="fab fa-linkedin-in"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="py-16 bg-ee-gray">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Frequently Asked Questions</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Find answers to common questions about our electrical services.</p>
+            </div>
+            
+            <div class="max-w-3xl mx-auto">
+                <div class="space-y-6">
+                    <!-- FAQ Item 1 -->
+                    <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                        <button class="faq-toggle w-full flex justify-between items-center p-6 focus:outline-none" onclick="toggleFAQ(this)">
+                            <h3 class="font-bold text-lg text-left">Are your electricians licensed and insured?</h3>
+                            <i class="fas fa-plus text-ee-red transition-transform duration-300"></i>
+                        </button>
+                        <div class="faq-content hidden px-6 pb-6">
+                            <p class="text-gray-600">Yes, all of our electricians are fully licensed, bonded, and insured. We maintain all required certifications and stay up-to-date with the latest electrical codes and safety standards.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- FAQ Item 2 -->
+                    <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                        <button class="faq-toggle w-full flex justify-between items-center p-6 focus:outline-none" onclick="toggleFAQ(this)">
+                            <h3 class="font-bold text-lg text-left">How quickly can you respond to an emergency?</h3>
+                            <i class="fas fa-plus text-ee-red transition-transform duration-300"></i>
+                        </button>
+                        <div class="faq-content hidden px-6 pb-6">
+                            <p class="text-gray-600">We offer 24/7 emergency electrical services and typically respond within 30-60 minutes of your call, depending on your location and the current demand for emergency services.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- FAQ Item 3 -->
+                    <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                        <button class="faq-toggle w-full flex justify-between items-center p-6 focus:outline-none" onclick="toggleFAQ(this)">
+                            <h3 class="font-bold text-lg text-left">Do you provide free estimates?</h3>
+                            <i class="fas fa-plus text-ee-red transition-transform duration-300"></i>
+                        </button>
+                        <div class="faq-content hidden px-6 pb-6">
+                            <p class="text-gray-600">Yes, we provide free estimates for all electrical projects. We'll assess your needs, discuss options, and provide a detailed quote before any work begins.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- FAQ Item 4 -->
+                    <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                        <button class="faq-toggle w-full flex justify-between items-center p-6 focus:outline-none" onclick="toggleFAQ(this)">
+                            <h3 class="font-bold text-lg text-left">What types of payment do you accept?</h3>
+                            <i class="fas fa-plus text-ee-red transition-transform duration-300"></i>
+                        </button>
+                        <div class="faq-content hidden px-6 pb-6">
+                            <p class="text-gray-600">We accept all major credit cards, checks, and cash. For larger projects, we also offer financing options with approved credit.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- FAQ Item 5 -->
+                    <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                        <button class="faq-toggle w-full flex justify-between items-center p-6 focus:outline-none" onclick="toggleFAQ(this)">
+                            <h3 class="font-bold text-lg text-left">Do you offer warranties on your work?</h3>
+                            <i class="fas fa-plus text-ee-red transition-transform duration-300"></i>
+                        </button>
+                        <div class="faq-content hidden px-6 pb-6">
+                            <p class="text-gray-600">Yes, we stand behind our work with a 1-year warranty on labor. Additionally, most electrical products and parts we install come with manufacturer warranties.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-ee-black text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Company Info -->
+                <div>
+                    <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Screenshot%202025-05-09%20151024-MSBZAAqgiTMkdHNGBGzv2CVkeWWp5u.png" alt="Everett Electric Logo" class="h-16 mb-4">
+                    <p class="text-gray-400 mb-4">Professional electrical services for residential and commercial properties. Licensed, insured, and ready to serve.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white transition duration-300">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition duration-300">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition duration-300">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition duration-300">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Quick Links -->
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#home" class="text-gray-400 hover:text-white transition duration-300">Home</a></li>
+                        <li><a href="#services" class="text-gray-400 hover:text-white transition duration-300">Services</a></li>
+                        <li><a href="#about" class="text-gray-400 hover:text-white transition duration-300">About Us</a></li>
+                        <li><a href="#projects" class="text-gray-400 hover:text-white transition duration-300">Projects</a></li>
+                        <li><a href="#testimonials" class="text-gray-400 hover:text-white transition duration-300">Testimonials</a></li>
+                        <li><a href="#contact" class="text-gray-400 hover:text-white transition duration-300">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Services -->
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Our Services</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300">Residential Electrical</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300">Commercial Electrical</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300">Emergency Services</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300">Lighting Installation</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300">Panel Upgrades</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300">Smart Home Wiring</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Contact Info -->
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Contact Info</h3>
+                    <ul class="space-y-4">
+                        <li class="flex items-start">
+                            <i class="fas fa-map-marker-alt text-ee-red mt-1 mr-3"></i>
+                            <span>123 Electric Avenue, Everett, WA 98201</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-phone text-ee-red mt-1 mr-3"></i>
+                            <div>
+                                <p>Office: (555) 456-7890</p>
+                                <p>Emergency: (555) 123-4567</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-envelope text-ee-red mt-1 mr-3"></i>
+                            <span>info@everettelectric.com</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-clock text-ee-red mt-1 mr-3"></i>
+                            <div>
+                                <p>Mon-Fri: 8:00 AM - 6:00 PM</p>
+                                <p>Sat: 9:00 AM - 2:00 PM</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <hr class="border-gray-800 my-8">
+            
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-400">&copy; 2025 Everett Electric. All rights reserved.</p>
+                <div class="mt-4 md:mt-0">
+                    <a href="#" class="text-gray-400 hover:text-white mx-2 transition duration-300">Privacy Policy</a>
+                    <a href="#" class="text-gray-400 hover:text-white mx-2 transition duration-300">Terms of Service</a>
+                    <a href="#" class="text-gray-400 hover:text-white mx-2 transition duration-300">Sitemap</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button id="back-to-top" class="fixed bottom-6 right-6 bg-ee-red text-white w-12 h-12 rounded-full flex items-center justify-center shadow-lg transform transition-transform duration-300 hover:scale-110 opacity-0 invisible">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Lightning Animation CSS -->
+    <style>
+        .lightning {
+            background: linear-gradient(to bottom, rgba(255,255,255,0) 0%, rgba(255,255,255,0.6) 50%, rgba(255,255,255,0) 100%);
+            transform: rotate(45deg);
+            animation: lightning 15s infinite cubic-bezier(0.4, 0, 0.6, 1);
+        }
+        
+        @keyframes lightning {
+            0% { opacity: 0; }
+            5% { opacity: 0.05; }
+            10% { opacity: 0.1; }
+            15% { opacity: 0.15; }
+            20% { opacity: 0.2; }
+            25% { opacity: 0.15; }
+            30% { opacity: 0.1; }
+            35% { opacity: 0.05; }
+            40% { opacity: 0; }
+            65% { opacity: 0; }
+            70% { opacity: 0.05; }
+            75% { opacity: 0.1; }
+            80% { opacity: 0.15; }
+            85% { opacity: 0.2; }
+            90% { opacity: 0.15; }
+            95% { opacity: 0.1; }
+            100% { opacity: 0; }
+        }
+    </style>
+
+    <!-- JavaScript -->
+    <script>
+        // Mobile Menu Toggle
+        document.getElementById('menu-toggle').addEventListener('click', function() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // FAQ Toggle
+        function toggleFAQ(element) {
+            const content = element.nextElementSibling;
+            const icon = element.querySelector('i');
+            
+            content.classList.toggle('hidden');
+            icon.classList.toggle('fa-plus');
+            icon.classList.toggle('fa-minus');
+            icon.classList.toggle('rotate-45');
+        }
+        
+        // Back to Top Button
+        const backToTopButton = document.getElementById('back-to-top');
+        
+        window.addEventListener('scroll', function() {
+            if (window.pageYOffset > 300) {
+                backToTopButton.classList.remove('opacity-0', 'invisible');
+                backToTopButton.classList.add('opacity-100', 'visible');
+            } else {
+                backToTopButton.classList.remove('opacity-100', 'visible');
+                backToTopButton.classList.add('opacity-0', 'invisible');
+            }
+        });
+        
+        backToTopButton.addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    </script>
+</body>
+</html>

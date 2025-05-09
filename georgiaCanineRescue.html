@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Georgia Canine Rescue & Rehab</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#3b82f6',
+                        secondary: '#10b981',
+                        accent: '#f59e0b',
+                    },
+                    fontFamily: {
+                        sans: ['Poppins', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+</head>
+<body class="font-sans bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="text-2xl font-bold text-primary">
+                <span class="text-secondary">GEORGIA</span> CANINE RESCUE & REHAB
+            </div>
+            <div class="hidden md:flex space-x-6">
+                <a href="#" class="font-medium hover:text-accent">HOME</a>
+                <a href="#" class="font-medium hover:text-accent">ADOPTABLES</a>
+                <a href="#" class="font-medium hover:text-accent">SERVICES</a>
+                <a href="#" class="font-medium hover:text-accent">NEWS & EVENTS</a>
+                <a href="#" class="font-medium hover:text-accent">GET INVOLVED</a>
+            </div>
+            <button class="md:hidden">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="bg-gradient-to-r from-primary to-secondary text-white py-20">
+        <div class="container mx-auto px-4 text-center">
+            <h1 class="text-4xl md:text-5xl font-bold mb-6">YOUR PETS DESERVE A LOVING HOME</h1>
+            <p class="text-xl mb-8 max-w-3xl mx-auto">There aren't enough homes for them all. Help us rescue and rehabilitate homeless animals in Georgia.</p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="#" class="bg-accent hover:bg-yellow-600 text-white font-bold py-3 px-6 rounded-lg transition duration-300">ADOPT TODAY</a>
+                <a href="#" class="bg-white hover:bg-gray-100 text-primary font-bold py-3 px-6 rounded-lg transition duration-300">DONATE NOW</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">ABOUT OUR ORGANIZATION</h2>
+                <div class="w-20 h-1 bg-accent mx-auto"></div>
+            </div>
+            <div class="max-w-4xl mx-auto text-lg text-gray-700 text-center">
+                <p class="mb-6">Georgia Canine Rescue is a 501(c)(3) organization focusing on animal welfare and education. Aside from the rescue and rehab of voiceless animals, we also offer services to the public including full service grooming and a spay/neuter and vaccination clinic.</p>
+                <p>We offer private boarding to animal rescue organizations.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Dogs -->
+    <section class="py-16 bg-gray-100">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">FEATURED ADOPTABLES</h2>
+                <div class="w-20 h-1 bg-accent mx-auto"></div>
+            </div>
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Dog Card 1 -->
+                <div class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition duration-300">
+                    <img src="https://images.unsplash.com/photo-1586671267731-da2cf3ceeb80?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Hershey" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">Hershey</h3>
+                        <p class="text-gray-600 mb-4">1 year old • Female • Chihuahua</p>
+                        <p class="text-gray-700 mb-4">Sight impaired, dog and cat friendly</p>
+                        <a href="#" class="text-primary font-medium hover:text-accent transition duration-300">Meet Hershey →</a>
+                    </div>
+                </div>
+                
+                <!-- Dog Card 2 -->
+                <div class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition duration-300">
+                    <img src="https://images.unsplash.com/photo-1537151608828-ea2b11777ee8?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Dog" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">Nester</h3>
+                        <p class="text-gray-600 mb-4">3 years old • Male • Mixed Breed</p>
+                        <p class="text-gray-700 mb-4">Loves children and other dogs</p>
+                        <a href="#" class="text-primary font-medium hover:text-accent transition duration-300">Meet Nester →</a>
+                    </div>
+                </div>
+                
+                <!-- Dog Card 3 -->
+                <div class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition duration-300">
+                    <img src="https://images.unsplash.com/photo-1544568100-847a948585b9?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Dog" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">Spoy</h3>
+                        <p class="text-gray-600 mb-4">2 years old • Female • Labrador Mix</p>
+                        <p class="text-gray-700 mb-4">Energetic and loves to play</p>
+                        <a href="#" class="text-primary font-medium hover:text-accent transition duration-300">Meet Spoy →</a>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-10">
+                <a href="#" class="inline-block bg-primary hover:bg-blue-600 text-white font-bold py-3 px-6 rounded-lg transition duration-300">VIEW ALL ADOPTABLES</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">OUR SERVICES</h2>
+                <div class="w-20 h-1 bg-accent mx-auto"></div>
+            </div>
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Rescue Board -->
+                <div class="bg-gray-100 p-8 rounded-lg text-center">
+                    <div class="w-16 h-16 bg-primary text-white rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3">RESCUE BOARD</h3>
+                    <p class="text-gray-700">We provide quality, affordable boarding by rescue-experienced staff for other rescue organizations in immediate need situations.</p>
+                    <a href="#" class="mt-4 inline-block text-primary font-medium hover:text-accent transition duration-300">Learn More →</a>
+                </div>
+                
+                <!-- Grooming -->
+                <div class="bg-gray-100 p-8 rounded-lg text-center">
+                    <div class="w-16 h-16 bg-primary text-white rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3">GROOMING</h3>
+                    <p class="text-gray-700">Full-service grooming to keep your pets looking and feeling their best, with all proceeds supporting our rescue efforts.</p>
+                    <a href="#" class="mt-4 inline-block text-primary font-medium hover:text-accent transition duration-300">Learn More →</a>
+                </div>
+                
+                <!-- Community Clinic -->
+                <div class="bg-gray-100 p-8 rounded-lg text-center">
+                    <div class="w-16 h-16 bg-primary text-white rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3">COMMUNITY CLINIC</h3>
+                    <p class="text-gray-700">Affordable spay/neuter and vaccination services to help keep pets healthy and reduce overpopulation in our community.</p>
+                    <a href="#" class="mt-4 inline-block text-primary font-medium hover:text-accent transition duration-300">Learn More →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Events Section -->
+    <section class="py-16 bg-secondary text-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold mb-4">UPCOMING EVENTS</h2>
+                <div class="w-20 h-1 bg-accent mx-auto"></div>
+            </div>
+            <div class="max-w-2xl mx-auto bg-white text-gray-800 rounded-lg shadow-lg overflow-hidden">
+                <div class="p-6">
+                    <h3 class="text-2xl font-bold text-primary mb-2">Georgia Canine Bark Park!</h3>
+                    <p class="mb-4">Georgia Canine Rescue's Bark Park is a fully fenced and secure off-leash park. It is accessed by a secure pin to keep all registered pets safe, happy and healthy.</p>
+                    <p class="font-bold">Location: 203 Mac Thompson Rd, Cochran, GA 31014</p>
+                    <div class="mt-6">
+                        <a href="#" class="inline-block bg-accent hover:bg-yellow-600 text-white font-bold py-2 px-4 rounded transition duration-300">JOIN THE FUN!</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Get Involved Section -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">GET INVOLVED</h2>
+                <div class="w-20 h-1 bg-accent mx-auto"></div>
+            </div>
+            <div class="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+                <a href="#" class="bg-gray-100 hover:bg-gray-200 p-6 rounded-lg text-center transition duration-300">
+                    <h3 class="text-xl font-bold text-gray-800 mb-3">FOSTER</h3>
+                    <p class="text-gray-700 mb-4">Provide temporary homes for dogs in need</p>
+                    <span class="text-primary font-medium">Apply Now →</span>
+                </a>
+                <a href="#" class="bg-gray-100 hover:bg-gray-200 p-6 rounded-lg text-center transition duration-300">
+                    <h3 class="text-xl font-bold text-gray-800 mb-3">ADOPT</h3>
+                    <p class="text-gray-700 mb-4">Give a forever home to a deserving dog</p>
+                    <span class="text-primary font-medium">Apply Now →</span>
+                </a>
+                <a href="#" class="bg-gray-100 hover:bg-gray-200 p-6 rounded-lg text-center transition duration-300">
+                    <h3 class="text-xl font-bold text-gray-800 mb-3">VOLUNTEER</h3>
+                    <p class="text-gray-700 mb-4">Help with daily operations and events</p>
+                    <span class="text-primary font-medium">Apply Now →</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-3 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">GEORGIA CANINE RESCUE & REHAB</h3>
+                    <p class="mb-4">A 501(c)(3) organization focusing on animal welfare and education through rescue, rehabilitation, and community services.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="hover:text-accent transition duration-300">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"></path>
+                            </svg>
+                        </a>
+                        <a href="#" class="hover:text-accent transition duration-300">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z"></path>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-4">CONTACT US</h3>
+                    <p class="mb-2">235 Mac Thompson Rd.</p>
+                    <p class="mb-2">Cochran, GA 31014</p>
+                    <p class="mb-2">Phone: 478.271.4277</p>
+                    <p class="mb-4">Email: gcrra@yahoo.com</p>
+                    <a href="#" class="inline-block bg-primary hover:bg-blue-600 text-white font-bold py-2 px-4 rounded transition duration-300">CONTACT FORM</a>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-4">QUICK LINKS</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="hover:text-accent transition duration-300">Adoption Process</a></li>
+                        <li><a href="#" class="hover:text-accent transition duration-300">Donation Information</a></li>
+                        <li><a href="#" class="hover:text-accent transition duration-300">Volunteer Opportunities</a></li>
+                        <li><a href="#" class="hover:text-accent transition duration-300">Upcoming Events</a></li>
+                        <li><a href="#" class="hover:text-accent transition duration-300">Service Pricing</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2023 Georgia Canine Rescue & Rehab. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
