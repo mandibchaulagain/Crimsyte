@@ -1,97 +1,1430 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Pistol Pressure Washing of Georgia</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
-  <style>
-    body {
-      font-family: 'Inter', sans-serif;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pistol Pressure Washing of Georgia | Professional Exterior Cleaning Services</title>
+    <meta name="description" content="Pistol Pressure Washing offers premium pressure washing services in Georgia including house washing, roof cleaning, concrete cleaning, and more. 100% satisfaction guaranteed.">
+    <meta name="keywords" content="pressure washing, Georgia, house cleaning, roof cleaning, gutter cleaning, window cleaning, concrete cleaning, driveway cleaning, commercial pressure washing">
+    
+    <!-- Open Graph / Social Media Meta Tags -->
+    <meta property="og:title" content="Pistol Pressure Washing of Georgia | Professional Exterior Cleaning">
+    <meta property="og:description" content="Premium pressure washing services with 100% satisfaction guarantee. Residential and commercial cleaning solutions.">
+    <meta property="og:image" content="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-9v63SzICk14frnbXcB8vl0KITNEJDr.png">
+    <meta property="og:url" content="https://pistolpressurewashing.com">
+    <meta property="og:type" content="website">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#0066cc',
+                        secondary: '#ff3333',
+                        dark: '#003366',
+                        light: '#e6f2ff',
+                    },
+                    fontFamily: {
+                        sans: ['Montserrat', 'sans-serif'],
+                        heading: ['Raleway', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Raleway:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Three.js -->
+    <script src="https://cdn.jsdelivr.net/npm/three@0.132.2/build/three.min.js"></script>
+    
+    <style>
+        /* Custom Styles */
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        .text-shadow {
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        
+        .water-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+        
+        .service-card {
+            transition: all 0.3s ease;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .before-after-slider {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .slider-before, .slider-after {
+            position: absolute;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            transition: all 0.3s ease;
+        }
+        
+        .slider-before {
+            left: 0;
+            z-index: 1;
+        }
+        
+        .slider-after {
+            right: 0;
+            z-index: 2;
+            clip-path: polygon(50% 0, 100% 0, 100% 100%, 50% 100%);
+        }
+        
+        .slider-handle {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            width: 4px;
+            background: white;
+            z-index: 3;
+            cursor: ew-resize;
+            transform: translateX(-50%);
+        }
+        
+        .slider-handle::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 40px;
+            height: 40px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        }
+        
+        .slider-handle::after {
+            content: '↔';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #0066cc;
+            font-size: 20px;
+            font-weight: bold;
+        }
+        
+        .testimonial-card {
+            transition: all 0.3s ease;
+        }
+        
+        .testimonial-card:hover {
+            transform: scale(1.03);
+        }
+        
+        .water-drop {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: rgba(255, 255, 255, 0.7);
+            border-radius: 50%;
+            animation: fall linear forwards;
+        }
+        
+        @keyframes fall {
+            to {
+                transform: translateY(100vh);
+                opacity: 0;
+            }
+        }
+        
+        .gradient-text {
+            background: linear-gradient(90deg, #0066cc, #00ccff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .cta-button {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: all 0.6s;
+        }
+        
+        .cta-button:hover::before {
+            left: 100%;
+        }
+        
+        .sticky-header {
+            transition: all 0.3s ease;
+        }
+        
+        .sticky-header.scrolled {
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+        
+        .sticky-header.scrolled .nav-link {
+            color: #003366;
+        }
+        
+        .sticky-header.scrolled .logo-text {
+            color: #0066cc;
+        }
+        
+        .service-icon {
+            transition: all 0.3s ease;
+        }
+        
+        .service-card:hover .service-icon {
+            transform: scale(1.2) rotate(10deg);
+        }
+        
+        .scroll-indicator {
+            animation: bounce 2s infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-20px);
+            }
+            60% {
+                transform: translateY(-10px);
+            }
+        }
+        
+        .loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease, visibility 0.5s ease;
+        }
+        
+        .loader.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+        
+        .loader-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .loader-spinner {
+            width: 50px;
+            height: 50px;
+            border: 5px solid #f3f3f3;
+            border-top: 5px solid #0066cc;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-bottom: 20px;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .water-animation {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.3;
+        }
+    </style>
 </head>
-<body class="bg-white text-gray-900">
-
-  <!-- Hero Section -->
-  <section class="relative bg-[url('https://images.unsplash.com/photo-1600121848594-466f91e3a52b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80')] bg-cover bg-center text-white py-24 px-6">
-    <div class="bg-blue-900/80 absolute inset-0"></div>
-    <div class="relative z-10 max-w-4xl mx-auto text-center">
-      <h1 class="text-5xl font-extrabold mb-4 leading-tight">Professional Pressure Washing in Georgia</h1>
-      <p class="text-xl mb-6">Fast • Affordable • Reliable. House washes starting at just <span class="text-yellow-300 font-bold">$149!</span></p>
-      <a href="tel:4783182336" class="bg-yellow-400 text-blue-900 px-8 py-3 text-lg font-semibold rounded-full shadow-lg hover:bg-yellow-300 transition transform hover:scale-105 inline-block">📞 Call Now: 478-318-2336</a>
-    </div>
-  </section>
-
-  <!-- Services Section -->
-  <section class="py-20 px-6 bg-gray-50 text-center">
-    <h2 class="text-4xl font-bold text-blue-800 mb-10">Our Services</h2>
-    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10 max-w-6xl mx-auto">
-      <div class="bg-white p-6 rounded-xl shadow hover:shadow-xl transition">
-        <div class="text-4xl text-blue-600 mb-4">🏠</div>
-        <h3 class="text-xl font-semibold mb-2">House Washing</h3>
-        <p>Thorough, safe exterior cleaning that restores your home’s curb appeal.</p>
-      </div>
-      <div class="bg-white p-6 rounded-xl shadow hover:shadow-xl transition">
-        <div class="text-4xl text-blue-600 mb-4">🚗</div>
-        <h3 class="text-xl font-semibold mb-2">Driveways & Parking Lots</h3>
-        <p>Eliminate oil stains, grime, and buildup from concrete and asphalt.</p>
-      </div>
-      <div class="bg-white p-6 rounded-xl shadow hover:shadow-xl transition">
-        <div class="text-4xl text-blue-600 mb-4">🪟</div>
-        <h3 class="text-xl font-semibold mb-2">Windows & Roofs</h3>
-        <p>Soft washing techniques protect delicate surfaces while removing dirt.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Why Choose Us -->
-  <section class="bg-white py-20 px-6">
-    <div class="max-w-5xl mx-auto text-center">
-      <h2 class="text-4xl font-bold text-blue-800 mb-6">Why Homeowners Trust Pistol Pressure Washing</h2>
-      <div class="grid md:grid-cols-3 gap-8 text-left mt-10">
-        <div class="p-6 bg-blue-50 rounded-xl shadow">
-          <h3 class="text-lg font-semibold mb-2">✅ Fully Licensed & Insured</h3>
-          <p>You're protected. We carry full coverage for peace of mind.</p>
+<body class="font-sans text-gray-800 overflow-x-hidden">
+    <!-- Page Loader -->
+    <div class="loader" id="loader">
+        <div class="loader-content">
+            <div class="loader-spinner"></div>
+            <div class="text-primary font-bold text-xl">Pistol Pressure Washing</div>
+            <div class="text-gray-500">Loading premium experience...</div>
         </div>
-        <div class="p-6 bg-blue-50 rounded-xl shadow">
-          <h3 class="text-lg font-semibold mb-2">💸 Affordable Flat Rates</h3>
-          <p>Transparent pricing — no upsells, no surprises. Starting at $149!</p>
-        </div>
-        <div class="p-6 bg-blue-50 rounded-xl shadow">
-          <h3 class="text-lg font-semibold mb-2">🌟 Local & Trusted</h3>
-          <p>Serving Monroe, GA and nearby areas with 5-star service and care.</p>
-        </div>
-      </div>
     </div>
-  </section>
 
-  <!-- Gallery Section -->
-  <section class="py-20 px-6 bg-gray-100">
-    <div class="max-w-6xl mx-auto">
-      <h2 class="text-4xl font-bold text-blue-800 text-center mb-12">Before & After Our Work</h2>
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-        <img src="your-before-after-1.jpg" class="rounded-lg shadow" alt="Gallery 1">
-        <img src="your-before-after-2.jpg" class="rounded-lg shadow" alt="Gallery 2">
-        <img src="your-before-after-3.jpg" class="rounded-lg shadow" alt="Gallery 3">
-        <img src="your-before-after-4.jpg" class="rounded-lg shadow" alt="Gallery 4">
-      </div>
-    </div>
-  </section>
+    <!-- Header -->
+    <header class="sticky-header fixed w-full top-0 z-50 transition-all duration-300" id="header">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <div class="flex items-center">
+                <div class="mr-2">
+                    <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-9v63SzICk14frnbXcB8vl0KITNEJDr.png" alt="Pistol Pressure Washing Logo" class="h-12 w-auto">
+                </div>
+                <div>
+                    <h1 class="logo-text text-white font-heading font-bold text-2xl">PISTOL <span class="text-secondary">PRESSURE WASHING</span></h1>
+                    <p class="text-white text-xs">OF GEORGIA</p>
+                </div>
+            </div>
+            
+            <nav class="hidden md:flex space-x-8">
+                <a href="#home" class="nav-link text-white font-medium hover:text-secondary transition-colors">Home</a>
+                <a href="#services" class="nav-link text-white font-medium hover:text-secondary transition-colors">Services</a>
+                <a href="#about" class="nav-link text-white font-medium hover:text-secondary transition-colors">About</a>
+                <a href="#gallery" class="nav-link text-white font-medium hover:text-secondary transition-colors">Gallery</a>
+                <a href="#testimonials" class="nav-link text-white font-medium hover:text-secondary transition-colors">Testimonials</a>
+                <a href="#contact" class="nav-link text-white font-medium hover:text-secondary transition-colors">Contact</a>
+            </nav>
+            
+            <div class="hidden md:block">
+                <a href="tel:4783182336" class="flex items-center text-white">
+                    <i class="fas fa-phone-alt mr-2 bg-secondary p-2 rounded-full"></i>
+                    <span class="font-bold">(478) 318-2336</span>
+                </a>
+            </div>
+            
+            <button class="md:hidden text-white text-2xl" id="mobile-menu-button">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div class="md:hidden bg-primary hidden w-full" id="mobile-menu">
+            <div class="container mx-auto px-4 py-4 flex flex-col space-y-4">
+                <a href="#home" class="text-white font-medium hover:text-secondary transition-colors">Home</a>
+                <a href="#services" class="text-white font-medium hover:text-secondary transition-colors">Services</a>
+                <a href="#about" class="text-white font-medium hover:text-secondary transition-colors">About</a>
+                <a href="#gallery" class="text-white font-medium hover:text-secondary transition-colors">Gallery</a>
+                <a href="#testimonials" class="text-white font-medium hover:text-secondary transition-colors">Testimonials</a>
+                <a href="#contact" class="text-white font-medium hover:text-secondary transition-colors">Contact</a>
+                <a href="tel:4783182336" class="flex items-center text-white">
+                    <i class="fas fa-phone-alt mr-2 bg-secondary p-2 rounded-full"></i>
+                    <span class="font-bold">(478) 318-2336</span>
+                </a>
+            </div>
+        </div>
+    </header>
 
-  <!-- CTA Banner -->
-  <section class="bg-blue-700 text-white py-16 px-6 text-center">
-    <h2 class="text-3xl font-bold mb-4">Let’s Make Your Home Shine</h2>
-    <p class="text-lg mb-6">Quick service. Honest pricing. Guaranteed satisfaction.</p>
-    <a href="tel:4783182336" class="bg-yellow-400 text-blue-900 px-8 py-3 rounded-full text-lg font-bold shadow-lg hover:bg-yellow-300 transition transform hover:scale-105 inline-block">📲 Call Now: 478-318-2336</a>
-  </section>
+    <!-- Hero Section -->
+    <section id="home" class="relative min-h-screen flex items-center justify-center bg-primary overflow-hidden">
+        <div class="water-animation" id="water-canvas"></div>
+        
+        <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-primary/80 to-dark/90 z-0"></div>
+        
+        <div class="container mx-auto px-4 py-20 pt-32 z-10 relative">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-10 md:mb-0">
+                    <h2 class="text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-white leading-tight mb-6 text-shadow">
+                        Transform Your Property With <span class="text-secondary">Professional</span> Pressure Washing
+                    </h2>
+                    <p class="text-xl text-white/90 mb-8 max-w-lg">
+                        Premium exterior cleaning services for residential and commercial properties in Georgia. 100% satisfaction guaranteed.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <a href="#contact" class="cta-button bg-secondary hover:bg-red-600 text-white font-bold py-4 px-8 rounded-lg transition-all duration-300 text-center">
+                            Get Free Estimate
+                        </a>
+                        <a href="#services" class="bg-white hover:bg-gray-100 text-primary font-bold py-4 px-8 rounded-lg transition-all duration-300 text-center">
+                            Our Services
+                        </a>
+                    </div>
+                    
+                    <div class="mt-12 flex items-center">
+                        <div class="bg-white/20 backdrop-blur-sm rounded-lg p-4 flex items-center">
+                            <div class="bg-blue-600 rounded-full p-3 mr-4">
+                                <i class="fas fa-award text-white text-2xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-white font-bold text-lg">100% Satisfaction</h3>
+                                <p class="text-white/80">Guaranteed or your money back</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="md:w-1/2 relative">
+                    <div class="relative rounded-lg overflow-hidden shadow-2xl">
+                        <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-9v63SzICk14frnbXcB8vl0KITNEJDr.png" alt="Pistol Pressure Washing Services" class="w-full h-auto rounded-lg">
+                        <div class="absolute bottom-0 left-0 w-full bg-gradient-to-t from-dark/80 to-transparent p-6">
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <h3 class="text-white font-bold text-xl">Professional Service</h3>
+                                    <p class="text-white/80">Residential & Commercial</p>
+                                </div>
+                                <div class="bg-secondary text-white font-bold py-2 px-4 rounded-full">
+                                    Since 2010
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="absolute -bottom-6 -right-6 bg-white rounded-lg shadow-xl p-4 max-w-xs">
+                        <div class="flex items-center mb-2">
+                            <div class="text-yellow-400 flex">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <div class="ml-2 font-bold">5.0</div>
+                        </div>
+                        <p class="text-gray-600 text-sm">
+                            "Best pressure washing service in Georgia! My house looks brand new!"
+                        </p>
+                        <div class="mt-2 text-xs text-gray-500">
+                            - Sarah Johnson, Macon
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 scroll-indicator">
+                <a href="#services" class="text-white text-center">
+                    <div class="text-sm uppercase tracking-wider mb-2">Scroll Down</div>
+                    <i class="fas fa-chevron-down text-2xl"></i>
+                </a>
+            </div>
+        </div>
+    </section>
 
-  <!-- Footer -->
-  <footer class="bg-blue-900 text-white text-sm py-6 text-center">
-    <p>&copy; 2025 Pistol Pressure Washing of Georgia • Residential & Commercial • Monroe, GA</p>
-    <p>Call us: <a href="tel:4783182336" class="underline">478-318-2336</a></p>
-  </footer>
+    <!-- Services Section -->
+    <section id="services" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-heading font-bold text-gray-800 mb-4">Our Premium Services</h2>
+                <div class="w-24 h-1 bg-primary mx-auto mb-6"></div>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    We offer a comprehensive range of exterior cleaning services to keep your property looking its best year-round.
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Service 1 -->
+                <div class="service-card bg-white rounded-xl shadow-lg overflow-hidden">
+                    <div class="h-48 bg-primary/10 flex items-center justify-center">
+                        <div class="service-icon text-primary text-6xl">
+                            <i class="fas fa-home"></i>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-3">House Washing</h3>
+                        <p class="text-gray-600 mb-4">
+                            Our soft washing technique safely removes dirt, mold, mildew, and algae from your home's exterior without damaging surfaces.
+                        </p>
+                        <ul class="space-y-2 mb-6">
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                                <span>Removes unsightly stains</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                                <span>Prevents damage from mold</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                                <span>Improves curb appeal</span>
+                            </li>
+                        </ul>
+                        <a href="#contact" class="inline-block text-primary font-bold hover:text-primary/80 transition-colors">
+                            Learn More <i class="fas fa-arrow-right ml-1"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Service 2 -->
+                <div class="service-card bg-white rounded-xl shadow-lg overflow-hidden">
+                    <div class="h-48 bg-primary/10 flex items-center justify-center">
+                        <div class="service-icon text-primary text-6xl">
+                            <i class="fas fa-water"></i>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-3">Roof Cleaning</h3>
+                        <p class="text-gray-600 mb-4">
+                            Our specialized roof cleaning process safely removes black streaks, moss, and algae without damaging your shingles.
+                        </p>
+                        <ul class="space-y-2 mb-6">
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                                <span>Extends roof lifespan</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                                <span>Improves energy efficiency</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                                <span>Prevents costly repairs</span>
+                            </li>
+                        </ul>
+                        <a href="#contact" class="inline-block text-primary font-bold hover:text-primary/80 transition-colors">
+                            Learn More <i class="fas fa-arrow-right ml-1"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Service 3 -->
+                <div class="service-card bg-white rounded-xl shadow-lg overflow-hidden">
+                    <div class="h-48 bg-primary/10 flex items-center justify-center">
+                        <div class="service-icon text-primary text-6xl">
+                            <i class="fas fa-road"></i>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-3">Concrete Cleaning</h3>
+                        <p class="text-gray-600 mb-4">
+                            Restore your driveways, sidewalks, and patios to like-new condition with our professional concrete cleaning service.
+                        </p>
+                        <ul class="space-y-2 mb-6">
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                                <span>Removes oil stains</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                                <span>Eliminates slip hazards</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                                <span>Enhances property value</span>
+                            </li>
+                        </ul>
+                        <a href="#contact" class="inline-block text-primary font-bold hover:text-primary/80 transition-colors">
+                            Learn More <i class="fas fa-arrow-right ml-1"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Service 4 -->
+                <div class="service-card bg-white rounded-xl shadow-lg overflow-hidden">
+                    <div class="h-48 bg-primary/10 flex items-center justify-center">
+                        <div class="service-icon text-primary text-6xl">
+                            <i class="fas fa-wind"></i>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-3">Gutter Cleaning</h3>
+                        <p class="text-gray-600 mb-4">
+                            Keep your gutters flowing freely with our thorough gutter cleaning service, preventing water damage to your home.
+                        </p>
+                        <ul class="space-y-2 mb-6">
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                                <span>Prevents water damage</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                                <span>Eliminates pest breeding grounds</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                                <span>Extends gutter lifespan</span>
+                            </li>
+                        </ul>
+                        <a href="#contact" class="inline-block text-primary font-bold hover:text-primary/80 transition-colors">
+                            Learn More <i class="fas fa-arrow-right ml-1"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Service 5 -->
+                <div class="service-card bg-white rounded-xl shadow-lg overflow-hidden">
+                    <div class="h-48 bg-primary/10 flex items-center justify-center">
+                        <div class="service-icon text-primary text-6xl">
+                            <i class="fas fa-window-restore"></i>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-3">Window Cleaning</h3>
+                        <p class="text-gray-600 mb-4">
+                            Crystal clear windows that let in more light and improve your view with our professional window cleaning service.
+                        </p>
+                        <ul class="space-y-2 mb-6">
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                                <span>Streak-free results</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                                <span>Removes hard water stains</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                                <span>Improves natural lighting</span>
+                            </li>
+                        </ul>
+                        <a href="#contact" class="inline-block text-primary font-bold hover:text-primary/80 transition-colors">
+                            Learn More <i class="fas fa-arrow-right ml-1"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Service 6 -->
+                <div class="service-card bg-white rounded-xl shadow-lg overflow-hidden">
+                    <div class="h-48 bg-primary/10 flex items-center justify-center">
+                        <div class="service-icon text-primary text-6xl">
+                            <i class="fas fa-building"></i>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-3">Commercial Cleaning</h3>
+                        <p class="text-gray-600 mb-4">
+                            Maintain a professional appearance for your business with our commercial pressure washing services.
+                        </p>
+                        <ul class="space-y-2 mb-6">
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                                <span>Improves business image</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                                <span>Scheduled maintenance plans</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                                <span>OSHA compliant cleaning</span>
+                            </li>
+                        </ul>
+                        <a href="#contact" class="inline-block text-primary font-bold hover:text-primary/80 transition-colors">
+                            Learn More <i class="fas fa-arrow-right ml-1"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-16 text-center">
+                <a href="#contact" class="cta-button bg-primary hover:bg-primary/90 text-white font-bold py-4 px-8 rounded-lg transition-all duration-300 inline-block">
+                    Get Your Free Estimate Today
+                </a>
+            </div>
+        </div>
+    </section>
 
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col lg:flex-row items-center gap-12">
+                <div class="lg:w-1/2">
+                    <h2 class="text-4xl font-heading font-bold text-gray-800 mb-6">Georgia's Premier Pressure Washing Company</h2>
+                    <div class="w-24 h-1 bg-primary mb-6"></div>
+                    <p class="text-lg text-gray-600 mb-6">
+                        At Pistol Pressure Washing of Georgia, we've built our reputation on delivering exceptional results and outstanding customer service. With years of experience in the industry, we understand the unique cleaning challenges faced by property owners in Georgia.
+                    </p>
+                    <p class="text-lg text-gray-600 mb-6">
+                        Our team of trained professionals uses state-of-the-art equipment and eco-friendly cleaning solutions to ensure the best possible results without harming your property or the environment.
+                    </p>
+                    
+                    <div class="grid grid-cols-2 gap-6 mb-8">
+                        <div class="flex items-start">
+                            <div class="bg-primary/10 p-3 rounded-full mr-4">
+                                <i class="fas fa-shield-alt text-primary text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-gray-800 mb-1">Fully Insured</h3>
+                                <p class="text-gray-600 text-sm">For your complete peace of mind</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="bg-primary/10 p-3 rounded-full mr-4">
+                                <i class="fas fa-leaf text-primary text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-gray-800 mb-1">Eco-Friendly</h3>
+                                <p class="text-gray-600 text-sm">Safe for your family and pets</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="bg-primary/10 p-3 rounded-full mr-4">
+                                <i class="fas fa-certificate text-primary text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-gray-800 mb-1">Certified Technicians</h3>
+                                <p class="text-gray-600 text-sm">Trained and experienced staff</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="bg-primary/10 p-3 rounded-full mr-4">
+                                <i class="fas fa-thumbs-up text-primary text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-gray-800 mb-1">Satisfaction Guaranteed</h3>
+                                <p class="text-gray-600 text-sm">We're not happy until you are</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <a href="#contact" class="cta-button bg-primary hover:bg-primary/90 text-white font-bold py-4 px-8 rounded-lg transition-all duration-300 inline-block">
+                        Contact Us Today
+                    </a>
+                </div>
+                
+                <div class="lg:w-1/2">
+                    <div class="relative">
+                        <div class="absolute -top-6 -left-6 w-64 h-64 bg-primary/10 rounded-lg"></div>
+                        <div class="absolute -bottom-6 -right-6 w-64 h-64 bg-primary/10 rounded-lg"></div>
+                        
+                        <div class="relative z-10 rounded-lg overflow-hidden shadow-2xl">
+                            <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-9v63SzICk14frnbXcB8vl0KITNEJDr.png" alt="Pistol Pressure Washing Team" class="w-full h-auto">
+                        </div>
+                        
+                        <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white/90 backdrop-blur-sm rounded-lg p-6 shadow-xl max-w-xs text-center">
+                            <div class="text-4xl font-bold text-primary mb-2">10+</div>
+                            <div class="text-gray-800 font-medium">Years of Experience</div>
+                            <div class="w-16 h-1 bg-primary mx-auto my-3"></div>
+                            <div class="text-gray-600 text-sm">Serving Georgia homeowners and businesses since 2010</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Before & After Gallery -->
+    <section id="gallery" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-heading font-bold text-gray-800 mb-4">Before & After Transformations</h2>
+                <div class="w-24 h-1 bg-primary mx-auto mb-6"></div>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    See the dramatic difference our professional pressure washing services can make on your property.
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Before & After 1 -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden">
+                    <div class="before-after-slider h-64 relative" id="slider-1">
+                        <div class="slider-before h-full">
+                            <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-9v63SzICk14frnbXcB8vl0KITNEJDr.png" alt="Before Cleaning" class="w-full h-full object-cover">
+                            <div class="absolute top-4 left-4 bg-dark/80 text-white py-1 px-3 rounded-full text-sm">Before</div>
+                        </div>
+                        <div class="slider-after h-full">
+                            <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-9v63SzICk14frnbXcB8vl0KITNEJDr.png" alt="After Cleaning" class="w-full h-full object-cover">
+                            <div class="absolute top-4 right-4 bg-primary/80 text-white py-1 px-3 rounded-full text-sm">After</div>
+                        </div>
+                        <div class="slider-handle"></div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">Driveway Cleaning</h3>
+                        <p class="text-gray-600">
+                            Removed years of dirt, oil stains, and algae growth to restore this driveway to like-new condition.
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- Before & After 2 -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden">
+                    <div class="before-after-slider h-64 relative" id="slider-2">
+                        <div class="slider-before h-full">
+                            <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-9v63SzICk14frnbXcB8vl0KITNEJDr.png" alt="Before Cleaning" class="w-full h-full object-cover">
+                            <div class="absolute top-4 left-4 bg-dark/80 text-white py-1 px-3 rounded-full text-sm">Before</div>
+                        </div>
+                        <div class="slider-after h-full">
+                            <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-9v63SzICk14frnbXcB8vl0KITNEJDr.png" alt="After Cleaning" class="w-full h-full object-cover">
+                            <div class="absolute top-4 right-4 bg-primary/80 text-white py-1 px-3 rounded-full text-sm">After</div>
+                        </div>
+                        <div class="slider-handle"></div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">House Washing</h3>
+                        <p class="text-gray-600">
+                            Removed mold, mildew, and dirt from this home's siding, restoring its original beauty.
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- Before & After 3 -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden">
+                    <div class="before-after-slider h-64 relative" id="slider-3">
+                        <div class="slider-before h-full">
+                            <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-9v63SzICk14frnbXcB8vl0KITNEJDr.png" alt="Before Cleaning" class="w-full h-full object-cover">
+                            <div class="absolute top-4 left-4 bg-dark/80 text-white py-1 px-3 rounded-full text-sm">Before</div>
+                        </div>
+                        <div class="slider-after h-full">
+                            <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-9v63SzICk14frnbXcB8vl0KITNEJDr.png" alt="After Cleaning" class="w-full h-full object-cover">
+                            <div class="absolute top-4 right-4 bg-primary/80 text-white py-1 px-3 rounded-full text-sm">After</div>
+                        </div>
+                        <div class="slider-handle"></div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">Roof Cleaning</h3>
+                        <p class="text-gray-600">
+                            Eliminated black streaks and algae growth to restore this roof's appearance and extend its lifespan.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-16 text-center">
+                <a href="#contact" class="cta-button bg-primary hover:bg-primary/90 text-white font-bold py-4 px-8 rounded-lg transition-all duration-300 inline-block">
+                    Schedule Your Transformation
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="py-20 bg-primary relative overflow-hidden">
+        <div class="water-animation" id="testimonials-water"></div>
+        <div class="absolute top-0 left-0 w-full h-full bg-primary/80 z-0"></div>
+        
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-heading font-bold text-white mb-4">What Our Customers Say</h2>
+                <div class="w-24 h-1 bg-white mx-auto mb-6"></div>
+                <p class="text-xl text-white/90 max-w-3xl mx-auto">
+                    Don't just take our word for it. Here's what our satisfied customers have to say about our services.
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Testimonial 1 -->
+                <div class="testimonial-card bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20">
+                    <div class="text-yellow-400 flex mb-4">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="text-white/90 mb-6 italic">
+                        "I couldn't believe the difference after Pistol Pressure Washing cleaned my driveway and house. It looks brand new! The team was professional, on time, and did an amazing job. Highly recommend!"
+                    </p>
+                    <div class="flex items-center">
+                        <div class="w-12 h-12 bg-primary rounded-full flex items-center justify-center mr-4">
+                            <span class="text-white font-bold">JM</span>
+                        </div>
+                        <div>
+                            <h4 class="text-white font-bold">John Mitchell</h4>
+                            <p class="text-white/70 text-sm">Macon, GA</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 2 -->
+                <div class="testimonial-card bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20">
+                    <div class="text-yellow-400 flex mb-4">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="text-white/90 mb-6 italic">
+                        "We hired Pistol Pressure Washing to clean our commercial building and were extremely impressed with the results. They were thorough, efficient, and the building looks fantastic. We've scheduled regular maintenance with them."
+                    </p>
+                    <div class="flex items-center">
+                        <div class="w-12 h-12 bg-primary rounded-full flex items-center justify-center mr-4">
+                            <span class="text-white font-bold">SJ</span>
+                        </div>
+                        <div>
+                            <h4 class="text-white font-bold">Sarah Johnson</h4>
+                            <p class="text-white/70 text-sm">Business Owner, Atlanta</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 3 -->
+                <div class="testimonial-card bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20">
+                    <div class="text-yellow-400 flex mb-4">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="text-white/90 mb-6 italic">
+                        "The roof cleaning service from Pistol Pressure Washing was exceptional. They removed all the black streaks and algae, and my roof looks like new again. Their attention to detail and customer service is outstanding."
+                    </p>
+                    <div class="flex items-center">
+                        <div class="w-12 h-12 bg-primary rounded-full flex items-center justify-center mr-4">
+                            <span class="text-white font-bold">RW</span>
+                        </div>
+                        <div>
+                            <h4 class="text-white font-bold">Robert Williams</h4>
+                            <p class="text-white/70 text-sm">Savannah, GA</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-16 text-center">
+                <div class="bg-white/10 backdrop-blur-sm inline-block rounded-xl p-6 max-w-2xl">
+                    <div class="text-3xl font-bold text-white mb-4">Ready to experience the difference?</div>
+                    <p class="text-white/90 mb-6">
+                        Join our hundreds of satisfied customers throughout Georgia.
+                    </p>
+                    <a href="#contact" class="cta-button bg-white hover:bg-gray-100 text-primary font-bold py-4 px-8 rounded-lg transition-all duration-300 inline-block">
+                        Get Your Free Estimate
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-heading font-bold text-gray-800 mb-4">Contact Us</h2>
+                <div class="w-24 h-1 bg-primary mx-auto mb-6"></div>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Ready to transform your property? Contact us today for a free estimate or to schedule a service.
+                </p>
+            </div>
+            
+            <div class="flex flex-col lg:flex-row gap-12">
+                <div class="lg:w-1/2">
+                    <form class="bg-gray-50 rounded-xl p-8 shadow-lg">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-6">Get Your Free Estimate</h3>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                            <div>
+                                <label for="name" class="block text-gray-700 font-medium mb-2">Your Name</label>
+                                <input type="text" id="name" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary">
+                            </div>
+                            <div>
+                                <label for="email" class="block text-gray-700 font-medium mb-2">Email Address</label>
+                                <input type="email" id="email" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary">
+                            </div>
+                            <div>
+                                <label for="phone" class="block text-gray-700 font-medium mb-2">Phone Number</label>
+                                <input type="tel" id="phone" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary">
+                            </div>
+                            <div>
+                                <label for="service" class="block text-gray-700 font-medium mb-2">Service Needed</label>
+                                <select id="service" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary">
+                                    <option value="">Select a Service</option>
+                                    <option value="house-washing">House Washing</option>
+                                    <option value="roof-cleaning">Roof Cleaning</option>
+                                    <option value="concrete-cleaning">Concrete Cleaning</option>
+                                    <option value="gutter-cleaning">Gutter Cleaning</option>
+                                    <option value="window-cleaning">Window Cleaning</option>
+                                    <option value="commercial">Commercial Cleaning</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-6">
+                            <label for="address" class="block text-gray-700 font-medium mb-2">Property Address</label>
+                            <input type="text" id="address" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary">
+                        </div>
+                        
+                        <div class="mb-6">
+                            <label for="message" class="block text-gray-700 font-medium mb-2">Additional Information</label>
+                            <textarea id="message" rows="4" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"></textarea>
+                        </div>
+                        
+                        <button type="submit" class="cta-button w-full bg-primary hover:bg-primary/90 text-white font-bold py-4 px-8 rounded-lg transition-all duration-300">
+                            Submit Request
+                        </button>
+                        
+                        <p class="text-gray-500 text-sm mt-4 text-center">
+                            We'll contact you within 24 hours to schedule your free estimate.
+                        </p>
+                    </form>
+                </div>
+                
+                <div class="lg:w-1/2">
+                    <div class="bg-gray-50 rounded-xl p-8 shadow-lg h-full">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-6">Contact Information</h3>
+                        
+                        <div class="space-y-6 mb-8">
+                            <div class="flex items-start">
+                                <div class="bg-primary/10 p-3 rounded-full mr-4">
+                                    <i class="fas fa-phone text-primary text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-gray-800 mb-1">Phone</h4>
+                                    <a href="tel:4783182336" class="text-primary font-bold text-xl hover:text-primary/80 transition-colors">(478) 318-2336</a>
+                                    <p class="text-gray-600 text-sm">Available 7 days a week, 8am-7pm</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="bg-primary/10 p-3 rounded-full mr-4">
+                                    <i class="fas fa-envelope text-primary text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-gray-800 mb-1">Email</h4>
+                                    <a href="mailto:info@pistolpressurewashing.com" class="text-primary hover:text-primary/80 transition-colors">info@pistolpressurewashing.com</a>
+                                    <p class="text-gray-600 text-sm">We'll respond within 24 hours</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="bg-primary/10 p-3 rounded-full mr-4">
+                                    <i class="fas fa-map-marker-alt text-primary text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-gray-800 mb-1">Service Area</h4>
+                                    <p class="text-gray-600">Serving all of Central Georgia including Macon, Warner Robins, Perry, and surrounding areas</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="bg-primary/10 p-3 rounded-full mr-4">
+                                    <i class="fas fa-clock text-primary text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-gray-800 mb-1">Business Hours</h4>
+                                    <p class="text-gray-600">Monday - Saturday: 8:00 AM - 7:00 PM</p>
+                                    <p class="text-gray-600">Sunday: 10:00 AM - 4:00 PM</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-primary/10 rounded-lg p-6 mb-8">
+                            <h4 class="font-bold text-gray-800 mb-3">Why Choose Us?</h4>
+                            <ul class="space-y-2">
+                                <li class="flex items-start">
+                                    <i class="fas fa-check text-primary mt-1 mr-2"></i>
+                                    <span class="text-gray-600">100% Satisfaction Guarantee</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-check text-primary mt-1 mr-2"></i>
+                                    <span class="text-gray-600">Fully Insured & Licensed</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-check text-primary mt-1 mr-2"></i>
+                                    <span class="text-gray-600">Eco-Friendly Cleaning Solutions</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-check text-primary mt-1 mr-2"></i>
+                                    <span class="text-gray-600">Free, No-Obligation Estimates</span>
+                                </li>
+                            </ul>
+                        </div>
+                        
+                        <div class="flex space-x-4">
+                            <a href="#" class="bg-primary hover:bg-primary/90 text-white w-10 h-10 rounded-full flex items-center justify-center transition-colors">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                            <a href="#" class="bg-primary hover:bg-primary/90 text-white w-10 h-10 rounded-full flex items-center justify-center transition-colors">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a href="#" class="bg-primary hover:bg-primary/90 text-white w-10 h-10 rounded-full flex items-center justify-center transition-colors">
+                                <i class="fab fa-google"></i>
+                            </a>
+                            <a href="#" class="bg-primary hover:bg-primary/90 text-white w-10 h-10 rounded-full flex items-center justify-center transition-colors">
+                                <i class="fab fa-yelp"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-16 bg-primary relative overflow-hidden">
+        <div class="water-animation" id="cta-water"></div>
+        <div class="absolute top-0 left-0 w-full h-full bg-primary/80 z-0"></div>
+        
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="flex flex-col md:flex-row items-center justify-between">
+                <div class="mb-8 md:mb-0">
+                    <h2 class="text-3xl font-heading font-bold text-white mb-2">Ready to Transform Your Property?</h2>
+                    <p class="text-white/90 text-lg">
+                        Contact us today for your free, no-obligation estimate.
+                    </p>
+                </div>
+                
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <a href="tel:4783182336" class="bg-white hover:bg-gray-100 text-primary font-bold py-4 px-8 rounded-lg transition-all duration-300 flex items-center justify-center">
+                        <i class="fas fa-phone-alt mr-2"></i> (478) 318-2336
+                    </a>
+                    <a href="#contact" class="cta-button bg-secondary hover:bg-red-600 text-white font-bold py-4 px-8 rounded-lg transition-all duration-300 flex items-center justify-center">
+                        <i class="fas fa-envelope mr-2"></i> Get Free Estimate
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <div class="flex items-center mb-4">
+                        <div class="mr-2">
+                            <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-9v63SzICk14frnbXcB8vl0KITNEJDr.png" alt="Pistol Pressure Washing Logo" class="h-12 w-auto">
+                        </div>
+                        <div>
+                            <h3 class="font-heading font-bold text-xl">PISTOL <span class="text-secondary">PRESSURE WASHING</span></h3>
+                            <p class="text-xs">OF GEORGIA</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-400 mb-4">
+                        Professional exterior cleaning services for residential and commercial properties throughout Georgia.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-white hover:text-secondary transition-colors">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="text-white hover:text-secondary transition-colors">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="text-white hover:text-secondary transition-colors">
+                            <i class="fab fa-google"></i>
+                        </a>
+                        <a href="#" class="text-white hover:text-secondary transition-colors">
+                            <i class="fab fa-yelp"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Our Services</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#services" class="text-gray-400 hover:text-white transition-colors">House Washing</a></li>
+                        <li><a href="#services" class="text-gray-400 hover:text-white transition-colors">Roof Cleaning</a></li>
+                        <li><a href="#services" class="text-gray-400 hover:text-white transition-colors">Concrete Cleaning</a></li>
+                        <li><a href="#services" class="text-gray-400 hover:text-white transition-colors">Gutter Cleaning</a></li>
+                        <li><a href="#services" class="text-gray-400 hover:text-white transition-colors">Window Cleaning</a></li>
+                        <li><a href="#services" class="text-gray-400 hover:text-white transition-colors">Commercial Cleaning</a></li>
+                        <li><a href="#services" class="text-gray-400 hover:text-white transition-colors">Graffiti Removal</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Service Areas</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Macon</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Warner Robins</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Perry</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Forsyth</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Milledgeville</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Dublin</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">All of Central Georgia</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Contact Us</h3>
+                    <ul class="space-y-4">
+                        <li class="flex items-start">
+                            <i class="fas fa-phone-alt mt-1 mr-3 text-secondary"></i>
+                            <div>
+                                <p class="font-bold">(478) 318-2336</p>
+                                <p class="text-gray-400 text-sm">Mon-Sat: 8am-7pm, Sun: 10am-4pm</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-envelope mt-1 mr-3 text-secondary"></i>
+                            <div>
+                                <p class="font-bold">info@pistolpressurewashing.com</p>
+                                <p class="text-gray-400 text-sm">Email us for a free quote</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-map-marker-alt mt-1 mr-3 text-secondary"></i>
+                            <div>
+                                <p class="font-bold">Central Georgia</p>
+                                <p class="text-gray-400 text-sm">Serving all surrounding areas</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 pt-8 mt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-400 text-sm mb-4 md:mb-0">
+                    &copy; 2023 Pistol Pressure Washing of Georgia. All rights reserved.
+                </p>
+                <div class="flex space-x-6">
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors text-sm">Privacy Policy</a>
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors text-sm">Terms of Service</a>
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors text-sm">Sitemap</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <a href="#home" id="back-to-top" class="fixed bottom-6 right-6 bg-primary hover:bg-primary/90 text-white w-12 h-12 rounded-full flex items-center justify-center transition-all duration-300 opacity-0 invisible">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
+    <!-- JavaScript -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Page loader
+            setTimeout(function() {
+                document.getElementById('loader').classList.add('hidden');
+            }, 1000);
+            
+            // Mobile menu toggle
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            
+            mobileMenuButton.addEventListener('click', function() {
+                mobileMenu.classList.toggle('hidden');
+            });
+            
+            // Sticky header
+            const header = document.getElementById('header');
+            
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 100) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+            });
+            
+            // Back to top button
+            const backToTopButton = document.getElementById('back-to-top');
+            
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 500) {
+                    backToTopButton.classList.remove('opacity-0', 'invisible');
+                    backToTopButton.classList.add('opacity-100', 'visible');
+                } else {
+                    backToTopButton.classList.remove('opacity-100', 'visible');
+                    backToTopButton.classList.add('opacity-0', 'invisible');
+                }
+            });
+            
+            // Before & After sliders
+            const sliders = document.querySelectorAll('.before-after-slider');
+            
+            sliders.forEach(function(slider) {
+                const handle = slider.querySelector('.slider-handle');
+                const after = slider.querySelector('.slider-after');
+                let isResizing = false;
+                
+                // Mouse events
+                handle.addEventListener('mousedown', function(e) {
+                    isResizing = true;
+                    e.preventDefault();
+                });
+                
+                document.addEventListener('mousemove', function(e) {
+                    if (!isResizing) return;
+                    
+                    const sliderRect = slider.getBoundingClientRect();
+                    const position = (e.clientX - sliderRect.left) / sliderRect.width * 100;
+                    
+                    if (position > 0 && position < 100) {
+                        handle.style.left = `${position}%`;
+                        after.style.clipPath = `polygon(${position}% 0, 100% 0, 100% 100%, ${position}% 100%)`;
+                    }
+                });
+                
+                document.addEventListener('mouseup', function() {
+                    isResizing = false;
+                });
+                
+                // Touch events
+                handle.addEventListener('touchstart', function(e) {
+                    isResizing = true;
+                });
+                
+                document.addEventListener('touchmove', function(e) {
+                    if (!isResizing) return;
+                    
+                    const touch = e.touches[0];
+                    const sliderRect = slider.getBoundingClientRect();
+                    const position = (touch.clientX - sliderRect.left) / sliderRect.width * 100;
+                    
+                    if (position > 0 && position < 100) {
+                        handle.style.left = `${position}%`;
+                        after.style.clipPath = `polygon(${position}% 0, 100% 0, 100% 100%, ${position}% 100%)`;
+                    }
+                });
+                
+                document.addEventListener('touchend', function() {
+                    isResizing = false;
+                });
+            });
+            
+            // Three.js water animation for hero section
+            const waterCanvas = document.getElementById('water-canvas');
+            if (waterCanvas) {
+                const scene = new THREE.Scene();
+                const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+                const renderer = new THREE.WebGLRenderer({ canvas: waterCanvas, alpha: true });
+                
+                renderer.setSize(window.innerWidth, window.innerHeight);
+                renderer.setPixelRatio(window.devicePixelRatio);
+                
+                // Create water particles
+                const particlesGeometry = new THREE.BufferGeometry();
+                const particlesCount = 1500;
+                
+                const posArray = new Float32Array(particlesCount * 3);
+                for (let i = 0; i < particlesCount * 3; i++) {
+                    posArray[i] = (Math.random() - 0.5) * 20;
+                }
+                
+                particlesGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
+                
+                const particlesMaterial = new THREE.PointsMaterial({
+                    size: 0.02,
+                    color: 0xffffff,
+                    transparent: true,
+                    opacity: 0.8
+                });
+                
+                const particlesMesh = new THREE.Points(particlesGeometry, particlesMaterial);
+                scene.add(particlesMesh);
+                
+                camera.position.z = 5;
+                
+                // Animation
+                const animate = function() {
+                    requestAnimationFrame(animate);
+                    
+                    particlesMesh.rotation.y += 0.001;
+                    particlesMesh.rotation.x += 0.0005;
+                    
+                    renderer.render(scene, camera);
+                };
+                
+                animate();
+                
+                // Handle window resize
+                window.addEventListener('resize', function() {
+                    camera.aspect = window.innerWidth / window.innerHeight;
+                    camera.updateProjectionMatrix();
+                    renderer.setSize(window.innerWidth, window.innerHeight);
+                });
+            }
+            
+            // Create water animations for other sections
+            const createWaterAnimation = function(elementId) {
+                const canvas = document.getElementById(elementId);
+                if (!canvas) return;
+                
+                const scene = new THREE.Scene();
+                const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+                const renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true });
+                
+                renderer.setSize(window.innerWidth, window.innerHeight);
+                renderer.setPixelRatio(window.devicePixelRatio);
+                
+                // Create water particles
+                const particlesGeometry = new THREE.BufferGeometry();
+                const particlesCount = 1000;
+                
+                const posArray = new Float32Array(particlesCount * 3);
+                for (let i = 0; i < particlesCount * 3; i++) {
+                    posArray[i] = (Math.random() - 0.5) * 20;
+                }
+                
+                particlesGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
+                
+                const particlesMaterial = new THREE.PointsMaterial({
+                    size: 0.02,
+                    color: 0xffffff,
+                    transparent: true,
+                    opacity: 0.5
+                });
+                
+                const particlesMesh = new THREE.Points(particlesGeometry, particlesMaterial);
+                scene.add(particlesMesh);
+                
+                camera.position.z = 5;
+                
+                // Animation
+                const animate = function() {
+                    requestAnimationFrame(animate);
+                    
+                    particlesMesh.rotation.y += 0.001;
+                    
+                    renderer.render(scene, camera);
+                };
+                
+                animate();
+                
+                // Handle window resize
+                window.addEventListener('resize', function() {
+                    camera.aspect = window.innerWidth / window.innerHeight;
+                    camera.updateProjectionMatrix();
+                    renderer.setSize(window.innerWidth, window.innerHeight);
+                });
+            };
+            
+            createWaterAnimation('testimonials-water');
+            createWaterAnimation('cta-water');
+            
+            // Create water drop animation
+            const createWaterDrops = function() {
+                const heroSection = document.getElementById('home');
+                if (!heroSection) return;
+                
+                setInterval(function() {
+                    const drop = document.createElement('div');
+                    drop.classList.add('water-drop');
+                    
+                    // Random position
+                    const posX = Math.random() * window.innerWidth;
+                    drop.style.left = `${posX}px`;
+                    drop.style.top = '0';
+                    
+                    // Random size
+                    const size = Math.random() * 10 + 5;
+                    drop.style.width = `${size}px`;
+                    drop.style.height = `${size}px`;
+                    
+                    // Random speed
+                    const speed = Math.random() * 3 + 2;
+                    drop.style.animationDuration = `${speed}s`;
+                    
+                    heroSection.appendChild(drop);
+                    
+                    // Remove drop after animation
+                    setTimeout(function() {
+                        drop.remove();
+                    }, speed * 1000);
+                }, 200);
+            };
+            
+            createWaterDrops();
+        });
+    </script>
 </body>
 </html>
